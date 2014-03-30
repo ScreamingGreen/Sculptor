@@ -66,3 +66,6 @@ final_project_workspace/.metadata/.plugins/org.eclipse.rse.core/.log
 final_project_workspace/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
 
 *.log
+final_project_workspace/.metadata/.plugins/com.google.gwt.eclipse.core/uiBinderReferences
+final_project_workspace/.metadata/.plugins/org.eclipse.jdt.core/invalidArchivesCache
+final_project_workspace/.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache

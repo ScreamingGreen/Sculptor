@@ -1,3 +1,5 @@
+*.jar
+
 *.project
 
 *.settings
@@ -5,38 +7,3 @@
 *.classpath
 
 *.metadata
-
-<<<<<<< HEAD
-*.jar
-=======
-*.prefs
-
-*.launch
-
-*.xml
-
-*.xmi
-
-final_project_workspace/RemoteSystemsTempFiles/.project
-
-*.ini
-
-final_project_workspace/.metadata/.plugins/org.eclipse.team.cvs.core/.running
-
-final_project_workspace/.metadata/.plugins/org.eclipse.rse.ui/.log
-
-*.mark
-
-final_project_workspace/.metadata/.plugins/org.eclipse.rse.core/.log
-
-*.dat
-
-*.txt
-
-final_project_workspace/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
-
-*.log
-final_project_workspace/.metadata/.plugins/com.google.gwt.eclipse.core/uiBinderReferences
-final_project_workspace/.metadata/.plugins/org.eclipse.jdt.core/invalidArchivesCache
-final_project_workspace/.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache
->>>>>>> FETCH_HEAD

@@ -98,10 +98,10 @@
 		position:relative;
 		width:30px;
 		height:77px;
-		background:url(../images/btn_prev.gif) no-repeat 0 0;	
+		background:url(../../images/btn_prev.gif) no-repeat 0 0;	
 		}	
 	#nextBtn a, #slider1next a{ 
-		background:url(../images/btn_next.gif) no-repeat 0 0;	
+		background:url(../../images/btn_next.gif) no-repeat 0 0;	
 		}	
 		
 	/* numeric controls */	

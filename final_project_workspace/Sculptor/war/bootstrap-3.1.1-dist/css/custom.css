@@ -1,7 +1,9 @@
+/* Vertical Divider between login and create page */
 .right-divider {
 border-right: 2px solid #999;
 }
 
+/* Setting page background color */
 body{
 background-color: #454648;
 }

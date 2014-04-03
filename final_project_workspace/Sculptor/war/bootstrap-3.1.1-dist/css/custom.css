@@ -8,3 +8,28 @@ body{
 background-color: #454648;
 }
   
+.innerDiv{
+background-color: #F5F5F5;
+padding: 50px;
+padding-bottom: 45px;
+width: 550px;
+border: 1px solid #a3a3a3;
+}
+
+.outerDiv{
+background-color: #D6D6D6;
+padding: 25px;
+padding-bottom: 15px;
+width: 600px;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
+
+.input-width{
+width: 100px;
+}
+
+.form-width{
+width: 450px;
+}

@@ -16,9 +16,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
 	
+	<!-- Custom Javascript -->
 	<script src="bootstrap-3.1.1-dist/js/Sculptor.js"></script>
 	
-	<!-- Basic navigation bar -->
+	<!-- Basic navigation bar, has brand, search, login, register and create site -->
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -42,8 +43,10 @@
 			<div class="col-md-4 col-md-offset-2 outerDiv">				
 				<div class="form-group innerDiv">
 				<form method="POST" action="login">
-					<input type="text" name="username" class="form-control" placeholder="Website ID">
-					<input type="password" name="password" class="form-control" placeholder="Password">
+				
+					<!-- Login Fields, webID and password -->
+					<input type="text" name="username" class="form-control" id="loginWeb" placeholder="Website ID">
+					<input type="password" name="password" class="form-control" id="loginPass" placeholder="Password">
 					
 					<br />
 					<!-- Buttons here -->					

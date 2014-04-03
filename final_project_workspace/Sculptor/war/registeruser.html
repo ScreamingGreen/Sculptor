@@ -17,9 +17,10 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
 		
+		<!-- Custom Javascript -->
 		<script src="bootstrap-3.1.1-dist/js/Sculptor.js"></script>
 		
-		<!-- Basic navigation bar -->
+		<!-- Basic navigation bar, has brand, search, login, register and create site -->
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -38,21 +39,24 @@
 			</div>
 		</nav>
 		
+		<!-- Login Container -->
 		<div class="container">
 			<div class="col-md-4 col-md-offset-2 outerDiv">				
 				<div class="form-group innerDiv">
 					<form method="POST" action="login">
+					
+						<!-- WebsiteID, Email, and Password fields -->
 						<div class="input-group form-width">
 							<span class="input-group-addon input-width">Website ID</span>
-							<input type="text" class="form-control" placeholder="Software-Engineering">
+							<input type="text" class="form-control" id="registerWeb" placeholder="Software-Engineering">
 						</div>
 						<div class="input-group form-width">
 							<span class="input-group-addon input-width">Email</span>
-							<input type="text" class="form-control" placeholder="John.Doe@stonybrook.edu">
+							<input type="text" class="form-control" id="registerEmail" placeholder="John.Doe@stonybrook.edu">
 						</div>
 						<div class="input-group form-width">
 							<span class="input-group-addon input-width">Password</span>		
-							<input type="password" class="form-control" placeholder="********">
+							<input type="password" class="form-control" id="RegisterPass" placeholder="********">
 						</div>		
 						<br />
 						

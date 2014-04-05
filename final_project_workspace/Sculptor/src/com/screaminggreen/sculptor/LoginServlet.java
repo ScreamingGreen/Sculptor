@@ -11,6 +11,7 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
@@ -28,17 +29,19 @@ public class LoginServlet extends HttpServlet {
 
 	    Filter userFilter = new FilterPredicate("email", FilterOperator.EQUAL, user);
 	    Filter passFilter = new FilterPredicate("password", FilterOperator.EQUAL, pass);
-	    
-	    Query query = new Query("User").setFilter(userFilter).setFilter(passFilter);
+	    Filter accountValidationFilter = CompositeFilterOperator.and(userFilter, passFilter);
+	 
+
+	    Query query = new Query("User").setFilter(accountValidationFilter);
 	    List<Entity> users = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(1));
 	    
-	    if(users.size() > 0) {
+	    if(users.size() == 1) {
 	    	out.println("User/pass found!");
 	    	
 	    	//Send them to their homepage
 	    } else {
 	    	out.println("No user/pass found...");	    	
-	    	resp.sendRedirect("/loginpage.html?error=true");	    	
+	    	resp.sendRedirect("/loginpage.jsp?error=true");	    	
 	    }
 	}
 }

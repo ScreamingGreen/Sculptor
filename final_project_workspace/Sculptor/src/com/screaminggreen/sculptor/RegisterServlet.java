@@ -47,13 +47,13 @@ public class RegisterServlet extends HttpServlet {
 				
 		//Else, print success
 		out.println("Success!");
-        resp.sendRedirect("/loginpage.html");
+        resp.sendRedirect("/loginpage.jsp");
 
 		}
 		else{
+			//Error 
 			out.println("You have an account already");
-	        resp.sendRedirect("/loginpage.html");
-
+	        resp.sendRedirect("/registerpage.jsp?error=true");
 		}
 	}
 }

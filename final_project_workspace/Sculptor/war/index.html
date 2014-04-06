@@ -30,37 +30,39 @@
 	</script>
 	
 	<!-- Navigation bar with Sculptor brand, search bar, login, create page -->
-	<nav class="navbar navbar-inverse" role="navigation">
+	<nav id="nav-bar" class="navbar-inverse navbar-static-top" role="navigation">
 		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html">SCULPTOR</a>
+			<div class="navbar-header" id="nav-bar-header">
+				<a class="navbar-brand" href="index.html">Sculptor</a>
 			</div>
 				<ul class="nav navbar-nav navbar-right">
-					<li><form class="navbar-form " role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" id="courseSearch" placeholder="Find a Course Website">
-						</div>
-					</form></li>
-					<li class="right-divider"><a href="loginpage.jsp">LOG-IN</a></li> 
-					<li class="right-divider"><a href="registeruser.jsp">REGISTER</a></li> 
-					<li><a href="#">CREATE WEBSITE</a></li>
+					
+					<li><a href="loginpage.jsp">Login</a></li> 
+					<li><a href="registeruser.jsp">Register</a></li>
 				</ul>
 		</div>
 	</nav>
-	
-	<!-- Slider with images -->
-	<div class="container">
-		<div class="col-lg-12">
-			<div id="slider">
-				<ul>
-					<li><img src="images/Slider1.jpg" alt="" /></li>
-					<li><img src="images/Slider2.jpg" alt="" /></li>
-					<li><img src="images/Slider3.jpg" alt="" /></li>
-					<li><img src="images/Slider4.jpg" alt="" /></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+
+	<!-- First header 'Create course webpages.' -->
+	<div id="header">
+	  <div id="bg-img"></div>
+      <div id="header-text" class="container">
+        <h1>Create course webpages.</h1>
+        <p>Use a content management system to quickly make <br> clean webpages for your students to use. </p>
+      </div>
+    </div>
+
+    <!-- Second header for searching -->
+    <div id="search-header">
+    	<div class="container">
+			<p>Student? Search for already created sites:</p>
+	        <form role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Type a course">
+				</div>
+			</form>
+    	</div>
+    </div>
 	
   </body>
 </html>

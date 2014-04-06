@@ -89,3 +89,21 @@ width: 450px;
 #search-header form {
 	width: 300px;
 }
+
+/* Login page */
+.bottom-margin-10px {
+	margin-bottom: 10px;
+}
+#login-alert-box {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#login-button {
+	width: 80px;
+}
+#login-form {
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+

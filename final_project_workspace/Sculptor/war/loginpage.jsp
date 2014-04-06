@@ -46,7 +46,7 @@
 				<form method="POST" action="login">
 				    <c:if test="${param.error == 'true'}">Wrong User/Password Combination</c:if>
 					<!-- Login Fields, webID and password -->
-					<input type="text" name="username" class="form-control" id="loginWeb" placeholder="Website ID">
+					<input type="text" name="webId" class="form-control" id="loginWeb" placeholder="Website ID">
 					<input type="password" name="password" class="form-control" id="loginPass" placeholder="Password">
 					
 					<br />

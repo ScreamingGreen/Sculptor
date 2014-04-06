@@ -48,7 +48,7 @@
 						<!-- WebsiteID, Email, and Password fields -->
 						<div class="input-group form-width">
 							<span class="input-group-addon input-width">Website ID</span>
-							<input type="text" class="form-control" id="registerWeb" placeholder="Software-Engineering">
+							<input type="text" class="form-control" name="registerWebId" id="registerWebId" placeholder="Software-Engineering">
 						</div>
 						<div class="input-group form-width">
 							<span class="input-group-addon input-width">Email</span>
@@ -56,7 +56,7 @@
 						</div>
 						<div class="input-group form-width">
 							<span class="input-group-addon input-width">Password</span>		
-							<input type="password" class="form-control" name="registerPass" id="registerPass" placeholder="********">
+							<input type="password" class="form-control" name="registerPass" id="registerPass" placeholder="Password">
 						</div>		
 						<br />
 						

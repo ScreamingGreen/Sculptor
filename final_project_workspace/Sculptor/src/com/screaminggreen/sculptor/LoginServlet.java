@@ -23,15 +23,18 @@ public class LoginServlet extends HttpServlet {
 		if(webId == null || webId.isEmpty() || 
 			password == null || password.isEmpty()){
 			resp.sendRedirect("/loginpage.jsp?missingfields=true");
+			return;
 		}
 		else if(Professor.getProfessor(webId)==null){	
-	    	resp.sendRedirect("/loginpage.jsp?error=true");	    	
+	    	resp.sendRedirect("/loginpage.jsp?error=true");
+	    	return;
 		}
 		else if(Professor.getProfessor(webId) != null && password.equals(Professor.getProfessor(webId).getProperty("password"))){
 	    	out.println("User/pass found!");
 		}
 		else{
-	    	resp.sendRedirect("/loginpage.jsp?error=true");	    	
+	    	resp.sendRedirect("/loginpage.jsp?error=true");
+	    	return;
 		}
 	}
 }

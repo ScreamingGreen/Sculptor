@@ -52,7 +52,7 @@
 					<br />
 					<!-- Buttons here -->					
 					<input type="submit" class="btn btn-default" value="LOG IN"> 
-					<a class="btn btn-default" href="registeruser.html">NO ACCOUNT? REGISTER HERE</a> 					
+					<a class="btn btn-default" href="registeruser.jsp">NO ACCOUNT? REGISTER HERE</a> 					
 				</form>		
 				</div>
 			</div>

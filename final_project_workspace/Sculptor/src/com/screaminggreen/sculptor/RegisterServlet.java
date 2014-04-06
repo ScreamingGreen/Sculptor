@@ -28,9 +28,8 @@ public class RegisterServlet extends HttpServlet {
 		if(webId == null || webId.isEmpty() || email == null || email.isEmpty() 
 				|| password == null || password.isEmpty()) {
 			resp.sendRedirect("/registeruser.jsp?error=true");
-		}		
-		
-		if(Professor.getProfessor(webId)==null){			
+		}			
+		else if(Professor.getProfessor(webId)==null){			
 			
 			Professor.createOrUpdateProfessor(webId, email, password);
 			 

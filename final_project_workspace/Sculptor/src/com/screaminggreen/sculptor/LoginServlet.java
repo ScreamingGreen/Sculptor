@@ -18,8 +18,11 @@ public class LoginServlet extends HttpServlet {
 
 		//Get Password
 		String password = req.getParameter("password");
-				
-		if(Professor.getProfessor(webId)==null){	
+		
+		if(webId == null || webId.isEmpty() || password == null || password.isEmpty()) {
+			resp.sendRedirect("/registeruser.jsp?error=true");
+		}					
+		else if(Professor.getProfessor(webId)==null){	
 	    	resp.sendRedirect("/loginpage.jsp?error=true");	    	
 		}
 		else if(Professor.getProfessor(webId) != null && password.equals(Professor.getProfessor(webId).getProperty("password"))){

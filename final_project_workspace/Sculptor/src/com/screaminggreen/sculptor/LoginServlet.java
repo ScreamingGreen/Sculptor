@@ -18,6 +18,12 @@ public class LoginServlet extends HttpServlet {
 
 		//Get Password
 		String password = req.getParameter("password");
+		
+		//Check for nulls
+		if(webId == null || webId.isEmpty() || 
+			password == null || password.isEmpty()){
+			resp.sendRedirect("/loginpage.jsp?missingfields=true");
+		}
 				
 		if(Professor.getProfessor(webId)==null){	
 	    	resp.sendRedirect("/loginpage.jsp?error=true");	    	

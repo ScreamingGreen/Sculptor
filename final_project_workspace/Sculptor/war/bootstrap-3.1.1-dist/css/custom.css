@@ -5,7 +5,7 @@ border-right: 2px solid #999;
 
 /* Setting page background color */
 body{
-background-color: #454648;
+	background-color: #C0C0C0;
 }
   
 .innerDiv{
@@ -32,4 +32,60 @@ width: 100px;
 
 .form-width{
 width: 450px;
+}
+
+/* Navigation bar stuff*/
+#nav-bar {
+	background-color: #1C1C1C;
+}
+#nav-bar a {
+	color: #BCB9BC;
+	font-weight: 500;
+}
+#nav-bar a:hover {
+	color: white;
+}
+#nav-bar-header a {
+	color: white;
+	font-weight: 500;
+	font-size: 24px;
+}
+
+/* Landing page header 'Create course webpages.' */
+#header {
+	background-color: #F0F0F0;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	position: relative;
+}
+#bg-img {
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background-image: url('../../images/Slider4.jpg');
+	opacity: 0.05;
+	position: absolute;
+}
+#header-text h1 {
+	font-size: 60px;
+}
+#header-text p {
+	font-size: 30px;
+	font-weight: 300;
+	color: #999999;	
+}
+
+/* Landing page search bar block */
+#search-header {
+	background-color: #FFFFFF;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#search-header p {
+	font-size: 26px;
+	font-weight: 300;
+	color: #AAAAAA;
+}
+#search-header form {
+	width: 300px;
 }

@@ -22,14 +22,13 @@ public class RegisterServlet extends HttpServlet {
 		//Get Password
 		String password = req.getParameter("registerPass");
 		
-		//Ain't nobody want null fields, 
-		//if the frontend fails to validate, we have to do it just in-case...
-		
+		//Null checks, if null fields redirects back to register page
 		if(webId == null || webId.isEmpty() || email == null || email.isEmpty() 
 				|| password == null || password.isEmpty()) {
 			resp.sendRedirect("/registeruser.jsp?error=true");
 			return;
 		}			
+		// Get Entity from datastore to chcek if it exists
 		else if(Professor.getProfessor(webId)==null){			
 			
 			Professor.createOrUpdateProfessor(webId, email, password);
@@ -37,8 +36,8 @@ public class RegisterServlet extends HttpServlet {
 			resp.sendRedirect("/loginpage.jsp?success=true");
 			return;
 		}
+		//if Entity with similar credentials already existing   
 		else{
-			//Error 
 			out.println("You have an account already");
 	        resp.sendRedirect("/registeruser.jsp?error=true");
 	        return;

@@ -28,7 +28,7 @@ public class DatastoreAPI {
 
 	/**
 	 * 
-	 * @param entity  : entity to be persisted
+	 * @param entity  : entity to be persisted/inserted/put in the datastore
 	 */
 	  public static void persistEntity(Entity entity) {
 	  	logger.log(Level.INFO, "Saving entity");

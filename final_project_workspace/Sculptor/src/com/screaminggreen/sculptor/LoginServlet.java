@@ -24,8 +24,7 @@ public class LoginServlet extends HttpServlet {
 			password == null || password.isEmpty()){
 			resp.sendRedirect("/loginpage.jsp?missingfields=true");
 		}
-				
-		if(Professor.getProfessor(webId)==null){	
+		else if(Professor.getProfessor(webId)==null){	
 	    	resp.sendRedirect("/loginpage.jsp?error=true");	    	
 		}
 		else if(Professor.getProfessor(webId) != null && password.equals(Professor.getProfessor(webId).getProperty("password"))){

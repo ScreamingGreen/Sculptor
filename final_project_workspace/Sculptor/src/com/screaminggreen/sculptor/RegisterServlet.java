@@ -3,8 +3,10 @@ package com.screaminggreen.sculptor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.http.*;
-import com.screamminggreen.datastore.*;
+
+import com.screaminggreen.datastore.*;
 
 @SuppressWarnings("serial")
 public class RegisterServlet extends HttpServlet {

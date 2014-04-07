@@ -7,24 +7,6 @@ border-right: 2px solid #999;
 body{
 	background-color: #C0C0C0;
 }
-  
-.innerDiv{
-background-color: #F5F5F5;
-padding: 50px;
-padding-bottom: 45px;
-width: 550px;
-border: 1px solid #a3a3a3;
-}
-
-.outerDiv{
-background-color: #D6D6D6;
-padding: 25px;
-padding-bottom: 15px;
-width: 600px;
--webkit-border-radius: 15px;
--moz-border-radius: 15px;
-border-radius: 15px;
-}
 
 .input-width{
 width: 100px;
@@ -106,4 +88,21 @@ width: 450px;
 	margin-left: auto;
 	margin-right: auto;
 }
+#login-form h3 {
+	margin-bottom: 20px;	
+}
+
+/* Register page */
+#register-form {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#register-form h3 {
+	margin-bottom: 20px;	
+}
+#register-button {
+	width: 100px;
+}
+
 

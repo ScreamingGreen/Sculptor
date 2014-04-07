@@ -7,6 +7,10 @@ import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+
 
 /**
  * This class handles all the CRUD operations related to
@@ -59,13 +63,16 @@ public class Professor {
    */
   
   public static List<Entity> getItems(String name) {
-  	Query query = new Query();
-  	Key parentKey = KeyFactory.createKey("Professor", name);
-  	query.setAncestor(parentKey);
-  	query.addFilter(Entity.KEY_RESERVED_PROPERTY, Query.FilterOperator.GREATER_THAN, parentKey);
-  		List<Entity> results = DatastoreAPI.getDatastoreServiceInstance()
-  				.prepare(query).asList(FetchOptions.Builder.withDefaults());
-  		return results;
+	  	Query query = new Query();
+	  	Key parentKey = KeyFactory.createKey("Professor", name);
+	  	Filter filter = new FilterPredicate(Entity.KEY_RESERVED_PROPERTY, FilterOperator.GREATER_THAN, parentKey);
+	  	
+	  	query.setAncestor(parentKey);	  	
+	  	query.setFilter(filter);
+	  	
+	  	List<Entity> results = DatastoreAPI.getDatastoreServiceInstance()
+	  				.prepare(query).asList(FetchOptions.Builder.withDefaults());
+	  	return results;
 	}
   
   /**

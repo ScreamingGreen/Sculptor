@@ -43,13 +43,27 @@
 
 					<!-- Error checking -->
 				    <c:if test="${param.error == 'true'}">
-				    	<!-- Show an alert -->
+				    	<!-- Show an alert -->				   
 				    	<div id="login-alert-box" class="alert alert-danger alert-dismissable">
 				    		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				    		Wrong User/Password Combination
+				    		<c:choose>
+					    		<c:when test="${param.nouser == 'true'}">
+					    			Please log in to continue.
+					    		</c:when>
+					    		<c:when test="${param.missingfields == 'true'}">
+					    			You are missing some fields.
+					    		</c:when>
+					    		<c:otherwise>					    		
+					    			Wrong User/Password Combination.				    	
+					    		</c:otherwise>
+				    		</c:choose>
 				    	</div>
 				    </c:if>
-
+				    
+					<c:if test="${success == 'true'}">
+						Registration successful! Please log in to your account.
+					</c:if>
+					
 				    <h3>Login</h3>
 
 					<!-- Login Fields, webID and password -->

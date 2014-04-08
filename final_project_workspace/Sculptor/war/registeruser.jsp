@@ -7,7 +7,8 @@
 		<!-- Bootstrap -->
 		<link href="bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet">
 		<link href="bootstrap-3.1.1-dist/css/custom.css" rel="stylesheet">
-
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+		
 	</head>
 	<body>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -26,11 +27,23 @@
 					<a class="navbar-brand" href="index.html">Sculptor</a>
 				</div>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="loginpage.jsp">Login</a></li> 
-						<li><a href="registeruser.jsp">Register</a></li>
+						<li><a href="/loginpage.jsp">Login</a></li> 
+						<li><a href="/app/registeruser.jsp">Register</a></li>
 					</ul>
 			</div>
 		</nav>
+
+		<c:if test="${param.error == 'true'}">
+			<c:choose>
+				<c:when test="${param.missingfields == 'true'}">
+					You are missing some fields.
+				</c:when>
+				
+				<c:when test="${param.accountexists == 'true'}">
+					An account with that Web Id exist already.
+				</c:when>
+			</c:choose>		
+		</c:if>		
 
 		<!-- Register Header -->
 		<div id="header">

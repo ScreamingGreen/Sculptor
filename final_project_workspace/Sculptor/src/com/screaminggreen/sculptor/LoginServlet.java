@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 		//Check for nulls
 		if(webId == null || webId.isEmpty() || 			
 			password == null || password.isEmpty()){
-			resp.sendRedirect("/loginpage.jsp?missingfields=true");			
+			resp.sendRedirect("/loginpage.jsp?missingfields=true&error=true");			
 			return;
 		}
 		
@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("sessionBean", sBean);
 			
 			//Redirect
-			resp.sendRedirect("/createpage.jsp");
+			resp.sendRedirect("/app/createpage.jsp");
 		}
 		
 		//if nothing matches redirect the page back to login page 

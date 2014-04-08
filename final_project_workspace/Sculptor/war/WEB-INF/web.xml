@@ -4,6 +4,7 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
 	<servlet>
 		<servlet-name>Sculptor</servlet-name>
 		<servlet-class>com.screaminggreen.sculptor.SculptorServlet</servlet-class>
@@ -36,6 +37,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>Register</servlet-name>
 	    <url-pattern>/register</url-pattern>
 	</servlet-mapping>
+	
+	<filter>
+    	<filter-name>loggedInFilter</filter-name>
+    	<filter-class>com.screaminggreen.filters.LoggedInFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>loggedInFilter</filter-name>
+	    <url-pattern>/app/*</url-pattern>
+	</filter-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

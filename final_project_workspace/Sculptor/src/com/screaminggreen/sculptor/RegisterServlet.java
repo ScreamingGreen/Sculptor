@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
 		//Null checks, if null fields redirects back to register page
 		if(webId == null || webId.isEmpty() || email == null || email.isEmpty() 
 				|| password == null || password.isEmpty()) {
-			resp.sendRedirect("/registeruser.jsp?error=true");
+			resp.sendRedirect("/registeruser.jsp?missingFields=true");
 			return;
 		}			
 		// Get Entity from datastore to check if it exists
@@ -41,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
 		//if Entity with similar credentials already existing   
 		else{
 			out.println("You have an account already");
-	        resp.sendRedirect("/registeruser.jsp?error=true");
+	        resp.sendRedirect("/registeruser.jsp?accountExists=true");
 	        return;
 		}
 		

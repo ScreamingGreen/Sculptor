@@ -1,7 +1,13 @@
 package com.screaminggreen.beans;
 
-public class ProfessorBean {
+import java.io.Serializable;
 
+public class ProfessorBean implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7892904874716952545L;
 	private String webId;
 	private String email;
 	private String password;
@@ -22,6 +28,14 @@ public class ProfessorBean {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

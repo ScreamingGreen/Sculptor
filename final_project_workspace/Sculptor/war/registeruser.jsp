@@ -37,7 +37,7 @@
 	      <div class="container">
 	      		<div id="register-form">				
 					<div class="form-group">
-						<form class="form-horizontal" method="POST" action="register" role="form">
+						<form class="form-horizontal" method="POST" action="/register" role="form">
 						    <h3>Register</h3>
 							<!-- Website ID-->
 							 <div class="form-group">

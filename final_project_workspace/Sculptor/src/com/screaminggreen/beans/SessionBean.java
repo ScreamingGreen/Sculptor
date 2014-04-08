@@ -1,17 +1,23 @@
 package com.screaminggreen.beans;
 
-public class SessionBean {
+import java.io.Serializable;
+
+public class SessionBean implements Serializable{
 	
-	private ProfessorBean currentProfBean;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4330131385161045244L;
+	private ProfessorBean profBean;
 	
 	public SessionBean() { }
 
-	public ProfessorBean getCurrentProfBean() {
-		return currentProfBean;
+	public ProfessorBean getProfBean() {
+		return profBean;
 	}
 
-	public void setCurrentProfBean(ProfessorBean currentProfBean) {
-		this.currentProfBean = currentProfBean;
+	public void setProfBean(ProfessorBean profBean) {
+		this.profBean = profBean;
 	}
 	
 	

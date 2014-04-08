@@ -39,7 +39,7 @@
       <div class="container">
       		<div id="login-form">				
 				<div class="form-group">
-				<form class="form-signin" method="POST" action="login" role="form">
+				<form class="form-signin" method="POST" action="/login" role="form">
 
 					<!-- Error checking -->
 				    <c:if test="${param.error == 'true'}">

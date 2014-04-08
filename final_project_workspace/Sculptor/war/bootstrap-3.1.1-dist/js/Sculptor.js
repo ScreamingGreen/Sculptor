@@ -37,6 +37,10 @@ function addPage(){
 	x++;
 }
 
+/* Removes current active tab */
+function removePage(){
+	$(".active").remove();
+}
 
 /* Dynamic editing of tab names
 function tabClicked() {

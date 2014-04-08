@@ -30,7 +30,7 @@
 				</div>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a>Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
-						<li><a href="/registerpage.jsp">Register</a></li>
+						<li><a href="/registeruser.jsp">Register</a></li>
 						<li><a href="/loginpage.jsp">Login</a></li> 
 						<li><a href="/logout">Logout</a></li>
 					</ul>

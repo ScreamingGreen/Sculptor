@@ -11,7 +11,7 @@ function addPage(){
 		.append(
 			/* Basic attributes for left side tab-bar */
 			$('<li></li>').append(
-			$('<a>New Tab</a>')
+				$('<a>New Tab <span class="glyphicon glyphicon-remove pull-right newTab" onClick="removePage()"></span> </a>')
 				.attr('href', newTabString)
 				.attr('data-toggle', 'tab')
 				.attr('id', x)

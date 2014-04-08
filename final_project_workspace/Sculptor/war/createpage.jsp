@@ -49,8 +49,6 @@
 						</ul>
 						<hr>
 						<div> <a href="#" class="glyphicon glyphicon-plus" onClick=addPage()> ADD PAGE </a> </div>
-						<hr>
-						<div> <a href="#" class="glyphicon glyphicon-minus" onClick=removePage()> REMOVE PAGE </a> </div>
 				</div>
 				
 				<!-- Content of tabs on right side -->

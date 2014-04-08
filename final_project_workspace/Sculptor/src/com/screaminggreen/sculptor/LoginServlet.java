@@ -1,7 +1,7 @@
 package com.screaminggreen.sculptor;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 
 import javax.servlet.http.*;
 

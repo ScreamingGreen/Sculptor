@@ -1,6 +1,8 @@
 package com.screaminggreen.datastore;
 
 import java.util.List;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
@@ -18,6 +20,9 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
  *
  */
 public class Professor {
+	
+//	 private static final Logger logger = Logger.getLogger(Professor.class.getCanonicalName());
+
 
   /**
    * Update the Professor
@@ -29,6 +34,7 @@ public class Professor {
     Entity Professor = getProfessor(webId);
   	if (Professor == null) {
   	  Professor = new Entity("Professor", webId);
+  	  
   	  Professor.setProperty("email", email);
   	  Professor.setProperty("password", password);
   	} else {

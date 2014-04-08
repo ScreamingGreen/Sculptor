@@ -30,8 +30,8 @@ public class RegisterServlet extends HttpServlet {
 			resp.sendRedirect("/registeruser.jsp?error=true");
 			return;
 		}			
-		// Get Entity from datastore to chcek if it exists
-		else if(Professor.getProfessor(webId)==null){			
+		// Get Entity from datastore to check if it exists
+		else if(Professor.getProfessor(webId) == null){			
 			
 			Professor.createOrUpdateProfessor(webId, email, password);
 			 

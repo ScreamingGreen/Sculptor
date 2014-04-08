@@ -11,12 +11,12 @@ function addPage(){
 		.append(
 			/* Basic attributes for left side tab-bar */
 			$('<li></li>').append(
-			$('<a>New Tab</a>')
+				$('<a>New Tab <span class="glyphicon glyphicon-remove pull-right newTab" onClick="removePage()"></span> </a>')
 				.attr('href', newTabString)
 				.attr('data-toggle', 'tab')
 				.attr('id', x)
-				.attr('onClick', 'tabClicked()')
-				.addClass('newTab'))
+				.attr('onClick', 'tabClicked()'))
+				.addClass('newTab')
 		);
 	x++;
 	
@@ -25,6 +25,7 @@ function addPage(){
 		.append(
 			$('<div></div>')
 				.addClass('tab-pane')
+				.addClass('newContentPane')
 				.attr('id', x)
 				.append(
 					$('<h3> Title </h3><input type="text" class="form-control" placeholder="Assignments">')
@@ -39,7 +40,8 @@ function addPage(){
 
 /* Removes current active tab */
 function removePage(){
-	$(".active").remove();
+	$(".active.newTab").remove();
+	$(".active.newContentPane").remove();
 }
 
 /* Dynamic editing of tab names

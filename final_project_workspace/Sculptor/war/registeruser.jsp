@@ -33,24 +33,30 @@
 			</div>
 		</nav>
 
-		<c:if test="${param.error == 'true'}">
-			<c:choose>
-				<c:when test="${param.missingfields == 'true'}">
-					You are missing some fields.
-				</c:when>
-				
-				<c:when test="${param.accountexists == 'true'}">
-					An account with that Web Id exist already.
-				</c:when>
-			</c:choose>		
-		</c:if>		
-
 		<!-- Register Header -->
 		<div id="header">
 	      <div class="container">
 	      		<div id="register-form">				
 					<div class="form-group">
 						<form class="form-horizontal" method="POST" action="/register" role="form">
+						
+						<!-- Error Checking -->
+						<c:if test="${param.error == 'true'}">	
+							<!-- Show an alert -->				   
+				    		<div id="login-alert-box" class="alert alert-danger alert-dismissable">
+				    			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>		   
+								<c:choose>
+									<c:when test="${param.missingfields == 'true'}">
+										You are missing some fields.
+									</c:when>
+											
+									<c:when test="${param.accountexists == 'true'}">
+										An account with that Web Id exist already.
+									</c:when>
+								</c:choose>
+							</div>
+						</c:if>		
+						
 						    <h3>Register</h3>
 							<!-- Website ID-->
 							 <div class="form-group">

@@ -28,7 +28,7 @@
 				</div>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/loginpage.jsp">Login</a></li> 
-						<li><a href="/app/registeruser.jsp">Register</a></li>
+						<li><a href="/registeruser.jsp">Register</a></li>
 					</ul>
 			</div>
 		</nav>

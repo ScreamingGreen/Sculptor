@@ -31,8 +31,17 @@ function addPage(){
 					$('<h3> Title </h3><input type="text" class="form-control" placeholder="Assignments">')
 					)
 				.append(
-					$('<h3> Information </h3><textarea class="form-control" row="3"></textarea>')
+					$('<h3> Information </h3><textarea class="form-control" row="3"></textarea><hr>')
 					)
+				.append(
+					$('<input id="submit-button" type="submit" class="btn btn-default" value="Submit"> ')
+					)
+				.append(
+					$('<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> ')
+					)	
+				.append(
+					$('<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> ')
+					)	
 		);
 		
 	x++;

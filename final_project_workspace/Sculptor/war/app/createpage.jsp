@@ -96,29 +96,39 @@
 							<h4> End Time </h4>
 							<input type="text" name="webId" class="form-control" placeholder="11:20 AM">
 							
+							<hr>
+							<!-- Buttons at the bottom of tab-content -->
+							<input id="save-button" type="submit" class="btn btn-default" value="Save Changes"> 
+							<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> 
+							<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> 
 							</form>
 						</div>
 						
 						<!-- Content for Syllabus tab to add here -->
 						<div class="tab-pane" id="Syllabus">
 							<form>
-							
+								<hr>
+								<!-- Buttons at the bottom of tab-content -->
+								<input id="save-button" type="submit" class="btn btn-default" value="Save Changes"> 
+								<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> 
+								<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> 							
 							</form>
 						</div>
 						
 						<!-- Content for Schedule tab to add here -->
 						<div class="tab-pane" id="Schedule">
 							<form>
-							
+								<hr>
+								<!-- Buttons at the bottom of tab-content -->
+								<input id="save-button" type="submit" class="btn btn-default" value="Save Changes"> 
+								<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> 
+								<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> 
 							</form>
 						</div>
 					</div>			
 					<hr>
 					
-					<!-- Buttons at the bottom of tab-content -->
-					<input id="save-button" type="submit" class="btn btn-default" value="Save Changes"> 
-					<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> 
-					<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> 
+
 				</div>
 	      </div>
 	    </div>

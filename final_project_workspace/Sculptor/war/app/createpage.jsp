@@ -56,6 +56,9 @@
 						
 						<!-- Basic content for home page -->
 						<div class="tab-pane active" id="Home">
+							<!-- Every div has a form -->
+							<form>
+							
 							<h2> Home </h2>
 							<hr>
 							<h4> Course Code </h4>
@@ -92,14 +95,22 @@
 							<input type="text" name="webId" class="form-control" placeholder="10:00 AM">
 							<h4> End Time </h4>
 							<input type="text" name="webId" class="form-control" placeholder="11:20 AM">
+							
+							</form>
 						</div>
 						
 						<!-- Content for Syllabus tab to add here -->
 						<div class="tab-pane" id="Syllabus">
+							<form>
+							
+							</form>
 						</div>
 						
 						<!-- Content for Schedule tab to add here -->
 						<div class="tab-pane" id="Schedule">
+							<form>
+							
+							</form>
 						</div>
 					</div>			
 					<hr>

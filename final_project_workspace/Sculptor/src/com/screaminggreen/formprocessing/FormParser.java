@@ -2,12 +2,12 @@ package com.screaminggreen.formprocessing;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.screaminggreen.datastore.CourseTabs;
+import com.screaminggreen.datastore.CourseTab;
 
 public interface FormParser {
 	
 	//This is used to connect to DataStore
-	final CourseTabs courseTabs = new CourseTabs();
+	final CourseTab courseTabs = new CourseTab();
 	
 	public void parse(HttpServletRequest req);
 }

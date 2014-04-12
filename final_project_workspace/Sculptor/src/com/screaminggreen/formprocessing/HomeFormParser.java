@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.screaminggreen.beans.ProfessorBean;
 import com.screaminggreen.beans.SessionBean;
-import com.screaminggreen.datastore.CourseTabs;
+import com.screaminggreen.datastore.CourseTab;
 import com.screaminggreen.datastore.DatastoreAPI;
 import com.google.appengine.api.datastore.Entity;
 
@@ -46,7 +46,7 @@ public class HomeFormParser implements FormParser{
 		//Update this data in Datastore...
 		
 		//Get or make new entity
-		Entity tabEntity = CourseTabs.createOrGetCourseTab(webId, tabName, "Home");
+		Entity tabEntity = CourseTab.createOrGetCourseTab(webId, tabName, "Home");
 		
 		tabEntity.setProperty("type", "Home");
 		

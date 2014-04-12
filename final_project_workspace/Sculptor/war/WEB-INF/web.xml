@@ -10,6 +10,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-class>com.screaminggreen.sculptor.SculptorServlet</servlet-class>
 	</servlet>
 	<servlet>
+	    <servlet-name>SaveForm</servlet-name>
+	    <servlet-class>com.screaminggreen.formprocessing.SaveFormServlet</servlet-class>
+	</servlet>
+	<servlet>
 	    <servlet-name>Login</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.LoginServlet</servlet-class>
 	</servlet>
@@ -21,9 +25,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-name>Register</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.RegisterServlet</servlet-class>
 	</servlet>
+	
+		
 	<servlet-mapping>
 		<servlet-name>Sculptor</servlet-name>
 		<url-pattern>/sculptor</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>SaveForm</servlet-name>
+	    <url-pattern>/saveform</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 	    <servlet-name>Login</servlet-name>

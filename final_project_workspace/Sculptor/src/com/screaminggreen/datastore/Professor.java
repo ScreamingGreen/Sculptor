@@ -54,7 +54,7 @@ public class Professor {
 
   /**
    * Get Professor entity
-   * @param name : name of the Professor
+   * @param webId : Id of the Professor
    * @return: Professor entity
    */
   public static Entity getProfessor(String webId) {

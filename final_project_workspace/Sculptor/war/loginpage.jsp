@@ -38,7 +38,7 @@
 	<div id="header">
       <div class="container">
       		<div id="login-form">				
-				<div class="form-group">
+				<div class="form-group">				
 				<form class="form-signin" method="POST" action="/login" role="form">
 
 					<!-- Error checking -->

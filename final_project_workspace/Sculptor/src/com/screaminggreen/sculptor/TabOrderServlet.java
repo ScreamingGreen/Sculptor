@@ -16,7 +16,7 @@ public class TabOrderServlet extends HttpServlet {
 		
 		// 1. Reading JSON String
         BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
-        String JSONString = "a";
+        String JSONString = "";
         if(br != null){
             JSONString = br.readLine();
         }

@@ -35,12 +35,16 @@ function saveTabs(){
 	for(var i = 0; i<tabs.length; i++)
 	{
 		
-		//Parses the string and adds new tab to array
+		//Parses the string into array
 		JSONString = JSON.parse(JSONString);
+		
+		//Second object with next tabs information
 		var obj2 = new Object();
 		obj2.name = tabs[i].id;
 		obj2.type = tabsType[i].options[tabsType[i].selectedIndex].text;
 		var JSONString2 = JSON.stringify(obj2);
+		
+		//Parses second object string into array and pushes it into default string
 		obj2 = JSON.parse(JSONString2);
 		JSONString['tabOrder'].push(obj2);
 		

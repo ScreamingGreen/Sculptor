@@ -40,7 +40,7 @@ function addPage(){
 						)
 					)
 					
-					//Default information in new tabs
+					//Default information in new tabs, basic title and information text box
 					.append(
 						$('<h3> Title </h3><input type="text" class="form-control" placeholder="Assignments">')
 						)

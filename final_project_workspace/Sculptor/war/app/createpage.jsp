@@ -4,13 +4,14 @@
 	<head>
 		<meta charset="utf-8">
 		<title>CreatePage</title>
-		
+				
 		<!-- Bootstrap -->
 		<link href="../bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap-3.1.1-dist/css/custom.css" rel="stylesheet">
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 		
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
@@ -65,13 +66,14 @@
 							<form action="/saveform" method="POST">
 							Type of Form: 
 							<!-- If this changes.. the form will change dynamically through jQuery -->
-							<select name="type-of-form">
+							<select class="form-type-select" name="type-of-form">
 								<option>Schedule</option>
 								<option selected='selected'>Home</option>
 								<option>Information</option>
 								<option>File</option>
 							</select>
 							
+							<div class="dynamic-form">
 							<!-- Must check that all name of the components are distinct! -->
 							<h2> Name of Component </h2>
 							<input type="text" class="form-control" name="tabName" placeholder="Home" />
@@ -110,6 +112,8 @@
 							<input type="text" name="startTime" class="form-control" placeholder="10:00 AM"/>
 							<h4> End Time </h4>
 							<input type="text" name="endTime" class="form-control" placeholder="11:20 AM"/>
+							
+							</div>
 							
 							<hr>
 							<!-- Buttons at the bottom of tab-content -->

@@ -11,7 +11,6 @@ import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
-
 import com.screaminggreen.datastore.Professor;
 
 
@@ -153,5 +152,42 @@ public class CourseTab {
 	  } else
 	    return("CourseTab not found"); 
   }
+	
+	private static Entity getTabOrderEntity(String webId) {
+
+		Query q = new Query("TabOrderJSON");
+		Filter webIdFilter = new FilterPredicate("webId", FilterOperator.EQUAL, webId);
+		
+		//Match on webId and only 1 of them
+		q.setFilter(webIdFilter);
+		List<Entity> list = DatastoreAPI.getDatastoreServiceInstance().prepare(q).asList(FetchOptions.Builder.withLimit(1));
+		
+		if(list.size() == 0){
+			return null;
+		}
+				
+		return list.get(0);
+	}
+
+	public static Entity createOrGetTabOrderEntity(String webId, String tabOrderJSON) {
+				  
+		  //Get the prof entity based on passed id
+		  Entity professor = Professor.getProfessor(webId);
+		  		  
+		  //Attempt to find the tab order JSON
+		  Entity courseTab = getTabOrderEntity(webId);	  
+		  
+		  //If doesn't exist, make new one
+		  if(courseTab == null){
+		    courseTab = new Entity("TabOrderJSON", professor.getKey());
+		    courseTab.setProperty("tabOrder", tabOrderJSON);
+		    courseTab.setProperty("webId", webId);
+			DatastoreAPI.persistEntity(courseTab);
+		  }
+		  
+		  //O/w return one... dam duplications -.- 
+		  return courseTab;
+	}
+
 }
 

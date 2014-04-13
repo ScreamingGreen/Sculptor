@@ -24,7 +24,11 @@ document.ready(function() {
 	
 });
 
-function saveTabs(){
+function loadTabOrder() {
+	
+}
+
+function saveTabOrder() {
 	
 	//Gets the tab name and type of each tab
 	var tabs = document.getElementsByClassName('tab-pane');
@@ -60,10 +64,10 @@ function saveTabs(){
 	    dataType: 'text',
 	    data: JSONString,
 	    success: function(data) {
-
+	    	alert('Success saving tab order!')
 	    },
 	    error: function(data) {
-	        alert('fail');
+	        alert('Error');
 	    }
 	});
 	

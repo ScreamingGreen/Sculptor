@@ -51,7 +51,7 @@
 						<hr>
 					<div> <a href="#" class="glyphicon glyphicon-plus" onClick=addPage()> ADD PAGE </a> </div>
 					<br />
-					<input id="save-tab-button" type="button" class="btn btn-default" onClick=saveTabs() value="Save Tab Order" /> 						
+					<input id="save-tab-button" type="button" class="btn btn-default" onClick=saveTabOrder() value="Save Tab Order" /> 						
 				</div>
 				
 				

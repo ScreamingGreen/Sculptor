@@ -17,6 +17,7 @@ import com.screaminggreen.datastore.*;
 
 @SuppressWarnings("serial")
 public class TabOrderServlet extends HttpServlet {
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
 		
@@ -40,7 +41,7 @@ public class TabOrderServlet extends HttpServlet {
 			    resp.setStatus(500); 
 			    PrintWriter out = resp.getWriter();
 			    out.println("Not logged in");
-			    out.close();			
+			    out.close();
 			}
 			
 			ProfessorBean pBean = sBean.getProfBean();
@@ -48,7 +49,7 @@ public class TabOrderServlet extends HttpServlet {
 			
 			
 			//Directly store the JSONString in the Datastore...
-			CourseTab.createOrGetTabOrderEntity(webId, JSONString);
+			CourseTab.createOrUpdateTabOrderEntity(webId, JSONString);
 			
 	        resp.setStatus(200);	        
 		} catch (JSONException e) {	

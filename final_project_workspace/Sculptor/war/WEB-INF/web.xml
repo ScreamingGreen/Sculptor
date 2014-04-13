@@ -29,6 +29,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>SaveTabOrder</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.TabOrderServlet</servlet-class>
 	</servlet>
+	<servlet>
+	    <servlet-name>LoadTabOrder</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.LoadTabOrderServlet</servlet-class>
+	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>Sculptor</servlet-name>
@@ -53,6 +57,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>SaveTabOrder</servlet-name>
 	    <url-pattern>/savetab</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>LoadTabOrder</servlet-name>
+	    <url-pattern>/loadtaborder</url-pattern>
 	</servlet-mapping>
 	
 	<filter>

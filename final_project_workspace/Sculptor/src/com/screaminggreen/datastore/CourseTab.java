@@ -153,7 +153,7 @@ public class CourseTab {
 	    return("CourseTab not found"); 
   }
 	
-	private static Entity getTabOrderEntity(String webId) {
+	public static Entity getTabOrderEntity(String webId) {
 
 		Query q = new Query("TabOrderJSON");
 		Filter webIdFilter = new FilterPredicate("webId", FilterOperator.EQUAL, webId);
@@ -169,7 +169,7 @@ public class CourseTab {
 		return list.get(0);
 	}
 
-	public static Entity createOrGetTabOrderEntity(String webId, String tabOrderJSON) {
+	public static Entity createOrUpdateTabOrderEntity(String webId, String tabOrderJSON) {
 				  
 		  //Get the prof entity based on passed id
 		  Entity professor = Professor.getProfessor(webId);
@@ -188,6 +188,8 @@ public class CourseTab {
 		  //O/w return one... dam duplications -.- 
 		  return courseTab;
 	}
+	
+	
 
 }
 

@@ -1,8 +1,9 @@
-document.ready(function() {
+$(document).ready(function() {
 	
 	//Load the tab order from datastore, ajax
 	//We should store/load arrays with JSON, would be a good idea
 	/// Ask servlet for order, Servlet returns an array of Tab Names with Type too, load the order in that way 
+	loadTabOrder();
 	
 	//Load the form data for all forms, ajax again	
 	/// Input : Array of Tab Names and Type of Form for each
@@ -26,6 +27,25 @@ document.ready(function() {
 
 function loadTabOrder() {
 	
+	//Get the tabs
+	var tabs = document.getElementsByClassName('tab-pane');
+	
+	//Try to load tabs
+	//Sends ajax request to servlet
+	$.ajax({
+	    type: 'post',
+	    url: '/loadtaborder',
+	    dataType: 'json',
+	    data: '',
+	    success: function(jsonData) {
+	    	// So here, we have the jsonData of tabOrder, we need to get the array and push elements to the tab order
+	    	// Also, we need to make the select menu for each form to the type of the tab...
+	    	
+	    },
+	    error: function(jsonData) {
+	        alert('error');
+	    }
+	});
 }
 
 function saveTabOrder() {

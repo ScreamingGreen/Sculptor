@@ -27,21 +27,36 @@ function addPage(){
 				.addClass('tab-pane')
 				.addClass('newContentPane')
 				.attr('id', x)
+				//Adding forms to new tab panes
 				.append(
-					$('<h3> Title </h3><input type="text" class="form-control" placeholder="Assignments">')
+					$('<form></form>')
+						.append(
+							//Adding select option for form type
+							$('<select name="type-of-form"></select>')
+								.append($('<option>Schedule</option>'))
+								.append($('<option selected="selected">Home</option>'))
+								.append($('<option>Information</option>'))
+								.append($('<option>File</option>'))
+						)
 					)
-				.append(
-					$('<h3> Information </h3><textarea class="form-control" row="3"></textarea><hr>')
-					)
-				.append(
-					$('<input id="submit-button" type="submit" class="btn btn-default" value="Submit"> ')
-					)
-				.append(
-					$('<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> ')
-					)	
-				.append(
-					$('<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> ')
-					)	
+					
+					//Default information in new tabs
+					.append(
+						$('<h3> Title </h3><input type="text" class="form-control" placeholder="Assignments">')
+						)
+					.append(
+						$('<h3> Information </h3><textarea class="form-control" row="3"></textarea><hr>')
+						)
+					.append(
+						$('<input id="submit-button" type="submit" class="btn btn-default" value="Submit"> ')
+						)
+					.append(
+						$('<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> ')
+						)	
+					.append(
+						$('<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> ')
+						)
+				
 		);
 		
 	x++;

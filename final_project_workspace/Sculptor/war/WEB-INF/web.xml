@@ -21,11 +21,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>Logout</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.LogoutServlet</servlet-class>
 	</servlet>
-		<servlet>
-	<servlet-name>Register</servlet-name>
+	<servlet>
+		<servlet-name>Register</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.RegisterServlet</servlet-class>
 	</servlet>
-	
+	<servlet>
+		<servlet-name>SaveTabOrder</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.TabOrderServlet</servlet-class>
+	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>Sculptor</servlet-name>
@@ -46,6 +49,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>Register</servlet-name>
 	    <url-pattern>/register</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>SaveTabOrder</servlet-name>
+	    <url-pattern>/savetab</url-pattern>
 	</servlet-mapping>
 	
 	<filter>

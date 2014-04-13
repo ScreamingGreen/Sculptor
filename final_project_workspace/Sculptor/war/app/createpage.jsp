@@ -51,7 +51,7 @@
 						<hr>
 					<div> <a href="#" class="glyphicon glyphicon-plus" onClick=addPage()> ADD PAGE </a> </div>
 					<br />
-					<input id="save-tab-button" type="button" class="btn btn-default" value="Save Tab Order" /> 						
+					<input id="save-tab-button" type="button" class="btn btn-default" onClick=saveTabs() value="Save Tab Order" /> 						
 				</div>
 				
 				
@@ -122,6 +122,12 @@
 						<!-- Content for Syllabus tab to add here -->
 						<div class="tab-pane" id="Syllabus">
 							<form>
+								<select name="type-of-form">
+									<option>Schedule</option>
+									<option selected='selected'>Home</option>
+									<option>Information</option>
+									<option>File</option>
+								</select>
 								<hr>
 								<!-- Buttons at the bottom of tab-content -->
 								<input id="save-button" type="submit" class="btn btn-default" value="Save Changes"> 
@@ -133,6 +139,12 @@
 						<!-- Content for Schedule tab to add here -->
 						<div class="tab-pane" id="Schedule">
 							<form>
+								<select name="type-of-form">
+									<option>Schedule</option>
+									<option selected='selected'>Home</option>
+									<option>Information</option>
+									<option>File</option>
+								</select>
 								<hr>
 								<!-- Buttons at the bottom of tab-content -->
 								<input id="save-button" type="submit" class="btn btn-default" value="Save Changes"> 

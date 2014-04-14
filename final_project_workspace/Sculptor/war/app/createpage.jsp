@@ -27,9 +27,11 @@
 		<!-- Navigation bar with Sculptor brand, search bar, login, create page -->
 		<nav id="nav-bar" class="navbar-inverse navbar-static-top" role="navigation">
 			<div class="container">
+
 				<div class="navbar-header" id="nav-bar-header">
 					<a class="navbar-brand" href="/index.html">Sculptor</a>
 				</div>
+
 					<ul class="nav navbar-nav navbar-right">
 						<li><a>Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
 						<li><a href="/logout">Logout</a></li>
@@ -45,9 +47,9 @@
 				<div class="col-lg-3 modify-navigation">
 					<h4>Modify Navigation</h4>	
 						<ul class="nav nav-pills nav-stacked" id="tab-bar">
-						  <li class="active"><a href="#Home" data-toggle="tab">Home</a></li>
-						  <li><a href="#Syllabus" data-toggle="tab">Syllabus</a></li>
-						  <li><a href="#Schedule" data-toggle="tab">Schedule</a></li>
+						  <li class="active"><a data-toggle="tab" id="Home">Home</a></li>
+						  <li><a data-toggle="tab" id="Syllabus">Syllabus</a></li>
+						  <li><a data-toggle="tab" id="Schedule">Schedule</a></li>
 						</ul>						
 						<hr>
 					<div> <a href="#" class="glyphicon glyphicon-plus" onClick=addPage()> ADD PAGE </a> </div>
@@ -58,7 +60,7 @@
 				<!-- Content of tabs on right side -->
 				<div class="row col-sm-9">
 					<div class="tab-content">
-						
+					
 						<!-- Basic content for home page -->
 						<div class="tab-pane active" id="Home">
 							<!-- Every div has a form -->							
@@ -146,6 +148,8 @@
 								<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> 
 							</form>
 						</div>
+
+
 					</div>			
 					<hr>					
 				</div>

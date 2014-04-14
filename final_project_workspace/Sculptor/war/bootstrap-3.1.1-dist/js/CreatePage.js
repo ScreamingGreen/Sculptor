@@ -1,5 +1,25 @@
+
+
+
 $(document).ready(function() {
-	
+
+
+	// We need to catch what happens when a user presses
+	// a navigation tab
+	$('a[data-toggle="tab"]').click(function() {
+
+		// Get the name of the navigation tab we are trying to access
+		var nameOfPressedTab = this.id;
+		//alert(nameOfPressedTab);
+
+		// Clean the current HTML form so we can place a new one
+		$('div[class="tab-content"]').html("");
+
+		// We need to now set a new form 
+		loadForm(nameOfPressedTab);
+	});
+
+/*
 	//Load the tab order from datastore, ajax
 	//We should store/load arrays with JSON, would be a good idea
 	/// Ask servlet for order, Servlet returns an array of Tab Names with Type too, load the order in that way 
@@ -23,18 +43,29 @@ $(document).ready(function() {
 		
 		//Fill in with datastore information
 		populateForm(this.value);
-	});
-	
+	});*/
 });
 
-//Find the form element that holds the form and clear it
-function cleanForm() {}
 
-//Fill in the form element with corresponding .html
-function loadForm(typeOfForm) {}
+// Do an AJAX call to get a form (Ex. HomeForm.html)
+function loadForm(typeOfForm) {
 
-//Fill in the current form with datastore data
-function populateForm(typeOfForm) {}
+	var formPath = "forms/"+typeOfForm+"Form.html";
+
+	$.get(formPath, function(formHTML) {
+
+		// Set the form we got
+		$('div[class="tab-content"]').html(formHTML);
+
+		// Now populate the form
+	});
+}
+
+function populateForm(typeOfForm) {
+
+}
+
+
 
 function loadTabOrder() {
 	

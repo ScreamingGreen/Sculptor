@@ -68,7 +68,7 @@ public class Professor {
    * @return list of items
    */
   
-  public static List<Entity> getItems(String name) {
+  public static List<Entity> getCourseTabs(String name) {
 	  	Query query = new Query();
 	  	Key parentKey = KeyFactory.createKey("Professor", name);
 	  	Filter filter = new FilterPredicate(Entity.KEY_RESERVED_PROPERTY, FilterOperator.GREATER_THAN, parentKey);
@@ -90,8 +90,8 @@ public class Professor {
   {
 	  Key key = KeyFactory.createKey("Professor",ProfessorKey);	   
 	  
-	  List<Entity> items = getItems(ProfessorKey);	  
-	  if (!items.isEmpty()){
+	  List<Entity> courseTabs = getCourseTabs(ProfessorKey);	  
+	  if (!courseTabs.isEmpty()){
 	      return "Cannot delete, as there are items associated with this Professor.";	      
 	    }	    
 	  DatastoreAPI.deleteEntity(key);

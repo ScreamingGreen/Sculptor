@@ -44,7 +44,7 @@ public class CourseTab {
 	  System.out.println(entityName);
 	  
 	  //Attempt to find the course tab
-	  Entity courseTab = getCourseTab(Type, webId, entityName);	  
+	  Entity courseTab = getCourseTab(webId, Type);	  
 	  
 	  //If doesn't exist, make new one
 	  if(courseTab == null){
@@ -88,18 +88,15 @@ public class CourseTab {
  * @param entityName 
    * @return
    */
-  public static Entity getCourseTab(String tabName, String webId, String entityName) {
-	  Filter tabNameFilter = new FilterPredicate("tabName", FilterOperator.EQUAL, tabName);
+  public static Entity getCourseTab(String webId, String type) {
 	  Filter webIdFilter = new FilterPredicate("webId", FilterOperator.EQUAL, webId);
-	  Filter andFilter = CompositeFilterOperator.and(tabNameFilter, webIdFilter);
 	  
-	  Query q = new Query(entityName);
-	  q.setFilter(andFilter);
+	  Query q = new Query("CourseTab." + type);
+	  q.setFilter(webIdFilter);
 	  
 	  List<Entity> entities = DatastoreAPI.getDatastoreServiceInstance().prepare(q).asList(FetchOptions.Builder.withLimit(1));
-
-	  //Get the first element.. if there is one
 	  
+	  //Get the first element.. if there is one	  
 	  if(entities.size() == 0) {
 		  return null;
 	  }

@@ -54,8 +54,7 @@
 					<br />
 					<input id="save-tab-button" type="button" class="btn btn-default" onClick=saveTabOrder() value="Save Tab Order" /> 						
 				</div>
-				
-				
+								
 				<!-- Content of tabs on right side -->
 				<div class="row col-sm-9">
 					<div class="tab-content">
@@ -63,20 +62,11 @@
 						<!-- Basic content for home page -->
 						<div class="tab-pane active" id="Home">
 							<!-- Every div has a form -->							
-							<form action="/saveform" method="POST">
-							Type of Form: 
-							<!-- If this changes.. the form will change dynamically through jQuery -->
-							<select class="form-type-select" name="type-of-form">
-								<option>Schedule</option>
-								<option selected='selected'>Home</option>
-								<option>Information</option>
-								<option>File</option>
-							</select>
+							<form action="/saveform" method="POST">	
 							
 							<div class="dynamic-form">
 							<!-- Must check that all name of the components are distinct! -->
-							<h2> Name of Component </h2>
-							<input type="text" class="form-control" name="tabName" placeholder="Home" />
+							<h2>Home</h2>
 							<hr>
 							<h4> Course Code </h4>
 							<input type="text" class="form-control" name="courseCode" placeholder="CSE 308"/>

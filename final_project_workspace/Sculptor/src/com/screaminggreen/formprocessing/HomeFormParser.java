@@ -14,7 +14,6 @@ public class HomeFormParser implements FormParser{
 	@Override
 	public void parse(HttpServletRequest req) {
 		
-		String tabName = req.getParameter("tabName");
 		String courseCode = req.getParameter("courseCode");
 		String courseName = req.getParameter("courseName");
 		String teacherName = req.getParameter("teacherName");
@@ -46,11 +45,10 @@ public class HomeFormParser implements FormParser{
 		//Update this data in Datastore...
 		
 		//Get or make new entity
-		Entity tabEntity = CourseTab.createOrGetCourseTab(webId, tabName, "Home");
+		Entity tabEntity = CourseTab.createOrGetCourseTab(webId, "Home");
 		
 		tabEntity.setProperty("type", "Home");
 		
-		tabEntity.setProperty("tabName", tabName);
 		tabEntity.setProperty("courseCode", courseCode);
 		tabEntity.setProperty("courseName", courseName);
 		tabEntity.setProperty("teacherName", teacherName);

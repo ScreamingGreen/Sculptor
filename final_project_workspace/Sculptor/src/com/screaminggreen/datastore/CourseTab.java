@@ -34,7 +34,7 @@ public class CourseTab {
    *          : Content of the CourseTab
    * @return
    */
-  public static Entity createOrGetCourseTab(String webId, String CourseTabName, String Type) {
+  public static Entity createOrGetCourseTab(String webId, String Type) {
 
 	  String entityName = "CourseTab." + Type;
 	  
@@ -44,14 +44,13 @@ public class CourseTab {
 	  System.out.println(entityName);
 	  
 	  //Attempt to find the course tab
-	  Entity courseTab = getCourseTab(CourseTabName, webId, entityName);	  
+	  Entity courseTab = getCourseTab(Type, webId, entityName);	  
 	  
 	  //If doesn't exist, make new one
 	  if(courseTab == null){
 	    courseTab = new Entity(entityName, professor.getKey());
-	    courseTab.setProperty("tabName", CourseTabName);
 	    courseTab.setProperty("webId", webId);
-	    courseTab.setProperty("webIdAttached", CourseTabName+professor.getKey());
+	    courseTab.setProperty("webIdAttached", Type+professor.getKey());
 		DatastoreAPI.persistEntity(courseTab);
 	  }	  
 	  //O/w return one... dam duplications -.- 

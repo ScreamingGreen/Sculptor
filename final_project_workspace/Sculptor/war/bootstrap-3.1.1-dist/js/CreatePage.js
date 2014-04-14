@@ -5,27 +5,36 @@ $(document).ready(function() {
 	/// Ask servlet for order, Servlet returns an array of Tab Names with Type too, load the order in that way 
 	loadTabOrder();
 	
-	//Load the forms themselves for each tab	
+	//Load the home form
+	loadForm("Home");
 	
-	//Load the form data for all forms, ajax again	
-	/// Input : Array of Tab Names and Type of Form for each
-	///     ie: [ ("HomePage", "Home") , ("Hw3", File) ]
-	/// Return : A JSON array of all the form data in the DB
-	///     ie: [ (tabName : 123, teacherName : McKenna , ....) , (tabName : Hw#3) ]
+	//Populate the home form
+	populateForm("Home");
 		
-	//Need jQuery for on switch of tabs, where it warns user that they will lose changes,
-	//then reload that form with data in datastore... with ajax :(
-	
-	//When form changes, dynamically reload the form appropriately
-	$('.form-type-select').change(function() {
-		//Now we take the selected value and load corresponding page		
-		var htmlLocation = "forms/" + this.value + ".html";
+	//Whenever a tab is clicked, we know we have to load the form and populate
+	$(".coursetab").click(function(){
+		alert(this.value);
 		
-		//Take the form and reload with proper HTML
-		$(this).siblings(".dynamic-form").load(htmlLocation);
+		//Remove the current form
+		cleanForm();
+		
+		//Load the form of current value
+		loadForm(this.value);
+		
+		//Fill in with datastore information
+		populateForm(this.value);
 	});
+	
 });
 
+//Find the form element that holds the form and clear it
+function cleanForm() {}
+
+//Fill in the form element with corresponding .html
+function loadForm(typeOfForm) {}
+
+//Fill in the current form with datastore data
+function populateForm(typeOfForm) {}
 
 function loadTabOrder() {
 	

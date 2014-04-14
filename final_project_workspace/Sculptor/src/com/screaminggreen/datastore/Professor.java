@@ -68,9 +68,9 @@ public class Professor {
    * @return list of items
    */
   
-  public static List<Entity> getCourseTabs(String name) {
+  public static List<Entity> getCourseTabs(String webId) {
 	  	Query query = new Query();
-	  	Key parentKey = KeyFactory.createKey("Professor", name);
+	  	Key parentKey = KeyFactory.createKey("Professor", webId);
 	  	Filter filter = new FilterPredicate(Entity.KEY_RESERVED_PROPERTY, FilterOperator.GREATER_THAN, parentKey);
 	  	
 	  	query.setAncestor(parentKey);	  	

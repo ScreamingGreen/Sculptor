@@ -68,6 +68,14 @@ function removePage(){
 	$(".active.newContentPane").remove();
 }
 
+/* Scrolls to appropriate div on page */
+function scrollTo(nameofDiv){
+	console.log(nameofDiv);
+	$('html, body').animate({
+        scrollTop: $('#'+nameofDiv).offset().top
+    }, 1000);
+}
+
 /* Dynamic editing of tab names
 function tabClicked() {
 	$(".newTab").click(function(event) {

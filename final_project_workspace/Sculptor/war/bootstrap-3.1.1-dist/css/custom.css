@@ -16,6 +16,48 @@ width: 100px;
 width: 450px;
 }
 
+/* Student page: makes sidebar fixed position from top */
+.sidebar{
+position:fixed;
+top: 30%;
+}
+
+/* Student page: Sets right content div size */
+.rightside{
+height: 1000px;
+color: #FFF;
+}
+
+/* Student page: css for home div */
+.studentHome{
+text-align:center;
+padding-top:300px;
+}
+
+/* Student page: css for syllabus div */
+.studentSyllabus{
+padding: 50px;
+}
+
+/* Student page: css for sidebar buttons */
+.scrollSelector{
+height: 100px;
+width: 100px;
+text-align:center;
+background-color:#F7F7F7;
+color: #535353;
+font-weight: bold;
+}
+
+.scrollText{
+padding-top:30px;
+}
+
+/* Student page: sets background color*/
+#studentheader {
+	background-color: #535353;
+}
+
 /* Navigation bar stuff*/
 #nav-bar {
 	background-color: #1C1C1C;

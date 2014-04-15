@@ -74,7 +74,6 @@
 							<input type="text" class="form-control" name="courseCode" placeholder="CSE 308"/>
 							<h4> Course Title </h4>
 							<input type="text" class="form-control" name="courseTitle" placeholder="Software Engineering"/>
-							<h4> Teacher Name </h4>
 							<input type="text" class="form-control" name="teacherName" placeholder="Richard Mckenna"/>
 							<h4> Days of the Week </h4>
 								<div class="btn-group" data-toggle="buttons">

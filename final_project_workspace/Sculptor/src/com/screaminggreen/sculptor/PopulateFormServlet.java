@@ -43,11 +43,12 @@ public class PopulateFormServlet extends HttpServlet {
         List<Entity> entities = new ArrayList<Entity>();
         entities.add(e);
         
-        String json = DatastoreAPI.writeJSON(entities);
+        String json = DatastoreAPI.writeJSON(entities);        
         
-        out.print(json);
         resp.setStatus(200);
-        return;
+        out.println(json);               
+        out.close();
+        
 	}
 	
 }

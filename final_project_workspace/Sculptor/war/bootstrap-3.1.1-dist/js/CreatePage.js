@@ -19,7 +19,7 @@ $(document).ready(function() {
 		loadForm(nameOfPressedTab);
 		
 		//Populate form
-		populateForm(nameOfPressedTab);
+		//populateForm(nameOfPressedTab);
 	});
 
 /*
@@ -66,13 +66,11 @@ function loadForm(typeOfForm) {
 
 function populateHomeForm(jsonData) {
 
-	alert("success populateHomeForm");
-
 	// Course title
-	$('input[name="courseTitle"]').html(jsonData);	
+	$('input[name="courseTitle"]').val(jsonData);
 }
 
-function populateForm(typeOfForm, jsonData) {
+function populateForm2(typeOfForm, jsonData) {
 
 	if (typeOfForm == "Home") {
 		populateHomeForm(jsonData);
@@ -84,11 +82,11 @@ function populateForm(typeOfForm) {
 	$.ajax({
 	    type: 'post',
 	    url: '/populateform',
-	    dataType: 'json',
+	    dataType: 'text',
 	    data: typeOfForm,
 	    success: function(jsonData) {
-	    	
-	    	populateForm(typeOfForm,jsonData);
+	    	//alert("success");
+	    	populateForm2(typeOfForm,jsonData);
 	    },
 	    error: function(jsonData) {
 	        alert('Error on populating form: ' + typeOfForm);

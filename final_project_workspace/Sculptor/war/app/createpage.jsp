@@ -67,19 +67,23 @@
 					</ul>
 					<!-- Add Button -->
 					<ul class="nav nav-pills nav-stacked">
-						<li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					  		<span class="glyphicon glyphicon-plus"></span> 
 					  		&nbsp;
 					  		Add Page</a>
+
+					  		<!-- Navigation for Add Button -->
 					  		<ul id="page-dropdown-menu" class="dropdown-menu">
- 							  	<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onClick=addPage()>
- 							  		<!--<span class="glyphicon glyphicon-home"></span> 
-						  			&nbsp;-->
- 							  		Home
- 							  		</a>
+ 							  	<li role="presentation">
+ 							  		<a id="Home" class="addpage-option" role="menuitem" tabindex="-1" href="#">Home</a>
  							  	</li>
- 							  	<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onClick=addPage()>Schedule</a></li>
- 							  	<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onClick=addPage()>Files</a></li>
+ 							  	<li role="presentation">
+ 							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">Schedule</a>
+ 							  	</li>
+ 							  	<li role="presentation">
+ 							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">Syllabus</a>
+ 							  	</li>
 							</ul>
 					  	</li>
 					</ul>
@@ -106,50 +110,6 @@
 			<div class="row col-sm-6">
 				<div id="teacher-content" class="tab-content">
 					<!-- Here we will plug in with Ajax different forms -->
-					<!-- Basic content for home page -->
-						<div class="tab-pane active" id="Home">
-							<!-- Every div has a form -->
-							<form id="pageForm" action="/saveform" method="POST">
-							
-								<!-- Must check that all name of the components are distinct! -->
-								<input name="type-of-form" type="hidden" value="Home" />
-
-								<h5> Course Code </h5>
-								<input type="text" class="form-control" placeholder="CSE 308">
-								<h5> Course Title </h5>
-								<input type="text" class="form-control" placeholder="Software Engineering">
-								<h5> Teacher Name </h5>
-								<input type="text" class="form-control" placeholder="Richard Mckenna">
-								<h5> Days of the Week </h5>
-									<div class="btn-group margin-bottom-14px" data-toggle="buttons">
-									  <label class="btn btn-primary">
-										<input type="checkbox"> Mon
-									  </label>	
-									  <label class="btn btn-primary">
-										<input type="checkbox"> Tue
-									  </label>
-									  <label class="btn btn-primary">
-										<input type="checkbox"> Wed
-									  </label>
-									  <label class="btn btn-primary">
-										<input type="checkbox"> Thu
-									  </label>
-									  <label class="btn btn-primary">
-										<input type="checkbox"> Fri
-									  </label>
-									  <label class="btn btn-primary">
-										<input type="checkbox"> Sat
-									  </label>
-									  <label class="btn btn-primary">
-										<input type="checkbox"> Sun
-									  </label>
-									</div>
-								<h5> Start Time </h5>
-								<input type="text" name="webId" class="form-control" placeholder="10:00 AM">
-								<h5> End Time </h5>
-								<input type="text" name="webId" class="form-control" placeholder="11:20 AM">
-							</form>	
-						</div>
 				</div>			
 			</div>
 	    </div>

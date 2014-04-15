@@ -6,6 +6,16 @@ $(document).ready(function() {
 
 	// We need to catch what happens when a user presses
 	// a navigation tab
+	bindClickToTeacherNavigation();
+
+	// Catch what happens when a menu item from the "+ Add Page"
+	// button gets pressed
+	bindClickToAddPageNavigation();
+});
+
+
+function bindClickToTeacherNavigation() {
+
 	$('a[data-toggle="tab"]').click(function() {
 
 		// Get the name of the navigation tab we are trying to access
@@ -20,8 +30,50 @@ $(document).ready(function() {
 		// We need to now load a new form in place of the old one
 		loadForm(nameOfPressedTab);
 	});
+}
 
-});
+function bindClickToAddPageNavigation() {
+
+	$('a[class="addpage-option"]').click(function() {
+	
+		var nameOfPressedOption = $(this).html().trim();
+
+		/*
+		$("#tab-bar")
+			.append(
+				"<li><a id=\""+nameOfPressedOption+"\" data-toggle="tab">
+						  		<span class=\"glyphicon glyphicon-list-alt\"></span> 
+						  		&nbsp;
+						  		"+nameOfPressedOption+"</a>
+						  </li>"
+			);
+		*/
+
+		// Adds new tab for left side tab-bar 
+		$("#tab-bar")
+			.append(
+				$('<li></li>')
+				.append(
+					$('<a></a>')
+					.attr('data-toggle', 'tab')
+					.attr('id', nameOfPressedOption)
+					.addClass('newTab')
+					.append(
+						'<span class="glyphicon glyphicon-list-alt"></span>'
+					)
+					.append("&nbsp;&nbsp;&nbsp;")
+					.append(nameOfPressedOption)
+					.append(
+						'<span class="glyphicon glyphicon-remove pull-right" onClick="removePage()"></span>'
+					)
+				)
+			);
+
+		// Make sure that the new navigation button that we 
+		// added fires off an event
+		bindClickToTeacherNavigation();
+	});
+}
 
 // We need to get a new form (Ex. HomeForm.html)
 function loadForm(typeOfForm) {

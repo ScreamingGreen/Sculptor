@@ -11,6 +11,9 @@ $(document).ready(function() {
 		// Get the name of the navigation tab we are trying to access
 		var nameOfPressedTab = this.id;
 
+		// Change the header title
+		$('#page-title').html(nameOfPressedTab);
+
 		// Clean the current HTML form so we can place a new one
 		$('div[class="tab-content"]').html("");
 
@@ -20,7 +23,7 @@ $(document).ready(function() {
 
 });
 
-// Do an AJAX call to get a form (Ex. HomeForm.html)
+// We need to get a new form (Ex. HomeForm.html)
 function loadForm(typeOfForm) {
 
 	var formPath = "forms/"+typeOfForm+"Form.html";
@@ -35,19 +38,7 @@ function loadForm(typeOfForm) {
 	});
 }
 
-function populateHomeForm(jsonData) {
-
-	// Course title
-	$('input[name="courseTitle"]').val(jsonData);
-}
-
-function populateForm2(typeOfForm, jsonData) {
-
-	if (typeOfForm == "Home") {
-		populateHomeForm(jsonData);
-	}
-}
-
+// We need to populate the form we got with information
 function populateForm(typeOfForm) {
 	
 	$.ajax({
@@ -56,14 +47,33 @@ function populateForm(typeOfForm) {
 	    dataType: 'text',
 	    data: typeOfForm,
 	    success: function(jsonData) {
-	    	//alert("success");
-	    	populateForm2(typeOfForm,jsonData);
+	    	populateSpecificForm(typeOfForm,jsonData);
 	    },
 	    error: function(jsonData) {
 	        alert('Error on populating form: ' + typeOfForm);
 	    }
 	});
 }
+
+function populateSpecificForm(typeOfForm, jsonData) {
+
+	if (typeOfForm == "Home") {
+		populateHomeForm(jsonData);
+	}
+}
+
+function populateHomeForm(jsonData) {
+	
+	//console.log(jsonData);
+	//var parsedJSON = jQuery.parseJSON(jsonData);
+	//https://api.jquery.com/jQuery.parseJSON/
+
+	// Course title
+	$('input[name="courseTitle"]').val("Java script is working : " + jsonData);
+}
+
+
+
 
 
 

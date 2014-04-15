@@ -93,12 +93,12 @@
 			<div id="teacher-content-header" class="col-sm-10"> 
 				<div class="col-sm-9">
 					<h3> 
-						Home
+						<span id="page-title"> Home </span>
 						<input id="preview-button" type="submit" class="btn btn-default" value="Cancel"> 
 						<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> 
 						<input id="save-button" type="submit" class="btn btn-success" value="Save Changes" form="pageForm"> 
 					</h3>
-					<p> Edit basic information in here. </p>
+					<p> Edit information in below. </p>
 				</div>
 			</div>
 

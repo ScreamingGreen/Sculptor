@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function() {
 
 
@@ -13,9 +10,7 @@ $(document).ready(function() {
 	bindClickToAddPageNavigation();
 });
 
-
 function bindClickToTeacherNavigation() {
-
 	$('a[data-toggle="tab"]').click(function() {
 
 		// Get the name of the navigation tab we are trying to access
@@ -33,30 +28,12 @@ function bindClickToTeacherNavigation() {
 }
 
 function bindClickToAddPageNavigation() {
-
 	$('a[class="addpage-option"]').click(function() {
 	
 		var nameOfPressedOption = $(this).html().trim();
 
 		// Adds new tab for left side tab-bar 
-		$("#tab-bar")
-			.append(
-				$('<li></li>')
-				.append(
-					$('<a></a>')
-					.attr('data-toggle', 'tab')
-					.attr('id', nameOfPressedOption)
-					.addClass('newTab')
-					.append(
-						'<span class="glyphicon glyphicon-list-alt"></span>'
-					)
-					.append("&nbsp;&nbsp;&nbsp;")
-					.append(nameOfPressedOption)
-					.append(
-						'<span class="glyphicon glyphicon-remove pull-right" onClick="removePage()"></span>'
-					)
-				)
-			);
+		addPage(nameOfPressedOption);
 
 		// Make sure that the new navigation button that we 
 		// added can fire off an event
@@ -64,10 +41,45 @@ function bindClickToAddPageNavigation() {
 	});
 }
 
+function addPage(nameOfPage) {
+
+	// Add the item to the teacher navigation
+	$("#tab-bar")
+			.append(
+				$('<li></li>')
+				.append(
+					$('<a></a>')
+					.attr('data-toggle', 'tab')
+					.attr('id', nameOfPage)
+					.addClass('newTab')
+					.append(
+						// Need to modify this dynamically
+						'<span class="glyphicon glyphicon-list-alt"></span>'
+					)
+					.append("&nbsp;&nbsp;&nbsp;")
+					.append(nameOfPage)
+					.append(
+						'<button class="remove-button" type="button" onClick="removePage(this)"><span class="glyphicon glyphicon-remove pull-right"></span></button>'
+					)
+				)
+			);
+}
+
+// Called when remove checkmark is pressed in teacher navigation
+function removePage(removeButton) {
+
+	// Remove the item from the teacher navigation
+	var aElement = $(removeButton).parent();
+	var liElement = aElement.parent();
+	$(liElement).addClass("remove-the-element");
+	$(".remove-the-element").remove();
+
+	// Now remove the item from the datastore 
+	var nameOfRemovedOption = $(aElement).attr('id');
+}
 
 // We need to get a new form (Ex. HomeForm.html)
 function loadForm(typeOfForm) {
-
 	var formPath = "forms/"+typeOfForm+"Form.html";
 
 	$.get(formPath, function(formHTML) {

@@ -75,6 +75,12 @@ padding-top:30px;
 	font-size: 24px;
 }
 
+.remove-button {
+	float:right;
+	border:0px;
+	padding-top: 2px;
+}
+
 /* ====== Landing page header 'Create course webpages.' ====== */
 #header {
 	background-color: #F0F0F0;

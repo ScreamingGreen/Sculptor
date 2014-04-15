@@ -62,11 +62,12 @@ function addPage(){
 	x++;
 }
 
-/* Removes current active tab */
+/* Removes current active tab 
 function removePage(){
 	$(".active.newTab").remove();
 	$(".active.newContentPane").remove();
 }
+*/
 
 /* Scrolls to appropriate div on page */
 function scrollTo(nameofDiv){

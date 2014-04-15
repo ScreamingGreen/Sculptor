@@ -39,7 +39,8 @@ public class PopulateFormServlet extends HttpServlet {
 		ProfessorBean pBean = sBean.getProfBean();
 		String webId = pBean.getWebId();
 		        
-        Entity e = CourseTab.getCourseTab(webId, typeOfForm);
+        Entity e = CourseTab.createOrGetCourseTab(webId, typeOfForm);
+        
         List<Entity> entities = new ArrayList<Entity>();
         entities.add(e);
         

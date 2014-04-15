@@ -1,6 +1,8 @@
 $(document).ready(function() {
-
-
+	
+	//Bind buttons accordingly
+	bindButtons();
+	
 	// We need to catch what happens when a user presses
 	// a navigation tab
 	bindClickToTeacherNavigation();
@@ -9,6 +11,29 @@ $(document).ready(function() {
 	// button gets pressed
 	bindClickToAddPageNavigation();
 });
+
+function bindButtons() {
+	
+	//Make save button do ajax to save form
+	$('#save-button').click(function (){
+		saveForm();
+	});
+}
+
+function saveForm(){	
+	   var frm = $('#pageForm');
+	    frm.submit(function (ev) {
+	        $.ajax({
+	            type: frm.attr('method'),
+	            url: frm.attr('action'),
+	            data: frm.serialize(),
+	            success: function (data) {},
+	        	error: function (data) {alert ("Try again please."); }
+	        });
+
+	        ev.preventDefault();
+	    });
+}
 
 function bindClickToTeacherNavigation() {
 	$('a[data-toggle="tab"]').click(function() {
@@ -24,6 +49,7 @@ function bindClickToTeacherNavigation() {
 
 		// We need to now load a new form in place of the old one
 		loadForm(nameOfPressedTab);
+		
 	});
 }
 

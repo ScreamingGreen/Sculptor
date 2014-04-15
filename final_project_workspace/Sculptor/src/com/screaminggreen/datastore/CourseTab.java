@@ -50,7 +50,7 @@ public class CourseTab {
 	  if(courseTab == null){
 	    courseTab = new Entity(entityName, professor.getKey());
 	    courseTab.setProperty("webId", webId);
-	    courseTab.setProperty("webIdAttached", Type+professor.getKey());
+	    courseTab.setProperty("webIdAttached", Type+"."+webId);
 		DatastoreAPI.persistEntity(courseTab);
 	  }	  
 	  //O/w return one... dam duplications -.- 

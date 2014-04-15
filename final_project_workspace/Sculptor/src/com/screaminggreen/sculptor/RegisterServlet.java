@@ -34,7 +34,9 @@ public class RegisterServlet extends HttpServlet {
 		else if(Professor.getProfessor(webId) == null){			
 			
 			Professor.createOrUpdateProfessor(webId, email, password);
-			 
+			
+			CourseTab.createOrGetCourseTab(webId, "Home");
+			 			
 			resp.sendRedirect("/loginpage.jsp?success=true");
 			return;
 		}

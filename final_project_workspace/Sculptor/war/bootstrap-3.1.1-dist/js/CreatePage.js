@@ -17,6 +17,9 @@ $(document).ready(function() {
 
 		// We need to now set a new form 
 		loadForm(nameOfPressedTab);
+		
+		//Populate form
+		populateForm(nameOfPressedTab);
 	});
 
 /*
@@ -62,7 +65,20 @@ function loadForm(typeOfForm) {
 }
 
 function populateForm(typeOfForm) {
-
+	
+	$.ajax({
+	    type: 'post',
+	    url: '/populateform',
+	    dataType: 'json',
+	    data: typeOfForm,
+	    success: function(jsonData) {
+	    	// We populate the form
+	    		    	
+	    },
+	    error: function(jsonData) {
+	        alert('error');
+	    }
+	});
 }
 
 

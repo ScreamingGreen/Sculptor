@@ -33,6 +33,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>LoadTabOrder</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.LoadTabOrderServlet</servlet-class>
 	</servlet>
+	<servlet>
+	    <servlet-name>PopulateForm</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.PopulateFormServlet</servlet-class>
+	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>Sculptor</servlet-name>
@@ -61,6 +65,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>LoadTabOrder</servlet-name>
 	    <url-pattern>/loadtaborder</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>PopulateForm</servlet-name>
+	    <url-pattern>/populateform</url-pattern>
 	</servlet-mapping>
 	
 	<filter>

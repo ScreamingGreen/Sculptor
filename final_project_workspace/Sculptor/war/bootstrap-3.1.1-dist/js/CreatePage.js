@@ -38,17 +38,6 @@ function bindClickToAddPageNavigation() {
 	
 		var nameOfPressedOption = $(this).html().trim();
 
-		/*
-		$("#tab-bar")
-			.append(
-				"<li><a id=\""+nameOfPressedOption+"\" data-toggle="tab">
-						  		<span class=\"glyphicon glyphicon-list-alt\"></span> 
-						  		&nbsp;
-						  		"+nameOfPressedOption+"</a>
-						  </li>"
-			);
-		*/
-
 		// Adds new tab for left side tab-bar 
 		$("#tab-bar")
 			.append(
@@ -70,10 +59,11 @@ function bindClickToAddPageNavigation() {
 			);
 
 		// Make sure that the new navigation button that we 
-		// added fires off an event
+		// added can fire off an event
 		bindClickToTeacherNavigation();
 	});
 }
+
 
 // We need to get a new form (Ex. HomeForm.html)
 function loadForm(typeOfForm) {
@@ -116,21 +106,35 @@ function populateSpecificForm(typeOfForm, jsonData) {
 
 function populateHomeForm(jsonData) {
 	
-	//console.log(jsonData);
-	//var parsedJSON = jQuery.parseJSON(jsonData);
-	//https://api.jquery.com/jQuery.parseJSON/
+	var parsedJSON = jQuery.parseJSON(jsonData);
+	var data = parsedJSON.data[0];
+
+	// Course code
+	$('input[name="courseCode"]').val(data.courseCode);
 
 	// Course title
-	$('input[name="courseTitle"]').val("Java script is working : " + jsonData);
+	$('input[name="courseName"]').val(data.courseName);
+
+	// Teacher name
+	$('input[name="teacherName"]').val(data.teacherName);
+
+	// Days of the week
+	var days = ["mon","tue","wed","thu","fri","sat","sun"];
+	$(days).each(function(){
+		if (data[this] == "true") {
+			$('input[name="'+this+'"]').parent().addClass("active");
+		}
+		else {
+			$('input[name="'+this+'"]').parent().removeClass("active");
+		}
+	});
+
+	// Start time
+	$('input[name="startTime"]').val(data.startTime);
+
+	// End time
+	$('input[name="endTime"]').val(data.endTime);
 }
-
-
-
-
-
-
-
-
 
 function loadTabOrder() {
 	

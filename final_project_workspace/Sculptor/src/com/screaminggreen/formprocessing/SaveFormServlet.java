@@ -29,8 +29,6 @@ public class SaveFormServlet extends HttpServlet{
 			default :
 		}
 		
-//	  	resp.sendRedirect("/app/createpage.jsp");
-
 		return;
 	}
 }

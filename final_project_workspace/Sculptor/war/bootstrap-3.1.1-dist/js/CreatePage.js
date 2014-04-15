@@ -49,7 +49,6 @@ $(document).ready(function() {
 	});*/
 });
 
-
 // Do an AJAX call to get a form (Ex. HomeForm.html)
 function loadForm(typeOfForm) {
 
@@ -60,8 +59,24 @@ function loadForm(typeOfForm) {
 		// Set the form we got
 		$('div[class="tab-content"]').html(formHTML);
 
-		// Now populate the form
+		// Now fill the form with data
+		populateForm(typeOfForm);
 	});
+}
+
+function populateHomeForm(jsonData) {
+
+	alert("success populateHomeForm");
+
+	// Course title
+	$('input[name="courseTitle"]').html(jsonData);	
+}
+
+function populateForm(typeOfForm, jsonData) {
+
+	if (typeOfForm == "Home") {
+		populateHomeForm(jsonData);
+	}
 }
 
 function populateForm(typeOfForm) {
@@ -72,14 +87,17 @@ function populateForm(typeOfForm) {
 	    dataType: 'json',
 	    data: typeOfForm,
 	    success: function(jsonData) {
-	    	// We populate the form
-	    		    	
+	    	
+	    	populateForm(typeOfForm,jsonData);
 	    },
 	    error: function(jsonData) {
-	        alert('error');
+	        alert('Error on populating form: ' + typeOfForm);
 	    }
 	});
 }
+
+
+
 
 
 

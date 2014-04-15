@@ -58,7 +58,7 @@ padding-top:30px;
 	background-color: #535353;
 }
 
-/* Navigation bar stuff*/
+/* ====== Navigation bar stuff ====== */
 #nav-bar {
 	background-color: #1C1C1C;
 }
@@ -75,7 +75,7 @@ padding-top:30px;
 	font-size: 24px;
 }
 
-/* Landing page header 'Create course webpages.' */
+/* ====== Landing page header 'Create course webpages.' ====== */
 #header {
 	background-color: #F0F0F0;
 	padding-top: 30px;
@@ -99,7 +99,7 @@ padding-top:30px;
 	color: #999999;	
 }
 
-/* Landing page search bar block */
+/* ====== Landing page search bar block ====== */
 #search-header {
 	background-color: #FFFFFF;
 	padding-top: 20px;
@@ -114,7 +114,7 @@ padding-top:30px;
 	width: 300px;
 }
 
-/* Login page */
+/* ====== Login page ====== */
 .bottom-margin-10px {
 	margin-bottom: 10px;
 }
@@ -134,7 +134,7 @@ padding-top:30px;
 	margin-bottom: 20px;	
 }
 
-/* Register page */
+/* ====== Register page ====== */
 #register-form {
 	width: 500px;
 	margin-left: auto;
@@ -145,6 +145,108 @@ padding-top:30px;
 }
 #register-button {
 	width: 100px;
+}
+
+/* ====== Teacher general ====== */
+
+#teacher-body { 
+	height: 100vh;
+	background-color: #F7F7F7;
+}
+
+/* ====== Teacher navigation ====== */
+
+#teacher-navigation {
+	background-color: #EEEEEE; 
+	padding-top: 20px;
+	height: 100vh;
+	border-right-style: solid;
+	border-color: #737373;
+	border-width: 0.5px;
+	padding-left: 0px;
+	padding-left: 14px;
+	padding-top: 40px;
+}
+#teacher-navigation h4 {
+	font-size: 14px;
+	font-weight: 600;
+	padding-left: 14px;
+	margin-bottom: 4px;
+}
+#teacher-navigation p {
+	font-size: 10px;
+	font-weight: 400;
+	padding-left: 14px;
+	color: #777777;
+	padding-bottom: 8px;
+}
+.nav-pills > li > a {
+	color: #707070;
+	font-weight: 300;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 0px;	
+}
+.nav-pills > li > a > span {
+	font-size: 14px;
+	font-weight: 200;
+}
+.nav-pills > li.active > a, 
+		.nav-pills > li.active > a:hover, 
+		.nav-pills > li.active > a:focus {
+	color: #333333;
+	background-color: #F0F0F0; 
+	font-weight: 500;
+}
+.nav-pills > li > a:hover {
+	color: #333333;
+}
+#page-dropdown-menu a {
+	font-weight: 100;
+}
+
+/* ====== Teacher content header (right side) ===== */
+
+#teacher-content-header {
+	background-color: #FAFAFA;	
+	padding-bottom: 20px;
+	padding-top: 12px;
+}
+#teacher-content-header h3 {
+	margin-bottom: 0px;
+	font-weight: 400;
+}
+#teacher-content-header p {
+	font-weight: 200;
+	color: #777777;
+}
+#save-button, #preview-button {
+	float: right;
+	display: inline-block;
+	font-weight: 300;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+/* ====== Teacher content (right side) ====== */
+
+#teacher-content {
+	margin-left: 30px;
+	padding-top: 30px;
+	padding-left: 20px;
+}
+#teacher-content h5 {
+	font-weight: 320;
+	font-size: 15px;
+	color: #444444;
+}
+#teacher-content input {
+	font-weight: 200;
+	height: 30px;
+	margin-bottom: 18px;
+}
+.margin-bottom-14px {
+	margin-bottom: 14px;
 }
 
 

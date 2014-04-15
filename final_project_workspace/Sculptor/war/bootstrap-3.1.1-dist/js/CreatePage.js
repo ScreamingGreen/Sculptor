@@ -10,43 +10,14 @@ $(document).ready(function() {
 
 		// Get the name of the navigation tab we are trying to access
 		var nameOfPressedTab = this.id;
-		//alert(nameOfPressedTab);
 
 		// Clean the current HTML form so we can place a new one
 		$('div[class="tab-content"]').html("");
 
-		// We need to now set a new form 
+		// We need to now load a new form in place of the old one
 		loadForm(nameOfPressedTab);
-		
-		//Populate form
-		//populateForm(nameOfPressedTab);
 	});
 
-/*
-	//Load the tab order from datastore, ajax
-	//We should store/load arrays with JSON, would be a good idea
-	/// Ask servlet for order, Servlet returns an array of Tab Names with Type too, load the order in that way 
-	loadTabOrder();
-	
-	//Load the home form
-	loadForm("Home");
-	
-	//Populate the home form
-	populateForm("Home");
-		
-	//Whenever a tab is clicked, we know we have to load the form and populate
-	$(".coursetab").click(function(){
-		alert(this.value);
-		
-		//Remove the current form
-		cleanForm();
-		
-		//Load the form of current value
-		loadForm(this.value);
-		
-		//Fill in with datastore information
-		populateForm(this.value);
-	});*/
 });
 
 // Do an AJAX call to get a form (Ex. HomeForm.html)

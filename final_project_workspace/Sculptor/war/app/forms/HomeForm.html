@@ -1,55 +1,43 @@
 <!-- Basic content for home page -->
 <div class="tab-pane active" id="Home">
-	<!-- Every div has a form -->							
-	<form action="/saveform" method="POST">	
+	<!-- Every div has a form -->
+	<form id="pageForm" action="/saveform" method="POST">
 	
-	<div class="dynamic-form">
-	<!-- Must check that all name of the components are distinct! -->
-	<input name="type-of-form" type="hidden" value="Home" />
-	
-	<h2>Home</h2>
-	<hr>
-	<h4> Course Code </h4>
-	<input type="text" class="form-control" name="courseCode" placeholder="CSE 308"/>
-	<h4> Course Title </h4>
-	<input type="text" class="form-control" name="courseTitle" placeholder="Software Engineering"/>
-	<h4> Teacher Name </h4>
-	<input type="text" class="form-control" name="teacherName" placeholder="Richard Mckenna"/>
-	<h4> Days of the Week </h4>
-		<div class="btn-group" data-toggle="buttons">
-		  <label class="btn btn-primary">
-			<input name="mon" type="checkbox" /> Mon 
-		  </label>
-		  <label class="btn btn-primary">
-			<input name="tue" type="checkbox" /> Tue
-		  </label>
-		  <label class="btn btn-primary">
-			<input name="wed" type="checkbox" /> Wed
-		  </label>
-		  <label class="btn btn-primary">
-			<input name="thu" type="checkbox" /> Thu
-		  </label>
-		  <label class="btn btn-primary">
-			<input name="fri" type="checkbox" /> Fri
-		  </label>
-		  <label class="btn btn-primary">
-			<input name="sat" type="checkbox" /> Sat
-		  </label>
-		  <label class="btn btn-primary">
-			<input name="sun" type="checkbox" /> Sun
-		  </label>
-		</div>
-	<h4> Start Time </h4>
-	<input type="text" name="startTime" class="form-control" placeholder="10:00 AM"/>
-	<h4> End Time </h4>
-	<input type="text" name="endTime" class="form-control" placeholder="11:20 AM"/>
-	
-	</div>
-	
-	<hr>
-	<!-- Buttons at the bottom of tab-content -->
-	<input id="save-button" type="submit" class="btn btn-default" value="Save Changes"/> 
-	<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"/> 
-	<input id="preview-button" type="submit" class="btn btn-default" value="Preview"/> 
-	</form>
+		<!-- Must check that all name of the components are distinct! -->
+		<input name="type-of-form" type="hidden" value="Home" />
+		<h5> Course Code </h5>
+		<input type="text" class="form-control" placeholder="CSE 308" name="courseName">
+		<h5> Course Title </h5>
+		<input type="text" class="form-control" placeholder="Software Engineering" name="courseTitle">
+		<h5> Teacher Name </h5>
+		<input type="text" class="form-control" placeholder="Richard Mckenna" name="teacherName">
+		<h5> Days of the Week </h5>
+			<div class="btn-group margin-bottom-14px" data-toggle="buttons">
+			  <label class="btn btn-primary">
+				<input name="mon" type="checkbox"> Mon
+			  </label>	
+			  <label class="btn btn-primary">
+				<input name="tue" type="checkbox"> Tue
+			  </label>
+			  <label class="btn btn-primary">
+				<input name="wed" type="checkbox"> Wed
+			  </label>
+			  <label class="btn btn-primary">
+				<input name="thu" type="checkbox"> Thu
+			  </label>
+			  <label class="btn btn-primary">
+				<input name="fri" type="checkbox"> Fri
+			  </label>
+			  <label class="btn btn-primary">
+				<input name="sat" type="checkbox"> Sat
+			  </label>
+			  <label class="btn btn-primary">
+				<input name="sun" type="checkbox"> Sun
+			  </label>
+			</div>
+		<h5> Start Time </h5>
+		<input name="startTime" type="text" name="webId" class="form-control" placeholder="10:00 AM">
+		<h5> End Time </h5>
+		<input name="endTime" type="text" name="webId" class="form-control" placeholder="11:20 AM">
+	</form>	
 </div>

@@ -4,30 +4,82 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
 	<servlet>
 		<servlet-name>Sculptor</servlet-name>
 		<servlet-class>com.screaminggreen.sculptor.SculptorServlet</servlet-class>
 	</servlet>
 	<servlet>
+	    <servlet-name>SaveForm</servlet-name>
+	    <servlet-class>com.screaminggreen.formprocessing.SaveFormServlet</servlet-class>
+	</servlet>
+	<servlet>
 	    <servlet-name>Login</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.LoginServlet</servlet-class>
 	</servlet>
-		<servlet>
-	<servlet-name>Register</servlet-name>
+	<servlet>
+	    <servlet-name>Logout</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Register</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.RegisterServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>SaveTabOrder</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.TabOrderServlet</servlet-class>
+	</servlet>
+	<servlet>
+	    <servlet-name>LoadTabOrder</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.LoadTabOrderServlet</servlet-class>
+	</servlet>
+	<servlet>
+	    <servlet-name>PopulateForm</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.PopulateFormServlet</servlet-class>
+	</servlet>
+		
 	<servlet-mapping>
 		<servlet-name>Sculptor</servlet-name>
 		<url-pattern>/sculptor</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+	    <servlet-name>SaveForm</servlet-name>
+	    <url-pattern>/saveform</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 	    <servlet-name>Login</servlet-name>
 	    <url-pattern>/login</url-pattern>
 	</servlet-mapping>
-		<servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>Logout</servlet-name>
+	    <url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 	    <servlet-name>Register</servlet-name>
 	    <url-pattern>/register</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>SaveTabOrder</servlet-name>
+	    <url-pattern>/savetab</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>LoadTabOrder</servlet-name>
+	    <url-pattern>/loadtaborder</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>PopulateForm</servlet-name>
+	    <url-pattern>/populateform</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+    	<filter-name>loggedInFilter</filter-name>
+    	<filter-class>com.screaminggreen.filters.LoggedInFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>loggedInFilter</filter-name>
+	    <url-pattern>/app/*</url-pattern>
+	</filter-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

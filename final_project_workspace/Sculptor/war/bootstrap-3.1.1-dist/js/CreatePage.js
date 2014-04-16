@@ -30,7 +30,10 @@ function saveForm(){
 	            type: frm.attr('method'),
 	            url: frm.attr('action'),
 	            data: frm.serialize(),
-	            success: function (data) {},
+	            success: function (data) {
+	            	$("#successSaveMsg").fadeIn("slow", function(){}); 
+	            	$("#successSaveMsg").fadeOut("slow", function(){});
+	            },
 	        	error: function (data) {alert ("Try again please."); }
 	        });
 

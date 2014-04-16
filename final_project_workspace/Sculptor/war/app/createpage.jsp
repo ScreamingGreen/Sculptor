@@ -11,15 +11,14 @@
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
 		
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
 		
 		<!-- Custom Javascript -->
-		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>	
-		
+		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>			
 		<script src="../bootstrap-3.1.1-dist/js/CreatePage.js"></script>
+		
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 	</head>
 	<body>
@@ -101,7 +100,7 @@
 				<div class="col-sm-9">
 					<h3> 
 						<span id="page-title"> Home </span>
-						<input id="preview-button" type="submit" class="btn btn-default" value="Cancel"> 
+						<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> 
 						<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> 
 						<input id="save-button" type="submit" class="btn btn-success" value="Save Changes" form="pageForm"> 
 					</h3>

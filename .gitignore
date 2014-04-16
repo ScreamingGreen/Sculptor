@@ -7,3 +7,7 @@
 *.classpath
 
 *.metadata
+
+*.bin
+
+final_project_workspace/Sculptor/war/WEB-INF/appengine-generated/datastore-indexes-auto.xml

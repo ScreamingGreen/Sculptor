@@ -163,7 +163,9 @@ function populateHomeForm(jsonData) {
 	var days = ["mon","tue","wed","thu","fri","sat","sun"];
 	$(days).each(function(){
 		if (data[this] == "true") {
-			$('input[name="'+this+'"]').parent().addClass("active");
+			var inputElement = $('input[name="'+this+'"]');
+			inputElement.parent().addClass("active");
+			inputElement.attr('checked', 'checked');
 		}
 		else {
 			$('input[name="'+this+'"]').parent().removeClass("active");

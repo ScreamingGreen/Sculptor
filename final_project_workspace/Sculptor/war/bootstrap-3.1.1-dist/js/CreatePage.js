@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+	// Load the home form first
+	loadForm("Home");
 	
 	//Bind buttons accordingly
 	bindButtons();

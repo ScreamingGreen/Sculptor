@@ -54,6 +54,8 @@
 						  		&nbsp;
  								Home</a>
  						  </li>
+
+ 						  <!--
 						  <li><a id="Syllabus" data-toggle="tab">
 						  		<span class="glyphicon glyphicon-pencil"></span> 
 						  		&nbsp;
@@ -64,6 +66,7 @@
 						  		&nbsp;
 						  		Schedule</a>
 						  </li>
+						  -->
 					</ul>
 					<!-- Add Button -->
 					<ul class="nav nav-pills nav-stacked">
@@ -76,13 +79,13 @@
 					  		<!-- Navigation for Add Button -->
 					  		<ul id="page-dropdown-menu" class="dropdown-menu">
  							  	<li role="presentation">
- 							  		<a id="Home" class="addpage-option" role="menuitem" tabindex="-1" href="#">Home</a>
- 							  	</li>
- 							  	<li role="presentation">
  							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">Schedule</a>
  							  	</li>
  							  	<li role="presentation">
  							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">Syllabus</a>
+ 							  	</li>
+ 							  	<li role="presentation">
+ 							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">File</a>
  							  	</li>
 							</ul>
 					  	</li>

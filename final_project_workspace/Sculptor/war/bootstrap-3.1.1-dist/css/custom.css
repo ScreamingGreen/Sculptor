@@ -226,7 +226,7 @@ padding-top:30px;
 	font-weight: 200;
 	color: #777777;
 }
-#save-button, #preview-button {
+#save-button, #preview-button, #cancel-button {
 	float: right;
 	display: inline-block;
 	font-weight: 300;

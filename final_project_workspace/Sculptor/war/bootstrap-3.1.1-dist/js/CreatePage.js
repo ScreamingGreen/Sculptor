@@ -21,6 +21,24 @@ function bindButtons() {
 	$('#save-button').click(function (){
 		saveForm();
 	});
+	
+	//Preview button
+	$('#preview-button').click(function (){
+		previewForm();
+	});
+	
+	//Cancel button
+	$('#cancel-button').click(function (){
+		cancelForm();
+	});
+}
+
+function previewForm(){
+	alert("preview Form Triggered");
+}
+
+function cancelForm() {
+	alert("cancel form triggered");
 }
 
 function saveForm(){	

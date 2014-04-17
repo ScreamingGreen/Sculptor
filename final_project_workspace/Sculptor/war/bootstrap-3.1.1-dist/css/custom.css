@@ -201,7 +201,7 @@ padding-top:30px;
 		.nav-pills > li.active > a:hover, 
 		.nav-pills > li.active > a:focus {
 	color: #333333;
-	background-color: #F0F0F0; 
+	background-color: #EEEEEE; 
 	font-weight: 500;
 }
 .nav-pills > li > a:hover {

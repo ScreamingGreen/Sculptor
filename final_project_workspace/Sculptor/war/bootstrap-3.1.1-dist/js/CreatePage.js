@@ -60,6 +60,7 @@ function saveForm(){
 }
 
 function bindClickToTeacherNavigation() {
+	$('a[data-toggle="tab"]').unbind('click');
 	$('a[data-toggle="tab"]').click(function() {
 
 		// Get the name of the navigation tab we are trying to access
@@ -73,17 +74,22 @@ function bindClickToTeacherNavigation() {
 
 		// We need to now load a new form in place of the old one
 		loadForm(nameOfPressedTab);
-		
 	});
 }
 
 function bindClickToAddPageNavigation() {
+	$('a[class="addpage-option"]').unbind('click');
 	$('a[class="addpage-option"]').click(function() {
 	
 		var nameOfPressedOption = $(this).html().trim();
 
 		// Adds new tab for left side tab-bar 
 		addPage(nameOfPressedOption);
+
+		// Remove the item from add menu
+		var liElement = $(this).parent();
+		$(liElement).addClass("remove-addpage-option");
+		$(".remove-addpage-option").remove();
 
 		// Make sure that the new navigation button that we 
 		// added can fire off an event
@@ -113,6 +119,8 @@ function addPage(nameOfPage) {
 					)
 				)
 			);
+
+	// TODO: Add page to data store 
 }
 
 // Called when remove checkmark is pressed in teacher navigation
@@ -124,8 +132,26 @@ function removePage(removeButton) {
 	$(liElement).addClass("remove-the-element");
 	$(".remove-the-element").remove();
 
-	// Now remove the item from the datastore 
+	// Get the name of the removed option
 	var nameOfRemovedOption = $(aElement).attr('id');
+
+	// Add the element back to add page navigation
+	$("#page-dropdown-menu")
+			.append(
+				$('<li></li>')
+				.attr('role', 'presentation')
+				.append(
+					$('<a></a>')
+					.attr('role', 'menuitem')
+					.attr('tabindex', '-1')
+					.attr('href', '#')
+					.addClass('addpage-option')
+					.html(nameOfRemovedOption)
+				)
+			);
+	bindClickToAddPageNavigation();
+
+	// TODO: Remove page from data store	
 }
 
 // We need to get a new form (Ex. HomeForm.html)

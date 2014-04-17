@@ -179,6 +179,10 @@ public class CourseTab {
 		    courseTab.setProperty("tabOrder", tabOrderJSON);
 		    courseTab.setProperty("webId", webId);
 			DatastoreAPI.persistEntity(courseTab);
+		  } else {
+			  //Update it
+			  courseTab.setProperty("tabOrder", tabOrderJSON);
+			  DatastoreAPI.persistEntity(courseTab);
 		  }
 		  
 		  //O/w return one... dam duplications -.- 

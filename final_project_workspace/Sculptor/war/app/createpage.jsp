@@ -90,9 +90,9 @@
 					  	</li>
 					</ul>
 
-					<!-- Save tab button (needs work) -->
+					<!-- Save tab button (needs work) 
 					<br />
-				<input id="save-tab-button" type="button" class="btn btn-default" onClick=saveTabOrder() value="Save Tab Order" /> 	
+				<input id="save-tab-button" type="button" class="btn btn-default" onClick=saveTabOrder() value="Save Tab Order" /> 	-->
 			</div>
 
 			<!-- Teacher content header -->

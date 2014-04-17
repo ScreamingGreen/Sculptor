@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+	// Load teacher navigation
+	loadTeacherNavigation();
+
 	// Load the home form first
 	loadForm("Home");
 	
@@ -33,33 +36,11 @@ function bindButtons() {
 	});
 }
 
-function previewForm(){
-	alert("preview Form Triggered");
-}
+/***************************************
+ *** Navigation Bar Stuff
+ ***************************************/
 
-function cancelForm() {
-	alert("cancel form triggered");
-}
-
-function saveForm(){	
-	   var frm = $('#pageForm');
-	    frm.submit(function (ev) {
-	        $.ajax({
-	            type: frm.attr('method'),
-	            url: frm.attr('action'),
-	            data: frm.serialize(),
-	            success: function (data) {
-	            	$("#successSaveMsg").fadeIn("slow", function(){}); 
-	            	$("#successSaveMsg").fadeOut("slow", function(){});
-	            },
-	        	error: function (data) {alert ("Try again please."); }
-	        });
-
-	        ev.preventDefault();
-	    });
-}
-
-function bindClickToTeacherNavigation() {
+ function bindClickToTeacherNavigation() {
 	$('a[data-toggle="tab"]').unbind('click');
 	$('a[data-toggle="tab"]').click(function() {
 
@@ -120,6 +101,9 @@ function addPage(nameOfPage) {
 				)
 			);
 
+	// Save the new navigation
+	//saveTeacherNavigation();
+
 	// TODO: Add page to data store 
 }
 
@@ -151,8 +135,119 @@ function removePage(removeButton) {
 			);
 	bindClickToAddPageNavigation();
 
+	// Save the new navigation
+	//saveTeacherNavigation();
+
 	// TODO: Remove page from data store	
 }
+
+
+function loadTeacherNavigation() {
+	
+	//Get the tabs
+	var tabs = document.getElementsByClassName('tab-pane');
+	
+	//Try to load tabs
+	//Sends ajax request to servlet
+	$.ajax({
+	    type: 'post',
+	    url: '/loadtaborder',
+	    dataType: 'json',
+	    data: '',
+	    success: function(jsonData) {
+	    	// So here, we have the jsonData of tabOrder, we need to get the array and push elements to the tab order
+	    	// Also, we need to make the select menu for each form to the type of the tab...
+	    	console.log(jsonData);
+	    },
+	    error: function(jsonData) {
+	        alert('Error loading teacher navigation');
+	    }
+	});
+}
+
+//Make the jQuery button action when the user saves the tab order, NEED AJAX again
+/// What to send to servlet:
+/// Array of JSOs with  (tabName, typeOfForm)
+/// ie : [ (tabName:"HomePage", type:"Home") , (tabName : "HW 3", type : File) ... ]
+/// You will get either success or failure...
+function saveTeacherNavigation() {
+	
+	//Gets the tab name and type of each tab
+	var tabs = document.getElementsByClassName('tab-pane');
+	var tabsType = document.getElementsByName('type-of-form');
+	
+	//Creating json string
+	var JSONString = '{"tabOrder":[]}';
+	for(var i = 0; i<tabs.length; i++)
+	{
+		
+		//Parses the string into array
+		JSONString = JSON.parse(JSONString);
+		
+		//Second object with next tabs information
+		var obj2 = new Object();
+		obj2.name = tabs[i].id;
+		obj2.type = tabsType[i].options[tabsType[i].selectedIndex].text;
+		var JSONString2 = JSON.stringify(obj2);
+		
+		//Parses second object string into array and pushes it into default string
+		obj2 = JSON.parse(JSONString2);
+		JSONString['tabOrder'].push(obj2);
+		
+		//Turns array back into string
+		JSONString = JSON.stringify(JSONString);
+		console.log(JSONString);
+	}
+	
+	//Sends ajax request to servlet
+	$.ajax({
+	    type: 'post',
+	    url: '/savetab',
+	    dataType: 'text',
+	    data: JSONString,
+	    success: function(data) {
+	    	alert('Success saving tab order!')
+	    },
+	    error: function(data) {
+	        alert('Error');
+	    }
+	});
+}
+
+
+/***************************************
+ *** Form header stuff
+ ***************************************/
+
+function previewForm(){
+	alert("preview Form Triggered");
+}
+
+function cancelForm() {
+	alert("cancel form triggered");
+}
+
+function saveForm(){	
+	   var frm = $('#pageForm');
+	    frm.submit(function (ev) {
+	        $.ajax({
+	            type: frm.attr('method'),
+	            url: frm.attr('action'),
+	            data: frm.serialize(),
+	            success: function (data) {
+	            	$("#successSaveMsg").fadeIn("slow", function(){}); 
+	            	$("#successSaveMsg").fadeOut("slow", function(){});
+	            },
+	        	error: function (data) {alert ("Try again please."); }
+	        });
+
+	        ev.preventDefault();
+	    });
+}
+
+/***************************************
+ *** Form stuff
+ ***************************************/
 
 // We need to get a new form (Ex. HomeForm.html)
 function loadForm(typeOfForm) {
@@ -226,75 +321,4 @@ function populateHomeForm(jsonData) {
 	$('input[name="endTime"]').val(data.endTime);
 }
 
-function loadTabOrder() {
-	
-	//Get the tabs
-	var tabs = document.getElementsByClassName('tab-pane');
-	
-	//Try to load tabs
-	//Sends ajax request to servlet
-	$.ajax({
-	    type: 'post',
-	    url: '/loadtaborder',
-	    dataType: 'json',
-	    data: '',
-	    success: function(jsonData) {
-	    	// So here, we have the jsonData of tabOrder, we need to get the array and push elements to the tab order
-	    	// Also, we need to make the select menu for each form to the type of the tab...
-	    	
-	    },
-	    error: function(jsonData) {
-	        alert('error');
-	    }
-	});
-}
 
-//Make the jQuery button action when the user saves the tab order, NEED AJAX again
-/// What to send to servlet:
-/// Array of JSOs with  (tabName, typeOfForm)
-/// ie : [ (tabName:"HomePage", type:"Home") , (tabName : "HW 3", type : File) ... ]
-/// You will get either success or failure...
-
-function saveTabOrder() {
-	
-	//Gets the tab name and type of each tab
-	var tabs = document.getElementsByClassName('tab-pane');
-	var tabsType = document.getElementsByName('type-of-form');
-	
-	//Creating json string
-	var JSONString = '{"tabOrder":[]}';
-	for(var i = 0; i<tabs.length; i++)
-	{
-		
-		//Parses the string into array
-		JSONString = JSON.parse(JSONString);
-		
-		//Second object with next tabs information
-		var obj2 = new Object();
-		obj2.name = tabs[i].id;
-		obj2.type = tabsType[i].options[tabsType[i].selectedIndex].text;
-		var JSONString2 = JSON.stringify(obj2);
-		
-		//Parses second object string into array and pushes it into default string
-		obj2 = JSON.parse(JSONString2);
-		JSONString['tabOrder'].push(obj2);
-		
-		//Turns array back into string
-		JSONString = JSON.stringify(JSONString);
-		console.log(JSONString);
-	}
-	
-	//Sends ajax request to servlet
-	$.ajax({
-	    type: 'post',
-	    url: '/savetab',
-	    dataType: 'text',
-	    data: JSONString,
-	    success: function(data) {
-	    	alert('Success saving tab order!')
-	    },
-	    error: function(data) {
-	        alert('Error');
-	    }
-	});
-}

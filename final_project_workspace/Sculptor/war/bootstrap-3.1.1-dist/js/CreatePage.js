@@ -102,7 +102,7 @@ function addPage(nameOfPage) {
 			);
 
 	// Save the new navigation
-	//saveTeacherNavigation();
+	saveTeacherNavigation();
 
 	// TODO: Add page to data store 
 }
@@ -136,7 +136,7 @@ function removePage(removeButton) {
 	bindClickToAddPageNavigation();
 
 	// Save the new navigation
-	//saveTeacherNavigation();
+	saveTeacherNavigation();
 
 	// TODO: Remove page from data store	
 }
@@ -152,11 +152,12 @@ function loadTeacherNavigation() {
 	$.ajax({
 	    type: 'post',
 	    url: '/loadtaborder',
-	    dataType: 'json',
+	    dataType: 'text',
 	    data: '',
 	    success: function(jsonData) {
 	    	// So here, we have the jsonData of tabOrder, we need to get the array and push elements to the tab order
 	    	// Also, we need to make the select menu for each form to the type of the tab...
+	    	alert('Loaded tab order');
 	    	console.log(jsonData);
 	    },
 	    error: function(jsonData) {
@@ -172,9 +173,8 @@ function loadTeacherNavigation() {
 /// You will get either success or failure...
 function saveTeacherNavigation() {
 	
-	//Gets the tab name and type of each tab
-	var tabs = document.getElementsByClassName('tab-pane');
-	var tabsType = document.getElementsByName('type-of-form');
+	//Gets the tab name of each tab
+	var tabs = $('#tab-bar').children().children();
 	
 	//Creating json string
 	var JSONString = '{"tabOrder":[]}';
@@ -186,8 +186,7 @@ function saveTeacherNavigation() {
 		
 		//Second object with next tabs information
 		var obj2 = new Object();
-		obj2.name = tabs[i].id;
-		obj2.type = tabsType[i].options[tabsType[i].selectedIndex].text;
+		obj2.type = tabs[i].id;
 		var JSONString2 = JSON.stringify(obj2);
 		
 		//Parses second object string into array and pushes it into default string
@@ -196,7 +195,8 @@ function saveTeacherNavigation() {
 		
 		//Turns array back into string
 		JSONString = JSON.stringify(JSONString);
-		console.log(JSONString);
+		
+		console.log(tabs[i].id);
 	}
 	
 	//Sends ajax request to servlet

@@ -5,6 +5,18 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 
+    <servlet>
+        <servlet-name>ServeFile</servlet-name>
+        <servlet-class>com.screaminggreen.sculptor.ServeFileServlet</servlet-class>
+    </servlet>
+	<servlet>
+	    <servlet-name>SuccessfulUpload</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.SuccessfulUploadServlet</servlet-class>
+	</servlet>
+    <servlet>
+        <servlet-name>UploadFile</servlet-name>
+        <servlet-class>com.screaminggreen.sculptor.UploadFileServlet</servlet-class>
+    </servlet>
 	<servlet>
 		<servlet-name>Sculptor</servlet-name>
 		<servlet-class>com.screaminggreen.sculptor.SculptorServlet</servlet-class>
@@ -70,6 +82,19 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>PopulateForm</servlet-name>
 	    <url-pattern>/populateform</url-pattern>
 	</servlet-mapping>
+		<servlet-mapping>
+	    <servlet-name>UploadFile</servlet-name>
+	    <url-pattern>/uploadfile</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+	    <servlet-name>SuccessfulUpload</servlet-name>
+	    <url-pattern>/successfulupload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>ServeFile</servlet-name>
+	    <url-pattern>/servefile</url-pattern>
+	</servlet-mapping>
+	
 	
 	<filter>
     	<filter-name>loggedInFilter</filter-name>

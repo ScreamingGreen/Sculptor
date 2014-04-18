@@ -1,15 +1,15 @@
 <!-- Basic content for schedule form -->
 <div class="tab-pane active" id="Files">
 	<!-- Every div has a form -->
+	<form method="post" action="/uploadfile"  enctype="multipart/form-data">
+		<input type="file" name="myFile"/> 			
+		<input type="submit" name="uploadButton" value="Upload"/>
+	</form>
+		
 	<form id="pageForm" action="/saveform" method="POST">
 		<div id="successSaveMsg" style="display:none">Saved!</div>
 		<!-- Must check that all name of the components are distinct! -->
 		<input name="type-of-form" type="hidden" value="Files" />
-		
-		<form method="POST" submit="/uploadfile">
-			<input type="file" name="fileToUpload"/> 			
-			<input type="submit" name="uploadButton" value="Upload"/>
-		</form>
 		
 		<h5>Your Current Uploaded Files: </h5>
 

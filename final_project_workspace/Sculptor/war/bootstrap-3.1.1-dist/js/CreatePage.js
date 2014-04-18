@@ -81,6 +81,16 @@ function bindClickToAddPageNavigation() {
 function addPage(nameOfPage) {
 
 	// Add the item to the teacher navigation
+	addPageToNavigation(nameOfPage);
+
+	// Save the new navigation
+	saveTeacherNavigation();
+
+	// TODO: Add page to data store 
+}
+
+function addPageToNavigation(nameOfPage) {
+
 	$("#tab-bar")
 			.append(
 				$('<li></li>')
@@ -100,11 +110,6 @@ function addPage(nameOfPage) {
 					)
 				)
 			);
-
-	// Save the new navigation
-	saveTeacherNavigation();
-
-	// TODO: Add page to data store 
 }
 
 // Called when remove checkmark is pressed in teacher navigation
@@ -120,25 +125,29 @@ function removePage(removeButton) {
 	var nameOfRemovedOption = $(aElement).attr('id');
 
 	// Add the element back to add page navigation
-	$("#page-dropdown-menu")
-			.append(
-				$('<li></li>')
-				.attr('role', 'presentation')
-				.append(
-					$('<a></a>')
-					.attr('role', 'menuitem')
-					.attr('tabindex', '-1')
-					.attr('href', '#')
-					.addClass('addpage-option')
-					.html(nameOfRemovedOption)
-				)
-			);
-	bindClickToAddPageNavigation();
+	addOptionToAddPageNavigation(nameOfRemovedOption);
 
 	// Save the new navigation
 	saveTeacherNavigation();
 
 	// TODO: Remove page from data store	
+}
+
+function addOptionToAddPageNavigation(pageName) {
+	$("#page-dropdown-menu")
+		.append(
+			$('<li></li>')
+			.attr('role', 'presentation')
+			.append(
+				$('<a></a>')
+				.attr('role', 'menuitem')
+				.attr('tabindex', '-1')
+				.attr('href', '#')
+				.addClass('addpage-option')
+				.html(pageName)
+			)
+		);
+	bindClickToAddPageNavigation();
 }
 
 
@@ -157,13 +166,39 @@ function loadTeacherNavigation() {
 	    success: function(jsonData) {
 	    	// So here, we have the jsonData of tabOrder, we need to get the array and push elements to the tab order
 	    	// Also, we need to make the select menu for each form to the type of the tab...
-	    	alert('Loaded tab order');
-	    	console.log(jsonData);
+	    	populateTeacherNavigation(jsonData);
 	    },
 	    error: function(jsonData) {
 	        alert('Error loading teacher navigation');
 	    }
 	});
+}
+
+function populateTeacherNavigation(jsonData) {
+	console.log(jsonData);
+
+	var parsedJSON = jQuery.parseJSON(jsonData);
+	var data = parsedJSON.tabOrder;
+
+	// A set of all available menu options
+	var allMenuOptions = new StringSet();
+	allMenuOptions.add("Syllabus");
+	allMenuOptions.add("Schedule");
+	allMenuOptions.add("Files");
+
+	// Add the options to the main teacher navigation
+	// We don't want to add 'Home' to the menu
+	for (i = 1; i < data.length; i++) {
+		var nameOfPage = data[i].type;
+		allMenuOptions.remove(nameOfPage);
+		addPageToNavigation(nameOfPage);
+	}
+
+	// Add the rest of the options to the 'add page' menu
+	var addPageMenuOptions = allMenuOptions.values();
+	for (i = 0; i < addPageMenuOptions.length; i++) {
+		addOptionToAddPageNavigation(addPageMenuOptions[i]);
+	}
 }
 
 //Make the jQuery button action when the user saves the tab order, NEED AJAX again
@@ -178,8 +213,7 @@ function saveTeacherNavigation() {
 	
 	//Creating json string
 	var JSONString = '{"tabOrder":[]}';
-	for(var i = 0; i<tabs.length; i++)
-	{
+	for (var i = 0; i<tabs.length; i++) {
 		
 		//Parses the string into array
 		JSONString = JSON.parse(JSONString);
@@ -206,10 +240,10 @@ function saveTeacherNavigation() {
 	    dataType: 'text',
 	    data: JSONString,
 	    success: function(data) {
-	    	alert('Success saving tab order!')
+	    	//alert('Success saving tab order!')
 	    },
 	    error: function(data) {
-	        alert('Error');
+	        alert('Error saving tab order!');
 	    }
 	});
 }
@@ -321,4 +355,33 @@ function populateHomeForm(jsonData) {
 	$('input[name="endTime"]').val(data.endTime);
 }
 
+
+/* 	Helper library 
+ *	http://stackoverflow.com/questions/4343746/is-there-a-data-structure-like-the-java-set-in-javascript
+ */
+function StringSet() {
+    var setObj = {}, val = {};
+
+    this.add = function(str) {
+        setObj[str] = val;
+    };
+
+    this.contains = function(str) {
+        return setObj[str] === val;
+    };
+
+    this.remove = function(str) {
+        delete setObj[str];
+    };
+
+    this.values = function() {
+        var values = [];
+        for (var i in setObj) {
+            if (setObj[i] === val) {
+                values.push(i);
+            }
+        }
+        return values;
+    };
+}
 

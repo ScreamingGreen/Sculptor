@@ -77,6 +77,7 @@
 
 					  		<!-- Navigation for Add Button -->
 					  		<ul id="page-dropdown-menu" class="dropdown-menu">
+					  			<!--
  							  	<li role="presentation">
  							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">Schedule</a>
  							  	</li>
@@ -86,6 +87,7 @@
  							  	<li role="presentation">
  							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">File</a>
  							  	</li>
+ 							  	-->
 							</ul>
 					  	</li>
 					</ul>

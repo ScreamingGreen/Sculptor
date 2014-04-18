@@ -286,7 +286,7 @@ function saveForm(){
 
 // We need to get a new form (Ex. HomeForm.html)
 function loadForm(typeOfForm) {
-	var formPath = "forms/"+typeOfForm+"Form.html";
+	var formPath = "forms/"+typeOfForm+"Form.html" + "?" + new Date().getTime();
 
 	$.get(formPath, function(formHTML) {
 

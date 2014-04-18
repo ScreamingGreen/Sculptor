@@ -72,9 +72,7 @@ function bindClickToAddPageNavigation() {
 		$(liElement).addClass("remove-addpage-option");
 		$(".remove-addpage-option").remove();
 
-		// Make sure that the new navigation button that we 
-		// added can fire off an event
-		bindClickToTeacherNavigation();
+		
 	});
 }
 
@@ -110,6 +108,9 @@ function addPageToNavigation(nameOfPage) {
 					)
 				)
 			);
+	// Make sure that the new navigation button that we 
+	// added can fire off an event
+	bindClickToTeacherNavigation();
 }
 
 // Called when remove checkmark is pressed in teacher navigation

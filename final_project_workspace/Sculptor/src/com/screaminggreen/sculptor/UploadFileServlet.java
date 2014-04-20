@@ -20,9 +20,7 @@ public class UploadFileServlet extends HttpServlet{
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String uploadURL = blobstoreService.createUploadUrl("/successfulupload");
-		//uploadURL = uploadURL.substring(uploadURL.lastIndexOf("_ah") - 1);
-		//req.getRequestDispatcher(uploadURL).forward(req, resp);
-		
+
 		PrintWriter out = resp.getWriter();
 		out.println(uploadURL);
 		resp.setStatus(200);

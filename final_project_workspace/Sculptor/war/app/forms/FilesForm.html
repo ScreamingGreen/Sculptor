@@ -11,12 +11,29 @@ $(document).ready(function(){
         async: false,
 		success: function(data) {
 			//Set url accordingly
-			alert(data);
 			$('#uploadFileForm').attr("action" , data);			
 		},
 		error: function(data) {
 			alert("Failed");
 			event.preventDefault();
+		}
+	});
+	
+	//Retrieve the current files
+	$.ajax({
+		url: '/getfiles',
+		type: 'GET',
+		data: '',
+		dataType: 'text',
+		success: function(data) {
+			var keys = jQuery.parseJSON(data);
+			//Print on screen
+			for(var i = 0; i < keys.length; i++) {
+				$('#currentFiles').append("<a href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +"</a><br />");
+			}
+		},
+		error: function(data) {
+			alert("Failed");
 		}
 	});
 });
@@ -36,9 +53,8 @@ $(document).ready(function(){
 		<input name="type-of-form" type="hidden" value="Files" />
 		
 		<h5>Your Current Uploaded Files: </h5>
-
-		Show Files Here...
 		
+		<div id="currentFiles"></div>		
 		
 	</form>
 </div>

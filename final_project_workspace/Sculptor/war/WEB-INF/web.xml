@@ -6,6 +6,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 
     <servlet>
+        <servlet-name>GetFiles</servlet-name>
+        <servlet-class>com.screaminggreen.sculptor.GetFilesServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ServeFile</servlet-name>
         <servlet-class>com.screaminggreen.sculptor.ServeFileServlet</servlet-class>
     </servlet>
@@ -110,7 +114,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>LoadStudentMain</servlet-name>
 	    <url-pattern>/loadStudentMain</url-pattern>
 	</servlet-mapping>
-	
+	<servlet-mapping>
+	    <servlet-name>GetFiles</servlet-name>
+	    <url-pattern>/getfiles</url-pattern>
+	</servlet-mapping>
 	
 	<filter>
     	<filter-name>loggedInFilter</filter-name>

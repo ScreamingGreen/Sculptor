@@ -49,6 +49,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>PopulateForm</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.PopulateFormServlet</servlet-class>
 	</servlet>
+	<servlet>
+	    <servlet-name>LoadStudentSidebar</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.LoadStudentSidebarServlet</servlet-class>
+	</servlet>
+	<servlet>
+	    <servlet-name>LoadStudentMain</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.LoadStudentMainServlet</servlet-class>
+	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>Sculptor</servlet-name>
@@ -93,6 +101,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>ServeFile</servlet-name>
 	    <url-pattern>/servefile</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>LoadStudentSidebar</servlet-name>
+	    <url-pattern>/loadStudentSidebar</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>LoadStudentMain</servlet-name>
+	    <url-pattern>/loadStudentMain</url-pattern>
 	</servlet-mapping>
 	
 	

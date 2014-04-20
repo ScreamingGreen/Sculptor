@@ -20,16 +20,15 @@
 		
 		<!-- Custom Javascript -->
 		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>
+		<script src="../bootstrap-3.1.1-dist/js/StudentPage.js"></script>
 			
 		<div id="studentheader">
 	      <div class="container studentbg">
-		  
+		  	
 				<!-- Left Side Tab-bar navigation -->
 				<div class="col-sm-1 btn-group btn-group-vertical sidebar">
 					<ul class="nav nav-pills nav-stacked" id="tab-bar">
-						  <li class="active"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('home')"><div class="scrollText">HOME</div></a></li>
-						  <li><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('syllabus')"><div class="scrollText">SYLLABUS</div></a></li>
-						  <li><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('schedule')"><div class="scrollText">SCHEDULE</div></a></li>
+						  <li class="active"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('Home')"><div class="scrollText">HOME</div></a></li>
 					</ul>
 				</div>
 				
@@ -37,15 +36,16 @@
 				<div class="row col-sm-9 col-lg-offset-3">
 				
 					<!-- Basic home div -->
-					<div class="studentHome rightside" id="home">
-							<h1> CSE 308 </h1>
-							<h2> Software Engineering </h2>
-							<h2> Richard Mckenna </h2>
-							<h2> Tu/Thu 10:00 - 11:20  </h2>
+					<div class="studentHome rightside" id="Home">
+							<h1 id="courseCode"></h1>
+							<h2 id="courseName"></h2>
+							<h2 id="teacherName"></h2>
+							<h2><span id="startTime"></span><span id="endTime"></span></h2>
+							<h2><span id="daysofWeek"></span></h2>
 					</div>
 					
 					<!--  Basic Syllabus div -->
-					<div class="studentSyllabus rightside" id="syllabus">
+					<div class="studentSyllabus rightside" id="Syllabus">
 							<h2> Course Description </h2>
 							<p> Introduces the basic concepts and the modern tools and techniques of Software Engineering. Emphasizes the development of reliable and maintainable software via system requirements and specifications; software design methodologies including object-oriented design, implementation, integration, and testing; software project management; life-cycle documentation; software maintenance; and consideration of human factor issues. </p>
 							<h2> Course Topics </h2>
@@ -75,7 +75,7 @@
 					</div>
 					
 					<!-- Basic schedule div -->
-					<div class="rightside" id="schedule">
+					<div class="rightside" id="Schedule">
 					</div>
 				</div>
 	      </div>

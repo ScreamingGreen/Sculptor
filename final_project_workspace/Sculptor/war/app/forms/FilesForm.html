@@ -1,7 +1,31 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	//When this form loads fetch
+	var form = $("#uploadFileForm");
+
+	$.ajax({
+		url: '/uploadfile',
+		type: 'GET',
+		data: '',
+		dataType: 'text',
+        async: false,
+		success: function(data) {
+			//Set url accordingly
+			alert(data);
+			$('#uploadFileForm').attr("action" , data);			
+		},
+		error: function(data) {
+			alert("Failed");
+			event.preventDefault();
+		}
+	});
+});
+</script>
+
 <!-- Basic content for schedule form -->
 <div class="tab-pane active" id="Files">
 	<!-- Every div has a form -->
-	<form method="post" action="/uploadfile"  enctype="multipart/form-data">
+	<form id="uploadFileForm" method="post" enctype="multipart/form-data">
 		<input type="file" name="myFile"/> 			
 		<input type="submit" name="uploadButton" value="Upload"/>
 	</form>

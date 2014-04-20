@@ -19,7 +19,8 @@ public class SuccessfulUploadServlet extends HttpServlet {
 	private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(req);
+        @SuppressWarnings("deprecation")
+		Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(req);
         BlobKey blobKey = blobs.get("myFile");
 
         if (blobKey == null) {

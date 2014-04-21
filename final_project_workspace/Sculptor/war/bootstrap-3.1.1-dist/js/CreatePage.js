@@ -406,7 +406,7 @@ function populateScheduleForm(jsonData){
 function populateFilesForm(jsonData){
 	
 	//Disables save button.
-	$('#save-button').prop('disabled', false);
+	$('#save-button').prop('disabled', true);
 	
 	console.log(jsonData);
 }

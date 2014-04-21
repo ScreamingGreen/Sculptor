@@ -320,9 +320,24 @@ function populateSpecificForm(typeOfForm, jsonData) {
 	if (typeOfForm == "Home") {
 		populateHomeForm(jsonData);
 	}
+	
+	if (typeOfForm == "Syllabus") {
+		populateSyllabusForm(jsonData);
+	}
+	
+	if (typeOfForm == "Schedule") {
+		populateScheduleForm(jsonData);
+	}
+	
+	if (typeOfForm == "Files") {
+		populateFilesForm(jsonData);
+	}
 }
 
 function populateHomeForm(jsonData) {
+	
+	//Enables save button if disabled.
+	$('#save-button').prop('disabled', false);
 	
 	var parsedJSON = jQuery.parseJSON(jsonData);
 	var data = parsedJSON.data[0];
@@ -354,6 +369,46 @@ function populateHomeForm(jsonData) {
 
 	// End time
 	$('input[name="endTime"]').val(data.endTime);
+}
+
+function populateSyllabusForm(jsonData){
+	
+	//Enables save button if disabled.
+	$('#save-button').prop('disabled', false);
+	
+	var parsedJSON = jQuery.parseJSON(jsonData);
+	var data = parsedJSON.data[0];
+	
+	//Description
+	$('textarea[name="description"]').val(data.description);
+	
+	//Course Material
+	$('textarea[name="materials"]').val(data.materials);
+	
+	//Office Hours
+	$('textarea[name="infoAndHours"]').val(data.infoAndHours);
+	
+	//Grade breakdown
+	$('textarea[name="breakdown"]').val(data.breakdown);
+}
+
+function populateScheduleForm(jsonData){
+	
+	//Enables save button if disabled.
+	$('#save-button').prop('disabled', false);
+	
+	var parsedJSON = jQuery.parseJSON(jsonData);
+	var data = parsedJSON.data[0];
+	
+	$('textarea[name="schedule"]').val(data.schedule);
+}
+
+function populateFilesForm(jsonData){
+	
+	//Disables save button.
+	$('#save-button').prop('disabled', false);
+	
+	console.log(jsonData);
 }
 
 

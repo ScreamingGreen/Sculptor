@@ -45,17 +45,19 @@ function loadStudentPageSidebar(jsonData){
 		}
 		
 		//for each tab in get the information that they hold
-		for(i=0; i<1; i++)
+		for(j=0; j<4; j++)
 		{
 			//Sends ajax request to servlet
 			//Used to get the information in each page tab
+			var tabType = jsonArray.tabOrder[j].type
 			$.ajax({
+				async: false,
 			    type: 'post',
 			    url: '/loadStudentMain',
 			    dataType: 'text',
-			    data: {'webId':'afung', 'type':jsonArray.tabOrder[i].type},
+			    data: {'webId':'afung', 'type':tabType},
 			    success: function(jsonData) {
-			    		loadStudentPageMain(jsonData);				    		
+			    		loadStudentPageMain(jsonData, tabType);				    		
 			    },
 			    error: function(jsonData) {
 			        alert('Error loading teacher navigation');
@@ -66,13 +68,54 @@ function loadStudentPageSidebar(jsonData){
 
 
 //loads rightside of student page with information from tabs
-function loadStudentPageMain(jsonData){
+function loadStudentPageMain(jsonData, tabType){
 	console.log(jsonData);
+	console.log(tabType);
 	var jsonArray = jQuery.parseJSON(jsonData);
 	console.log(jsonArray);
 	
 	//Loads data from JSON into rightside of student page
-	$("#Home").append($('<h1>'+jsonArray.data[0].courseCode+'</h1>'));
-	$("#Home").append($('<h2>'+jsonArray.data[0].courseName+'</h2>'));
-	$("#Home").append($('<h2>'+jsonArray.data[0].teacherName+'</h2>'));
+	if(tabType == 'Home') 
+	{
+		// Course Code
+		$('#courseCode').text(jsonArray.data[0].courseCode);
+		
+		//Course Name
+		$('#courseName').text(jsonArray.data[0].courseName);
+		
+		//Teacher Name
+		$('#teacherName').text(jsonArray.data[0].teacherName);
+		
+		//Start Time
+		$('#startTime').text(jsonArray.data[0].startTime);
+		
+		//End Time
+		$('#endTime').text(jsonArray.data[0].endTime);
+	}
+	
+	else if (tabType == 'Syllabus')
+	{
+		// Course Description
+		$('#description').text(jsonArray.data[0].description);
+		
+		// Course Material
+		$('#materials').text(jsonArray.data[0].materials);
+		
+		// Course Info and Office Hours
+		$('#infoAndHours').text(jsonArray.data[0].infoAndHours);
+		
+		// Grade Breakdown
+		$('#breakdown').text(jsonArray.data[0].breakdown);
+	}
+	
+	else if (tabType == 'Schedule')
+	{
+		// Important Dates
+		$('#schedule').text(jsonArray.data[0].schedule);
+	}
+	
+	else if (tabType == 'Files')
+	{
+		
+	}
 }

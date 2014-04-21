@@ -39,6 +39,11 @@ padding-top:300px;
 padding: 50px;
 }
 
+/* Student Page: css for schedule div */
+.studentSchedule{
+padding: 50px;
+}
+
 /* Student page: css for sidebar buttons */
 .scrollSelector{
 height: 100px;

@@ -5,13 +5,16 @@ $(document).ready(function() {
 //Gets tab order from servlet
 function getStudentPage() {
 	
+	//Gets webId request
+	var webIdParam = $('#webId').attr('value');
+	
 	//Try to load tabs
 	//Sends ajax request to servlet
 	$.ajax({
 	    type: 'post',
 	    url: '/loadStudentSidebar',
 	    dataType: 'text',
-	    data: {'webId':'afung'},
+	    data: {'webId': webIdParam},
 	    success: function(jsonData) {
 	    		loadStudentPageSidebar(jsonData);
 	    },
@@ -24,7 +27,12 @@ function getStudentPage() {
 //Load sidebar navigation from JSON.
 function loadStudentPageSidebar(jsonData){
 		console.log(jsonData);
+		
+		//Parses JSON string from ajax call
 		var jsonArray = jQuery.parseJSON(jsonData);
+		
+		//Gets webId requested
+		var webIdParam = $('#webId').attr('value');
 		
 		//Appends new sidebar button for each tab.
 		for(i=1; i<jsonArray.tabOrder.length; i++)
@@ -55,7 +63,7 @@ function loadStudentPageSidebar(jsonData){
 			    type: 'post',
 			    url: '/loadStudentMain',
 			    dataType: 'text',
-			    data: {'webId':'afung', 'type':tabType},
+			    data: {'webId':webIdParam, 'type':tabType},
 			    success: function(jsonData) {
 			    		loadStudentPageMain(jsonData, tabType);				    		
 			    },

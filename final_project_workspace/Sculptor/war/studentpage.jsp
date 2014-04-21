@@ -21,7 +21,8 @@
 		<!-- Custom Javascript -->
 		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>
 		<script src="../bootstrap-3.1.1-dist/js/StudentPage.js"></script>
-			
+		
+		<span id="webId" value="${param.webId}"></span>
 		<div id="studentheader">
 	      <div class="container studentbg">
 		  	

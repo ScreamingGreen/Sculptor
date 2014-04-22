@@ -69,6 +69,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>DeleteFile</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.DeleteFileServlet</servlet-class>
 	</servlet>
+	<servlet>
+	    <servlet-name>LoadStudentFile</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.LoadStudentFilesServlet</servlet-class>
+	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>Sculptor</servlet-name>
@@ -133,6 +137,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>DeleteFile</servlet-name>
 	    <url-pattern>/deletefile</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>LoadStudentFile</servlet-name>
+	    <url-pattern>/loadfiles</url-pattern>
 	</servlet-mapping>
 	
 	<filter>

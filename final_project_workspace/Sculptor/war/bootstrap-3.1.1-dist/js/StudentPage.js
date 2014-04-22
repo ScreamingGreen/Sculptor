@@ -85,7 +85,7 @@ function loadStudentPageSidebar(jsonData){
 		}
 		
 		//for each tab in get the information that they hold
-		for(j=0; j<4; j++)
+		for(j=0; j<jsonArray.tabOrder.length; j++)
 		{
 			//Sends ajax request to servlet
 			//Used to get the information in each page tab
@@ -156,11 +156,14 @@ function loadStudentPageMain(jsonData, tabType){
 	
 	else if (tabType == 'Files')
 	{
+		//Gets webId request
+		var webIdParam = $('#webId').attr('value');
+		
 		//Retrieve the current files
 		$.ajax({
-			url: '/getfiles',
+			url: '/loadfiles',
 			type: 'GET',
-			data: '',
+			data: {'webId': webIdParam},
 			dataType: 'text',
 			success: function(data) {
 				var keys = jQuery.parseJSON(data);

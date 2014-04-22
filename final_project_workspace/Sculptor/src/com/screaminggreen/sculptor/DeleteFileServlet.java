@@ -48,13 +48,19 @@ public class DeleteFileServlet extends HttpServlet {
 		//Creates new fileKeys string from old string.
 		for(int i=0; i <keyArray.length; i++)
 		{
+			
 			//Excludes the key to be deleted.
 			if(!(keyArray[i].equals(deleteKey)))
 			{
-				if(i==keyArray.length)
-					newKeys += keyArray[i];
-				else 
-					newKeys += (keyArray[i]+",");
+				if(newKeys != null && newKeys != "")
+				{
+						newKeys = newKeys + ","+ keyArray[i];
+				}
+				else
+				{
+						newKeys = keyArray[i];
+				}
+				
 			}
 		}
 		

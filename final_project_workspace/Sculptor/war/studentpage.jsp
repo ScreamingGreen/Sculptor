@@ -29,12 +29,12 @@
 				<!-- Left Side Tab-bar navigation -->
 				<div class="col-sm-1 btn-group btn-group-vertical sidebar">
 					<ul class="nav nav-pills nav-stacked" id="tab-bar">
-						  <li class="active"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('Home')"><div class="scrollText">HOME</div></a></li>
+						  <li class="active"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('Home')"><div class="scrollText">Home</div></a></li>
 					</ul>
 				</div>
 				
 				<!-- Content of tabs on right side -->
-				<div class="row col-sm-9 col-lg-offset-3">
+				<div class="row col-sm-9 col-lg-offset-3" id="main">
 				
 					<!-- Basic home div -->
 					<div class="studentHome rightside" id="Home">
@@ -45,7 +45,8 @@
 							<h2><span id="daysofWeek"></span></h2>
 					</div>
 					
-					<!--  Basic Syllabus div -->
+					
+					<!--  Basic Syllabus div 
 					<div class="studentSyllabus rightside" id="Syllabus">
 							<h2> Course Description </h2> 
 							<p id="description"> </p> <hr>
@@ -57,11 +58,17 @@
 							<p id="breakdown"> </p> <hr>
 					</div>
 					
-					<!-- Basic schedule div -->
+					<!-- Basic schedule div
 					<div class="studentSchedule rightside" id="Schedule">
 							<h2> Important Dates</h2>
 							<p id="schedule"> </p> <hr>
 					</div>
+					
+					<div class="studentSchedule rightside" id="Files">
+							<h2> Important Dates</h2>
+							<p id="schedule"> </p> <hr>
+					</div>
+					-->
 				</div>
 	      </div>
 	    </div>

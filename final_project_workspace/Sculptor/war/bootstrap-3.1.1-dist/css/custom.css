@@ -34,13 +34,8 @@ text-align:center;
 padding-top:300px;
 }
 
-/* Student page: css for syllabus div */
-.studentSyllabus{
-padding: 50px;
-}
-
-/* Student Page: css for schedule div */
-.studentSchedule{
+/* Student page: css for other divs */
+.studentOther{
 padding: 50px;
 }
 

@@ -42,14 +42,46 @@ function loadStudentPageSidebar(jsonData){
 					.append(
 						/* Basic attributes for left side tab-bar */
 						$('<li></li>').append(
-							$('<a></a>')
+							$('<a class="scrollSelector"></a>')
 							.attr('data-toggle', 'tab')
-							.attr('onClick', 'scrollTo("' + jsonArray.tabOrder[i].type + '")'))
-							.addClass('scrollSelector')
+							.attr('onClick', 'scrollTo("' + jsonArray.tabOrder[i].type + '")')
 							.append(
 								$('<div class="scrollText">' + jsonArray.tabOrder[i].type + '</div>')
-							)
+							))
 					);
+					
+					//Appends syllabus section to rightside
+					if(jsonArray.tabOrder[i].type == "Syllabus")
+					{
+						$("#main")
+							.append(
+							$('<div class="studentOther rightside" id="Syllabus"></div>')
+								.append($('<h2> Course Description </h2> <p id="description"></p> <hr>'))
+								.append($('<h2> Course Material </h2> <p id="materials"></p> <hr>'))
+								.append($('<h2> Info and Office Hours </h2> <p id="infoAndHours"></p> <hr>'))
+								.append($('<h2> Grade Breakdown </h2> <p id="breakdown"></p> <hr>'))
+							);
+					}
+					
+					//Appends schedule section to rightside
+					if(jsonArray.tabOrder[i].type == "Schedule")
+					{
+						$("#main")
+							.append(
+							$('<div class="studentOther rightside" id="Schedule"></div>')
+								.append($('<h2> Course Description </h2> <p id="schedule"></p>'))
+							);
+					}
+					
+					//Appends file section to rightside
+					if(jsonArray.tabOrder[i].type == "Files")
+					{
+						$("#main")
+							.append(
+							$('<div class="studentOther rightside" id="Files"></div>')
+								.append($('<h2> Files </h2>'))
+							);
+					}
 		}
 		
 		//for each tab in get the information that they hold
@@ -124,6 +156,25 @@ function loadStudentPageMain(jsonData, tabType){
 	
 	else if (tabType == 'Files')
 	{
-		
+		//Retrieve the current files
+		$.ajax({
+			url: '/getfiles',
+			type: 'GET',
+			data: '',
+			dataType: 'text',
+			success: function(data) {
+				var keys = jQuery.parseJSON(data);
+				//Print on screen
+				for(var i = 0; i < keys.length; i++) {
+					$('#Files')
+						.append($('<div> </div>')
+							.append($("<a href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a>"))
+					);
+				}
+			},
+			error: function(data) {
+				alert("Failed");
+			}
+		});
 	}
 }

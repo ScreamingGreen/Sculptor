@@ -69,7 +69,7 @@ function loadStudentPageSidebar(jsonData){
 						$("#main")
 							.append(
 							$('<div class="studentOther rightside" id="Schedule"></div>')
-								.append($('<h2> Course Description </h2> <p id="schedule"></p>'))
+								.append($('<h2> Important Dates </h2> <p id="schedule"></p>'))
 							);
 					}
 					

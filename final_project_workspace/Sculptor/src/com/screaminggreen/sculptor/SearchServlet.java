@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -30,14 +31,15 @@ public class SearchServlet extends HttpServlet {
 		
 		                
         Iterable<Entity> entities = Professor.getAllProfessors(search);
-        
+        Iterator<Entity> iterator = entities.iterator();
         String json = "["; //DatastoreAPI.writeJSON(entities);        
         
-        while(entities.iterator().hasNext()){
+        while(iterator.hasNext()){        	        	
+        	Entity currentEntity = iterator.next();
         	
-        	System.out.println(entities.iterator().next().toString());
+        	System.out.println(currentEntity.toString());
         	
-        	json += entities.iterator().next().toString()+",";
+        	json += currentEntity.toString()+",";
         	
         }
         

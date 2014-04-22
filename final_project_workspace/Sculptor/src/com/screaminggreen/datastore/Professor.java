@@ -44,7 +44,7 @@ public class Professor {
   }
 
   /**
-   * Retrun all the Professors
+   * Return all the Professors
    * @param kind : of kind Professor
    * @return  Professors
    */

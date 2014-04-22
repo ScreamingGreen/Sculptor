@@ -65,6 +65,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>SearchCourse</servlet-name>
 	    <servlet-class>com.screaminggreen.sculptor.SearchServlet</servlet-class>
 	</servlet>
+	<servlet>
+	    <servlet-name>DeleteFile</servlet-name>
+	    <servlet-class>com.screaminggreen.sculptor.DeleteFileServlet</servlet-class>
+	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>Sculptor</servlet-name>
@@ -125,6 +129,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>SearchCourse</servlet-name>
 	    <url-pattern>/searchCourse</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>DeleteFile</servlet-name>
+	    <url-pattern>/deletefile</url-pattern>
 	</servlet-mapping>
 	
 	<filter>

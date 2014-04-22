@@ -48,6 +48,20 @@ $(document).ready(function(){
 
 function removeFile(spanID){
 	$('#'+spanID).parent().remove();
+	
+	$.ajax({
+		url: '/deletefile',
+		type: 'POST',
+		data: {'key':spanID},
+		dataType: 'text',
+        async: false,
+		success: function(data) {			
+		},
+		error: function(data) {
+			alert("Failed");
+			event.preventDefault();
+		}
+	});
 }
 
 

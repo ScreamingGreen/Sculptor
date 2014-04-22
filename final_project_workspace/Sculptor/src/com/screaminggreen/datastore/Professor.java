@@ -35,6 +35,7 @@ public class Professor {
   	if (Professor == null) {
   	  Professor = new Entity("Professor", webId);
   	  
+  	  Professor.setProperty("webId", webId);
   	  Professor.setProperty("email", email);
   	  Professor.setProperty("password", password);
   	} else {

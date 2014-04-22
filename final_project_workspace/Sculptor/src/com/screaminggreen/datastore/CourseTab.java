@@ -70,6 +70,18 @@ public class CourseTab {
   }
 
   /**
+   * get All the CourseTabs in the list
+   * 
+   * @param kind
+   *          : CourseTab kind
+   * @return all the CourseTabs
+   */
+  public static Iterable<Entity> getAllCourseHomeTabs() {
+  	Iterable<Entity> entities = DatastoreAPI.listEntities("CourseTab.Home", null, null);
+  	return entities;
+  }
+  
+  /**
    * Get the CourseTab by name
    * 
    * @param CourseTabName

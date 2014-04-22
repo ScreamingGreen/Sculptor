@@ -30,25 +30,44 @@ public class SearchServlet extends HttpServlet {
         String search = br.readLine();
 		
 		                
-        Iterable<Entity> entities = Professor.getAllProfessors(search);
-        Iterator<Entity> iterator = entities.iterator();
-        String json = "["; //DatastoreAPI.writeJSON(entities);        
+        Iterable<Entity> entities = Professor.getAllProfessors("Professor");
         
-        while(iterator.hasNext()){        	        	
+        
+        Iterator<Entity> iterator = entities.iterator();
+        
+//        String json = "[";//DatastoreAPI.writeJSON(entities);
+        
+        ArrayList<String> courseTitles = new ArrayList<String>(); 
+        		
+        while(iterator.hasNext()){  
+        	
         	Entity currentEntity = iterator.next();
         	
-        	System.out.println(currentEntity.toString());
+        	System.out.println(currentEntity.getProperty("webId").toString());
         	
-        	json += currentEntity.toString()+",";
+        	Entity e = CourseTab.createOrGetCourseTab(currentEntity.getProperty("webId").toString(), "Home");        	        	
+        	
+        	courseTitles.add(e.getProperty("courseCode").toString()+" "+e.getProperty("courseName"));
         	
         }
         
-        json += "test]";
+
+        
+//        System.out.println(courseTitles.toString());        
+        
+//        for(int i=0; i< courseTitles.size();i++){
+//        	json += "\""+courseTitles.get(i)+"\",";
+//        }
+//        
+//      json += "\"test\"]";
+        
+        String json = DatastoreAPI.writeJSON(entities);
         
         System.out.println(json);
         
         resp.setStatus(200);
-        out.println(json);               
+        out.println(json);
+        
         out.close();
         
 	}

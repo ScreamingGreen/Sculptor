@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>CreatePage</title>
+		<title>${param.webId} - Course Website</title>
 		
 		<!-- Bootstrap -->
 		<link href="../bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet">

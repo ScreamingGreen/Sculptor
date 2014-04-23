@@ -57,10 +57,6 @@ public class SearchServlet extends HttpServlet {
         out.println(json);
         
         out.close();
-        
-        String course = req.getParameter("searchCourse");
-        
-    	resp.sendRedirect("/studentpage.jsp?webId="+ course);
                 
 	}
 	

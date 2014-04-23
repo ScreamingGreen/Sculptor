@@ -166,6 +166,10 @@ function loadStudentPageMain(jsonData, tabType){
 			data: {'webId': webIdParam},
 			dataType: 'text',
 			success: function(data) {
+				if(data == "") {
+					$("#Files").append('<div>No files uploaded.</div>');
+				}
+				
 				var keys = jQuery.parseJSON(data);
 				//Print on screen
 				for(var i = 0; i < keys.length; i++) {

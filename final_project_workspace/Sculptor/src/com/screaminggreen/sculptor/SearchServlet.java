@@ -34,9 +34,7 @@ public class SearchServlet extends HttpServlet {
         
         
         Iterator<Entity> iterator = entities.iterator();
-        
-//        String json = "[";//DatastoreAPI.writeJSON(entities);
-        
+                
         ArrayList<String> courseTitles = new ArrayList<String>(); 
         		
         while(iterator.hasNext()){  
@@ -51,16 +49,6 @@ public class SearchServlet extends HttpServlet {
         	
         }
         
-
-        
-//        System.out.println(courseTitles.toString());        
-        
-//        for(int i=0; i< courseTitles.size();i++){
-//        	json += "\""+courseTitles.get(i)+"\",";
-//        }
-//        
-//      json += "\"test\"]";
-        
         String json = DatastoreAPI.writeJSON(entities);
         
         System.out.println(json);
@@ -70,8 +58,10 @@ public class SearchServlet extends HttpServlet {
         
         out.close();
         
-//    	resp.sendRedirect("/studentpage.jsp?webid="+req.getParameter("searchCourse"));
+        String course = req.getParameter("searchCourse");
         
+    	resp.sendRedirect("/studentpage.jsp?webId="+ course);
+                
 	}
 	
 }

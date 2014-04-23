@@ -24,9 +24,9 @@ public class EnteredSearchCourseServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
-		
-		                      
-    	resp.sendRedirect("/studentpage.jsp?webId="+req.getParameter("searchCourse"));
+		String course = req.getParameter("searchCourse");
+				                      
+    	resp.sendRedirect("/studentpage.jsp?webId="+ course);
         
 	}
 	

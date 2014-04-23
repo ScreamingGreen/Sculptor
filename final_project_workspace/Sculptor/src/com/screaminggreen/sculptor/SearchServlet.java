@@ -70,6 +70,8 @@ public class SearchServlet extends HttpServlet {
         
         out.close();
         
+//    	resp.sendRedirect("/studentpage.jsp?webid="+req.getParameter("searchCourse"));
+        
 	}
 	
 }

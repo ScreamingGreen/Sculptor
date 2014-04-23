@@ -20,7 +20,10 @@ $(document).ready(function() {
         			    	var parsedJSON = jQuery.parseJSON(jsonData);
         			    	var data = parsedJSON.data[0];
         			    	
-        			    	var data1 = [ parsedJSON.data[0].webId ,parsedJSON.data[1].webId];
+        			    	var data1 = [];
+        			    	
+        			    	for(var i=0;i<parsedJSON.data.length;i++)        			    	
+        			    		data1.push(parsedJSON.data[i].webId);
         			    	
         			    	response(data1);
         			    	
@@ -30,10 +33,7 @@ $(document).ready(function() {
         			        alert('Error on populating form: ' + typeOfForm);
         			    }
         		  });
-        		  
-        		
-        	}	
-        	
+        	}	        	
         });
 		
 		

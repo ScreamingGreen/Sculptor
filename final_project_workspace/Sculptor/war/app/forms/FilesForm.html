@@ -14,7 +14,7 @@ $(document).ready(function(){
 			$('#uploadFileForm').attr("action" , data);			
 		},
 		error: function(data) {
-			alert("Failed");
+			alert("Failed uploading");
 			event.preventDefault();
 		}
 	});
@@ -26,6 +26,10 @@ $(document).ready(function(){
 		data: '',
 		dataType: 'text',
 		success: function(data) {
+			if(data == "") {
+				return;
+			}
+			
 			var keys = jQuery.parseJSON(data);
 			//Print on screen
 			for(var i = 0; i < keys.length; i++) {
@@ -39,7 +43,7 @@ $(document).ready(function(){
 			}
 		},
 		error: function(data) {
-			alert("Failed");
+			alert("Failed Loading files");
 		}
 	});
 	

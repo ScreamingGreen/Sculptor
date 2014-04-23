@@ -38,7 +38,15 @@ public class GetFilesServlet extends HttpServlet{
 		//Get entity
 		Entity e = CourseTab.createOrGetCourseTab(webId, "Files");
 		
-		String keys = (String) e.getProperty("fileKeys");		
+		String keys = (String) e.getProperty("fileKeys");	
+		if(keys == null || keys.isEmpty()) {
+			PrintWriter out = resp.getWriter();
+			out.println("");
+			
+			resp.setStatus(200);
+			return;
+		}
+		
 		String[] keyArray = keys.split(",");
 		
 		JSONArray jArray = new JSONArray();

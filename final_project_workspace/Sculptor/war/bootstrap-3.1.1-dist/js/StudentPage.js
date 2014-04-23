@@ -168,6 +168,7 @@ function loadStudentPageMain(jsonData, tabType){
 			success: function(data) {
 				if(data == "") {
 					$("#Files").append('<div>No files uploaded.</div>');
+					return;
 				}
 				
 				var keys = jQuery.parseJSON(data);

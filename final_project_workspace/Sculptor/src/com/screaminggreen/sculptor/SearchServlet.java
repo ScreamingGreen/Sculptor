@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,32 +24,12 @@ import com.screaminggreen.datastore.Professor;
 @SuppressWarnings("serial")
 public class SearchServlet extends HttpServlet {
 	
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		PrintWriter out = resp.getWriter();
-		
-        BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
-        String search = br.readLine();
-		
 		                
         Iterable<Entity> entities = Professor.getAllProfessors("Professor");
-        
-        
-        Iterator<Entity> iterator = entities.iterator();
-                
-        ArrayList<String> courseTitles = new ArrayList<String>(); 
-        		
-        while(iterator.hasNext()){  
-        	
-        	Entity currentEntity = iterator.next();
-        	
-        	System.out.println(currentEntity.getProperty("webId").toString());
-        	
-        	Entity e = CourseTab.createOrGetCourseTab(currentEntity.getProperty("webId").toString(), "Home");        	        	
-        	
-        	courseTitles.add(e.getProperty("courseCode").toString()+" "+e.getProperty("courseName"));
-        	
-        }
         
         String json = DatastoreAPI.writeJSON(entities);
         

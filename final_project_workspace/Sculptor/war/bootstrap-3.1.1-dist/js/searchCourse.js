@@ -1,6 +1,6 @@
 
 	  var availableTags = ["C++","C"]; 
-2
+
 
 $(document).ready(function() {
 	
@@ -15,7 +15,6 @@ $(document).ready(function() {
         			    url: '/searchCourse',
         			    dataType: 'text',
         			    success: function(jsonData) {
-
         			    	
         			    	var parsedJSON = jQuery.parseJSON(jsonData);
         			    	var data = parsedJSON.data[0];
@@ -23,14 +22,13 @@ $(document).ready(function() {
         			    	var data1 = [];
         			    	
         			    	for(var i=0;i<parsedJSON.data.length;i++)        			    	
-        			    		data1.push(parsedJSON.data[i].webId);
+        			    		data1.push(parsedJSON.data[i].name);
         			    	
         			    	response(data1);
         			    	
-        			    	
         			    },
         			    error: function(jsonData) {
-        			        alert('Error on populating form: ' + typeOfForm);
+        			        alert('Error displaying courses' + jsonData);
         			    }
         		  });
         	}	        	

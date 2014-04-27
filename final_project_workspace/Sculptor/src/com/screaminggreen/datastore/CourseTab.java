@@ -70,6 +70,18 @@ public class CourseTab {
   }
 
   /**
+   * get All the CourseTabs in the list
+   * 
+   * @param kind
+   *          : CourseTab kind
+   * @return all the CourseTabs
+   */
+  public static Iterable<Entity> getAllCourseHomeTabs() {
+  	Iterable<Entity> entities = DatastoreAPI.listEntities("CourseTab.Home", null, null);
+  	return entities;
+  }
+  
+  /**
    * Get the CourseTab by name
    * 
    * @param CourseTabName
@@ -179,6 +191,10 @@ public class CourseTab {
 		    courseTab.setProperty("tabOrder", tabOrderJSON);
 		    courseTab.setProperty("webId", webId);
 			DatastoreAPI.persistEntity(courseTab);
+		  } else {
+			  //Update it
+			  courseTab.setProperty("tabOrder", tabOrderJSON);
+			  DatastoreAPI.persistEntity(courseTab);
 		  }
 		  
 		  //O/w return one... dam duplications -.- 

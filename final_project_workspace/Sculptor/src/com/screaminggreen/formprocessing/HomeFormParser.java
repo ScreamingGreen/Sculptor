@@ -10,7 +10,8 @@ import com.google.appengine.api.datastore.Entity;
 
 
 public class HomeFormParser implements FormParser{
-
+	public final static String TYPE_OF_COURSETAB = "Home";
+	
 	@Override
 	public void parse(HttpServletRequest req) {
 		
@@ -45,10 +46,8 @@ public class HomeFormParser implements FormParser{
 		//Update this data in Datastore...
 		
 		//Get or make new entity
-		Entity tabEntity = CourseTab.createOrGetCourseTab(webId, "Home");
-		
-		tabEntity.setProperty("type", "Home");
-		
+		Entity tabEntity = CourseTab.createOrGetCourseTab(webId, TYPE_OF_COURSETAB);
+				
 		tabEntity.setProperty("courseCode", courseCode);
 		tabEntity.setProperty("courseName", courseName);
 		tabEntity.setProperty("teacherName", teacherName);

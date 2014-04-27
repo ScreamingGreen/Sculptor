@@ -40,7 +40,7 @@ public class LoadTabOrderServlet extends HttpServlet {
 		Entity tabOrderEntity = CourseTab.getTabOrderEntity(webId);
 		if(tabOrderEntity == null) {
 			//Create a new taborder entity with default parameters
-			final String defaultTabOrderJSON = "\"tabOrder\":[{\"name\":\"Home\",\"type\":\"Home\"}]}";
+			final String defaultTabOrderJSON = "{\"tabOrder\":[{\"type\":\"Home\"}]}";
 			CourseTab.createOrUpdateTabOrderEntity(webId, defaultTabOrderJSON);
 			
 			PrintWriter out = resp.getWriter();

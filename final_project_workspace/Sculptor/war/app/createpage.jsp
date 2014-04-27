@@ -77,6 +77,7 @@
 
 					  		<!-- Navigation for Add Button -->
 					  		<ul id="page-dropdown-menu" class="dropdown-menu">
+					  			<!--
  							  	<li role="presentation">
  							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">Schedule</a>
  							  	</li>
@@ -86,13 +87,10 @@
  							  	<li role="presentation">
  							  		<a class="addpage-option" role="menuitem" tabindex="-1" href="#">File</a>
  							  	</li>
+ 							  	-->
 							</ul>
 					  	</li>
 					</ul>
-
-					<!-- Save tab button (needs work) -->
-					<br />
-				<input id="save-tab-button" type="button" class="btn btn-default" onClick=saveTabOrder() value="Save Tab Order" /> 	
 			</div>
 
 			<!-- Teacher content header -->

@@ -35,6 +35,7 @@ public class Professor {
   	if (Professor == null) {
   	  Professor = new Entity("Professor", webId);
   	  
+  	  Professor.setProperty("webId", webId);
   	  Professor.setProperty("email", email);
   	  Professor.setProperty("password", password);
   	} else {
@@ -44,7 +45,7 @@ public class Professor {
   }
 
   /**
-   * Retrun all the Professors
+   * Return all the Professors
    * @param kind : of kind Professor
    * @return  Professors
    */

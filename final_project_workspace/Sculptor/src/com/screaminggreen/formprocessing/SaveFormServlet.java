@@ -23,8 +23,13 @@ public class SaveFormServlet extends HttpServlet{
 				new HomeFormParser().parse(req);
 				break;
 			case "Syllabus" :
+				new SyllabusFormParser().parse(req);
 				break;
 			case "Schedule" :
+				new ScheduleFormParser().parse(req);
+				break;
+			case "Files" :
+				new FilesFormParser().parse(req);
 				break;
 			default :
 		}

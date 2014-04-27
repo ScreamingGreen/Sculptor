@@ -259,7 +259,13 @@ function previewForm(){
 }
 
 function cancelForm() {
-	alert("cancel form triggered");
+
+	// Get the name of the form 
+	var hiddenElement = $('#pageForm #hidden-form-element');
+	var nameOfForm = hiddenElement.val();
+
+	// Reload the page which acts as canceling changes
+	loadForm(nameOfForm);
 }
 
 function saveForm(){	

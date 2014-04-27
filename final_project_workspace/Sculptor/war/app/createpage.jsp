@@ -31,10 +31,11 @@
 					<a class="navbar-brand" href="/index.html">Sculptor</a>
 				</div>
 
-					<ul class="nav navbar-nav navbar-right">
-						<li><a>Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
-						<li><a href="/logout">Logout</a></li>
-					</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/studentpage.jsp?webId=${sessionScope.sessionBean.profBean.webId}" target="_blank">View website</a></li>
+					<li><a>Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
 			</div>
 		</nav>
 
@@ -99,7 +100,7 @@
 					<h3> 
 						<span id="page-title"> Home </span>
 						<input id="cancel-button" type="submit" class="btn btn-default" value="Cancel"> 
-						<input id="preview-button" type="submit" class="btn btn-default" value="Preview"> 
+						<!-- <input id="preview-button" type="submit" class="btn btn-default" value="Preview"> -->
 						<input id="save-button" type="submit" class="btn btn-success" value="Save Changes" form="pageForm"> 
 					</h3>
 					<p> Edit information in below. </p>

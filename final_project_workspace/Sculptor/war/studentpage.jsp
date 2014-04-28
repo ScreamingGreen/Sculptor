@@ -34,17 +34,18 @@
 				</div>
 				
 				<!-- Content of tabs on right side -->
-				<div class="row col-sm-9 col-lg-offset-3" id="main">
-				
-					<!-- Basic home div -->
-					<div class="studentHome rightside" id="Home">
-							<h1 id="courseCode"></h1>
-							<h2 id="courseName"></h2>
-							<h2 id="teacherName"></h2>
-							<h2><span id="startTime"></span> - <span id="endTime"></span></h2>
-							<h2><span id="daysofWeek"></span></h2>
-					</div>
+				<div class="container"> 
+					<div class="row col-sm-9 col-lg-offset-3" id="main">
 					
+						<!-- Basic home div -->
+						<div class="studentHome rightside" id="Home">
+								<h1 id="courseCode"></h1>
+								<h2 id="courseName"></h2>
+								<h2 id="teacherName"></h2>
+								<h2><span id="startTime"></span> - <span id="endTime"></span></h2>
+								<h2><span id="daysofWeek"></span></h2>
+						</div>
+					</div>	
 					
 					<!--  Basic Syllabus div 
 					<div class="studentSyllabus rightside" id="Syllabus">

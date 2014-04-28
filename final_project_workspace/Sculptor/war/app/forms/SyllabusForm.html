@@ -4,18 +4,18 @@
 	<form id="pageForm" action="/saveform" method="POST">
 		<div id="successSaveMsg" style="display:none">Saved!</div>
 		<!-- Must check that all name of the components are distinct! -->
-		<input name="type-of-form" type="hidden" value="Syllabus" />
+		<input id="hidden-form-element" name="type-of-form" type="hidden" value="Syllabus" />
 		
 		<h5>Course Description</h5>
-		<textarea name="description" rows="5" cols="100"></textarea>
+		<textarea class="form-control" name="description" rows="5" cols="100"></textarea>
 		
 		<h5>Course Materials</h5>
-		<textarea name="materials" rows="5" cols="100"></textarea>
+		<textarea class="form-control" name="materials" rows="5" cols="100"></textarea>
 		
 		<h5>Contact Information and Office Hours</h5>
-		<textarea name="infoAndHours" rows="5" cols="100"></textarea>
+		<textarea class="form-control" name="infoAndHours" rows="5" cols="100"></textarea>
 		
 		<h5>Grading Breakdown</h5>
-		<textarea name="breakdown" rows="5" cols="100"></textarea>
+		<textarea class="form-control" name="breakdown" rows="5" cols="100"></textarea>
 	</form>
 </div>

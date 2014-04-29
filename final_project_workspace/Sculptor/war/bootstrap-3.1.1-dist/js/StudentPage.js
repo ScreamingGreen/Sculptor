@@ -193,7 +193,6 @@ $(window).scroll(function(){
 	
 	//Current Position from the top
 	var currentPos = $(window).scrollTop();
-	console.log(currentPos);
 	
 	//Gets the position of each section
 	//Checks if the currentPos is in a section and sets active button
@@ -202,7 +201,6 @@ $(window).scroll(function(){
 		{
 			$('.active').removeClass('active');
 			$('.' + $(this).attr('id')).addClass('active');
-			console.log($(this).attr('id'));
 		}
 	});
 

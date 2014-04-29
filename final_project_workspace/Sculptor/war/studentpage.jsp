@@ -29,7 +29,7 @@
 				<!-- Left Side Tab-bar navigation -->
 				<div class="col-sm-1 btn-group btn-group-vertical sidebar">
 					<ul class="nav nav-pills nav-stacked" id="tab-bar">
-						  <li class="active"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('Home')"><div class="scrollText">Home</div></a></li>
+						  <li class="active Home"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('Home')"><div class="scrollText">Home</div></a></li>
 					</ul>
 				</div>
 				

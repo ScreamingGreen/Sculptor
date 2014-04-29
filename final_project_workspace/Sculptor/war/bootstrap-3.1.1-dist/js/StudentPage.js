@@ -48,6 +48,7 @@ function loadStudentPageSidebar(jsonData){
 							.append(
 								$('<div class="scrollText">' + jsonArray.tabOrder[i].type + '</div>')
 							))
+							.addClass(jsonArray.tabOrder[i].type)
 					);
 					
 					//Appends syllabus section to rightside
@@ -186,3 +187,23 @@ function loadStudentPageMain(jsonData, tabType){
 		});
 	}
 }
+
+// Active navigation when scrolling
+$(window).scroll(function(){
+	
+	//Current Position from the top
+	var currentPos = $(window).scrollTop();
+	console.log(currentPos);
+	
+	//Gets the position of each section
+	//Checks if the currentPos is in a section and sets active button
+	$('.rightside').each(function(i){
+		if((currentPos >= $(this).position().top) && (currentPos <= $(this).position().top+1000))
+		{
+			$('.active').removeClass('active');
+			$('.' + $(this).attr('id')).addClass('active');
+			console.log($(this).attr('id'));
+		}
+	});
+
+})

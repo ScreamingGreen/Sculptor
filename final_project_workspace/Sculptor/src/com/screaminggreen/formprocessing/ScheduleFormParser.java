@@ -15,6 +15,10 @@ public class ScheduleFormParser implements FormParser {
 	@Override
 	public void parse(HttpServletRequest req) {
 		String  schedule = req.getParameter("schedule");
+		
+		schedule = schedule.replaceAll("(\r\n|\n)", "\\\\n");
+		System.out.println(schedule);
+		
 		//Get the webId
 		SessionBean sBean = (SessionBean) req.getSession().getAttribute("sessionBean");
 		if(sBean == null){
@@ -35,7 +39,6 @@ public class ScheduleFormParser implements FormParser {
 		
 		tabEntity.setProperty("schedule", schedule);
 		
-		System.out.println(schedule);
 		DatastoreAPI.persistEntity(tabEntity);
 	}
 

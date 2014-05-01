@@ -17,9 +17,16 @@ public class SyllabusFormParser implements FormParser {
 
 		//Get the parameters
 		String description = req.getParameter("description");
+		description = description.replaceAll("(\r\n|\n)", "\\\\n");
+
 		String materials = req.getParameter("materials");
+		materials = materials.replaceAll("(\r\n|\n)", "\\\\n");
+		
 		String infoAndHours = req.getParameter("infoAndHours");
+		infoAndHours = infoAndHours.replaceAll("(\r\n|\n)", "\\\\n");
+		
 		String breakdown = req.getParameter("breakdown");
+		breakdown = breakdown.replaceAll("(\r\n|\n)", "\\\\n");
 		
 		//Get the webId
 		SessionBean sBean = (SessionBean) req.getSession().getAttribute("sessionBean");

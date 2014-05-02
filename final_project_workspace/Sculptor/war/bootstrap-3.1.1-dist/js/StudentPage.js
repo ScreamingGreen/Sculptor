@@ -135,6 +135,41 @@ function loadStudentPageMain(jsonData, tabType){
 		
 		//End Time
 		$('#endTime').text(jsonArray.data[0].endTime);
+		
+		if(jsonArray.data[0].mon == 'true')
+		{
+			$('#daysofWeek').append('Mon');
+		}
+		
+		if(jsonArray.data[0].tue == 'true')
+		{
+			$('#daysofWeek').append('Tue');
+		}
+		
+		if(jsonArray.data[0].wed == 'true')
+		{
+			$('#daysofWeek').append('Wed');
+		}
+		
+		if(jsonArray.data[0].thu == 'true')
+		{
+			$('#daysofWeek').append('Thu');
+		}
+		
+		if(jsonArray.data[0].fri == 'true')
+		{
+			$('#daysofWeek').append('Fri');
+		}
+		
+		if(jsonArray.data[0].sat == 'true')
+		{
+			$('#daysofWeek').append('Sat');
+		}
+		
+		if(jsonArray.data[0].sun == 'true')
+		{
+			$('#daysofWeek').append('Sun');
+		}
 	}
 	
 	else if (tabType == 'Syllabus')

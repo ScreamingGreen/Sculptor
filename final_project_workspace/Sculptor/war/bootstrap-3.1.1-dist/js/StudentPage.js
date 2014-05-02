@@ -110,8 +110,11 @@ function loadStudentPageSidebar(jsonData){
 
 //loads rightside of student page with information from tabs
 function loadStudentPageMain(jsonData, tabType){
-	console.log(jsonData);
 	console.log(tabType);
+	console.log(jsonData);
+	
+	jsonData = jsonData.replace(/\\n/g, "<br />");
+
 	var jsonArray = jQuery.parseJSON(jsonData);
 	console.log(jsonArray);
 	
@@ -137,22 +140,22 @@ function loadStudentPageMain(jsonData, tabType){
 	else if (tabType == 'Syllabus')
 	{
 		// Course Description
-		$('#description').text(jsonArray.data[0].description);
+		$('#description').html(jsonArray.data[0].description);
 		
 		// Course Material
-		$('#materials').text(jsonArray.data[0].materials);
+		$('#materials').html(jsonArray.data[0].materials);
 		
 		// Course Info and Office Hours
-		$('#infoAndHours').text(jsonArray.data[0].infoAndHours);
+		$('#infoAndHours').html(jsonArray.data[0].infoAndHours);
 		
 		// Grade Breakdown
-		$('#breakdown').text(jsonArray.data[0].breakdown);
+		$('#breakdown').html(jsonArray.data[0].breakdown);
 	}
 	
 	else if (tabType == 'Schedule')
 	{
 		// Important Dates
-		$('#schedule').text(jsonArray.data[0].schedule);
+		$('#schedule').html(jsonArray.data[0].schedule);
 	}
 	
 	else if (tabType == 'Files')

@@ -30,7 +30,7 @@ public class LoadStudentMainServlet extends HttpServlet {
         String json = DatastoreAPI.writeJSON(entities);        
         
         resp.setStatus(200);
-        out.println(json);               
+        out.print(json);               
         out.close();
 	}
 

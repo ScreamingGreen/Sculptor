@@ -25,7 +25,16 @@ public class EnteredSearchCourseServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		String course = req.getParameter("searchCourse");
-				                      
+		
+		//Try to see if the webId exist
+		Entity e = Professor.getProfessor(course);
+		if(e == null) {
+			System.out.println("Null");
+			PrintWriter pw = resp.getWriter();
+			pw.print("Such webId does not exist");
+			return;
+		}
+		
     	resp.sendRedirect("/studentpage.jsp?webId="+ course);
         
 	}

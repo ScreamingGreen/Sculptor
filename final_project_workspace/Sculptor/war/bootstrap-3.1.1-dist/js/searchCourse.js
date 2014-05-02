@@ -1,6 +1,27 @@
 
 $(document).ready(function() {
 	
+	$('#searchForm').submit(function(e) {
+		e.preventDefault();
+		var form = this;
+		
+		//Search for webId
+		
+		$.ajax({
+		    type: 'post',
+		    url: '/searchWebId',
+		    dataType: 'text',
+		    data: $('#search').val(),
+		    success: function(data) {
+		    	if(data != 'yes') {
+		    		alert("No Web Id exist");
+		    	}
+		    },
+		    error: function(jsonData) {
+		        alert("Error on servlet call");
+		    }
+		});
+	});
 	
 	$.ajax({
 	    type: 'post',
@@ -15,11 +36,22 @@ $(document).ready(function() {
 	    	
 	    	for(var i=0;i<parsedJSON.data.length;i++)        			    	
 	    		data1.push(parsedJSON.data[i].name);
+    	    
+	    	var NoResultsLabel = "No Results";
 	    	
 	    	$( "#search" ).autocomplete({
 
-	        	source: data1,
-	        	minLength: 0
+	        	minLength: 0,
+	        	source: function(request, response) {
+	                var results = $.ui.autocomplete.filter(data1, request.term);
+
+	                if (!results.length) {
+	                    results = [NoResultsLabel];
+	                }
+
+	                response(results);
+	            }
+	        	
 	        });
 	    	
 	    	

@@ -15,6 +15,8 @@ $(document).ready(function() {
 		    success: function(data) {
 		    	if(data != 'yes') {
 		    		alert("No Web Id exist");
+		    	} else {
+		    		document.location.href = '/studentpage.jsp?webId=' + $('#search').val();
 		    	}
 		    },
 		    error: function(jsonData) {

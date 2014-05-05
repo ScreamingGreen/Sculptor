@@ -57,10 +57,10 @@ function loadStudentPageSidebar(jsonData){
 						$("#main")
 							.append(
 							$('<div class="studentOther rightside" id="Syllabus"></div>')
-								.append($('<h2> Course Description </h2> <p id="description"></p> <hr>'))
-								.append($('<h2> Course Material </h2> <p id="materials"></p> <hr>'))
-								.append($('<h2> Info and Office Hours </h2> <p id="infoAndHours"></p> <hr>'))
-								.append($('<h2> Grade Breakdown </h2> <p id="breakdown"></p> <hr>'))
+								.append($('<h2 class="description"> Course Description </h2> <p id="description"></p>'))
+								.append($('<h2 class="materials"><hr> Course Material </h2> <p id="materials"></p>'))
+								.append($('<h2 class="infoAndHours"><hr> Info and Office Hours </h2> <p id="infoAndHours"></p>'))
+								.append($('<h2 class="breakdown"><hr> Grade Breakdown </h2> <p id="breakdown"></p>'))
 							);
 					}
 					
@@ -177,17 +177,30 @@ function loadStudentPageMain(jsonData, tabType){
 	
 	else if (tabType == 'Syllabus')
 	{
+		console.log(jsonArray.data[0].description);
+		if(jsonArray.data[0].description == null || jsonArray.data[0].description == "")
+			$('.description').hide();
+		else
 		// Course Description
-		$('#description').html(jsonArray.data[0].description);
+			$('#description').html(jsonArray.data[0].description);
 		
+		if(jsonArray.data[0].materials == null || jsonArray.data[0].materials == "")
+			$('.materials').hide();
 		// Course Material
-		$('#materials').html(jsonArray.data[0].materials);
+		else
+			$('#materials').html(jsonArray.data[0].materials);
 		
+		if(jsonArray.data[0].infoAndHours == null || jsonArray.data[0].infoAndHours == "")
+			$('.infoAndHours').hide();
 		// Course Info and Office Hours
-		$('#infoAndHours').html(jsonArray.data[0].infoAndHours);
+		else
+			$('#infoAndHours').html(jsonArray.data[0].infoAndHours);
 		
+		if(jsonArray.data[0].breakdown == null || jsonArray.data[0].breakdown == "")
+			$('.breakdown').hide();
 		// Grade Breakdown
-		$('#breakdown').html(jsonArray.data[0].breakdown);
+		else
+			$('#breakdown').html(jsonArray.data[0].breakdown);
 	}
 	
 	else if (tabType == 'Schedule')

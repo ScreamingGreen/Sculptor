@@ -27,7 +27,7 @@
 	      <div class="container studentbg">
 		  	
 				<!-- Left Side Tab-bar navigation -->
-				<div class="col-sm-1 btn-group btn-group-vertical sidebar">
+				<div class="col-md-1 btn-group btn-group-vertical sidebar">
 					<ul class="nav nav-pills nav-stacked" id="tab-bar">
 						  <li class="active Home"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('Home')"><div class="scrollText">Home</div></a></li>
 					</ul>
@@ -35,7 +35,7 @@
 				
 				<!-- Content of tabs on right side -->
 				<div class="container"> 
-					<div class="row col-sm-9 col-lg-offset-3" id="main">
+					<div class="row col-md-9 col-xs-offset-1 col-lg-offset-3" id="main">
 					
 						<!-- Basic home div -->
 						<div class="studentHome rightside" id="Home">

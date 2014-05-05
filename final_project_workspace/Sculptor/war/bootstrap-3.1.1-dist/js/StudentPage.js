@@ -85,6 +85,8 @@ function loadStudentPageSidebar(jsonData){
 					}
 		}
 		
+		$('.rightside').css("height", $(window).height() );
+		
 		//for each tab in get the information that they hold
 		for(j=0; j<jsonArray.tabOrder.length; j++)
 		{
@@ -105,6 +107,7 @@ function loadStudentPageSidebar(jsonData){
 			    }
 			});
 		}
+		
 }
 
 
@@ -228,14 +231,13 @@ function loadStudentPageMain(jsonData, tabType){
 
 // Active navigation when scrolling
 $(window).scroll(function(){
-	
 	//Current Position from the top
 	var currentPos = $(window).scrollTop();
 	
 	//Gets the position of each section
 	//Checks if the currentPos is in a section and sets active button
 	$('.rightside').each(function(i){
-		if((currentPos >= $(this).position().top) && (currentPos <= $(this).position().top+1000))
+		if((currentPos >= $(this).position().top) && (currentPos <= $(this).position().top + $(this).height()))
 		{
 			$('.active').removeClass('active');
 			$('.' + $(this).attr('id')).addClass('active');

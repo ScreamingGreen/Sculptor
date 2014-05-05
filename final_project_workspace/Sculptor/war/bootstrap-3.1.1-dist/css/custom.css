@@ -19,12 +19,12 @@ width: 450px;
 /* Student page: makes sidebar fixed position from top */
 .sidebar{
 position:fixed;
-top: 30%;
+top:30%;
+z-index: 1;
 }
 
 /* Student page: Sets right content div size */
 .rightside{
-height: 1000px;
 color: #FFF;
 }
 

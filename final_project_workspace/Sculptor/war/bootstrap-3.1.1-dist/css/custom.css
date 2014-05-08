@@ -53,6 +53,10 @@ font-weight: bold;
 padding-top:30px;
 }
 
+.manageHeader{
+padding-left: 10px;
+}
+
 /* Student page: sets background color*/
 #studentheader {
 	background-color: #535353;

@@ -28,12 +28,13 @@
 			<div class="container">
 
 				<div class="navbar-header" id="nav-bar-header">
-					<a class="navbar-brand" href="/index.html">Sculptor</a>
+					<a class="navbar-brand" href="#">Sculptor</a>
 				</div>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/studentpage.jsp?webId=${sessionScope.sessionBean.profBean.webId}" target="_blank">View website</a></li>
 					<li><a>Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
+					<li><a href="manageaccount.jsp"> Manage Account </a></li>
 					<li><a href="/logout">Logout</a></li>
 				</ul>
 			</div>

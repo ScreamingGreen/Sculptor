@@ -146,21 +146,14 @@
 
 <!-- Basic content for schedule form -->
 <div class="tab-pane active" id="Files">
-	<!-- Every div has a form -->
-	<!--  <form id="uploadFileForm" method="post" enctype="multipart/form-data">
-		<input type="file" name="myFile"/> 			
-		<input type="submit" name="uploadButton" value="Upload"/>
-	</form> -->
-		
+
 		<div id="successSaveMsg" style="display:none">Saved!</div>
-		<!-- Must check that all name of the components are distinct! -->
-<!-- 		<input id="hidden-form-element" name="type-of-form" type="hidden" value="Files" /> -->
 		<h5>Files to Be Uploaded: </h5>
 
 		<div id="filelist"></div>
 		<div id="container">
-		    <a id="pickfiles" href="javascript:;">[Select files]</a> 
-		    <a id="uploadfiles" href="javascript:;">[Upload files]</a>
+			<button id="pickfiles">Select Files</button>
+			<button id="uploadfiles">Upload Files</button>
 		</div>	
 			
 		<h5>Your Current Uploaded Files: </h5>

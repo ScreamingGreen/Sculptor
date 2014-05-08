@@ -4,14 +4,20 @@
 	<head>
 		<meta charset="utf-8">
 		<title>CreatePage</title>
-				
+		
+		<!-- Plupload -->		
+ 		<link href="../plupload-2.1.1/js/jquery.plupload.queue/css/jquery.plupload.queue.css" rel="stylesheet">
+ 		
 		<!-- Bootstrap -->
 		<link href="../bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap-3.1.1-dist/css/custom.css" rel="stylesheet">
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		
+	
+		<script type="text/javascript" src="../plupload-2.1.1/js/plupload.full.min.js"></script>
+  		<script type="text/javascript" src="../plupload-2.1.1/js/jquery.plupload.queue/jquery.plupload.queue.min.js"></script>
+	
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
 		

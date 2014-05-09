@@ -47,7 +47,7 @@
 		 
 		        FilesAdded: function(up, files) {
 		            plupload.each(files, function(file) {
-						$('#filelist').append('<div id=' + file.id + '>' + file.name + '<b></b> <span class=\'glyphicon glyphicon-remove\' onclick=\"' + 'removeFileFromUploadQueue(' + file.id + ')'+ '\"></span></div>');
+						$('#filelist').append('<div id=' + file.id + '>' + file.name + ' ('+ plupload.formatSize(file.size) + ')<b></b> <span class=\'glyphicon glyphicon-remove\' onclick=\"' + 'removeFileFromUploadQueue(' + file.id + ')'+ '\"></span></div>');
 		            });
 		        },
 		 

@@ -14,7 +14,7 @@
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	
+		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script type="text/javascript" src="../plupload-2.1.1/js/plupload.full.min.js"></script>
   		<script type="text/javascript" src="../plupload-2.1.1/js/jquery.plupload.queue/jquery.plupload.queue.min.js"></script>
 	
@@ -56,7 +56,7 @@
 				
 				<p> Add, remove and edit different types of pages for your course site.</p>
 					<ul class="nav nav-pills nav-stacked" id="tab-bar">
-						  <li class="active"><a id="Home" data-toggle="tab"> 
+						  <li class="active home-tab"><a id="Home" data-toggle="tab"> 
 						  		<span class="glyphicon glyphicon-home"></span> 
 						  		&nbsp;
  								Home</a>

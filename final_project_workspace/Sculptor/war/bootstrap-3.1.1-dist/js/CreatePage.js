@@ -3,6 +3,15 @@ $(document).ready(function() {
 	// Load teacher navigation
 	loadTeacherNavigation();
 
+	// Make the tab bar sortable
+	$( "#tab-bar" ).sortable({ 
+		opacity: 0.5,
+		items: "li:not(.home-tab)",
+		stop: function( event, ui ) {
+			saveTeacherNavigation();
+		}
+	});
+
 	// Load the home form first
 	loadForm("Home");
 	
@@ -83,8 +92,6 @@ function addPage(nameOfPage) {
 
 	// Save the new navigation
 	saveTeacherNavigation();
-
-	// TODO: Add page to data store 
 }
 
 function addPageToNavigation(nameOfPage) {
@@ -384,6 +391,7 @@ function populateSyllabusForm(jsonData){
 	
 	var parsedJSON = jQuery.parseJSON(jsonData);
 	var data = parsedJSON.data[0];
+	console.log(data);
 	
 	//Description
 	$('textarea[name="description"]').val(data.description);

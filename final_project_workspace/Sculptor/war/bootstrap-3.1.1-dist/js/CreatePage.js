@@ -273,20 +273,37 @@ function cancelForm() {
 
 	// Reload the page which acts as canceling changes
 	loadForm(nameOfForm);
+
+	$.bootstrapGrowl("<b>Canceled Changes!</b>", {
+		  type: 'info', // (null, 'info', 'error', 'success')
+		  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+		  delay: 2000
+	});
 }
 
 function saveForm(){	
 	   var frm = $('#pageForm');
+
+	  	frm.off('submit'); // Prevent multiple submits being binded to the button
 	    frm.submit(function (ev) {
 	        $.ajax({
 	            type: frm.attr('method'),
 	            url: frm.attr('action'),
 	            data: frm.serialize(),
 	            success: function (data) {
-	            	$("#successSaveMsg").fadeIn("slow", function(){}); 
-	            	$("#successSaveMsg").fadeOut("slow", function(){});
+	            	$.bootstrapGrowl("<b>Saved Changes!</b>", {
+					  type: 'success', // (null, 'info', 'error', 'success')
+					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+					  delay: 2000
+	            	});
 	            },
-	        	error: function (data) {alert ("Try again please."); }
+	        	error: function (data) {
+	        		$.bootstrapGrowl("<b>Error Saving Changes!</b>", {
+					  type: 'error', // (null, 'info', 'error', 'success')
+					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+					  delay: 2000
+	            	});
+	        	}
 	        });
 
 	        ev.preventDefault();

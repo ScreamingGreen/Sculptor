@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8" name="viewport" content="800">
 		<title>${param.webId} - Course Website</title>
 		
 		<!-- Bootstrap -->
 		<link href="../bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap-3.1.1-dist/css/custom.css" rel="stylesheet">
+			
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 		
 	</head>
@@ -21,6 +22,26 @@
 		<!-- Custom Javascript -->
 		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>
 		<script src="../bootstrap-3.1.1-dist/js/StudentPage.js"></script>
+		<script src="bootstrap-3.1.1-dist/js/searchCourse.js"></script>
+		
+		<!-- Navigation bar with Sculptor brand, search bar, login, create page -->
+		<nav id="nav-bar" class="navbar-inverse navbar-static-top" role="navigation">
+			<div class="container">
+
+				<div class="navbar-header" id="nav-bar-header">
+					<a class="navbar-brand" href="#">Sculptor</a>
+				</div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<form id="searchForm" class="studentSearch" role="search" method="POST" action='/enteredSearch' autocomplete="off">
+						<div class="form-group">
+							<input name="searchCourse" id="search" type="text" class="form-control" placeholder="Type a course">
+						</div>
+					</form>
+				</ul>
+			</div>
+		</nav>
+		
 		
 		<span id="webId" value="${param.webId}"></span>
 		<div id="studentheader">
@@ -35,7 +56,7 @@
 				
 				<!-- Content of tabs on right side -->
 				<div class="container"> 
-					<div class="row col-md-9 col-xs-offset-1 col-lg-offset-3" id="main">
+					<div class="row col-md-9 col-lg-offset-3" id="main">
 					
 						<!-- Basic home div -->
 						<div class="studentHome rightside" id="Home">

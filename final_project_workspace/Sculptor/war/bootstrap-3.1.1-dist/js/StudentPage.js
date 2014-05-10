@@ -1,5 +1,10 @@
 $(document).ready(function() {
+	console.log(screen.width);
+	if(screen.width < 1000){
+		$('#tab-bar').hide();
+	}
 	getStudentPage();
+
 });
 
 //Gets tab order from servlet

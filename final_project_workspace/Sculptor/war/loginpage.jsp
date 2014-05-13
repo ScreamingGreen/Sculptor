@@ -67,10 +67,12 @@
 				    	</div>
 				    </c:if>
 				    
+				    <!--
 					<c:if test="${success == 'true'}">
 						Registration successful! Please log in to your account.
 					</c:if>
-					
+					-->
+
 				    <h3>Login</h3>
 
 					<!-- Login Fields, webID and password -->

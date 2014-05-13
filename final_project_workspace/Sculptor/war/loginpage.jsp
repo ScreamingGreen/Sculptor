@@ -8,10 +8,8 @@
     <link href="bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet">
 	<link href="bootstrap-3.1.1-dist/css/custom.css" rel="stylesheet">
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
-  </head>
-  <body>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -19,6 +17,15 @@
 	
 	<!-- Custom Javascript -->
 	<script src="bootstrap-3.1.1-dist/js/Sculptor.js"></script>
+
+	<!-- Notification -->
+	<script src="../bootstrap-3.1.1-dist/js/jquery.bootstrap-growl.js"></script>
+
+	<script src="bootstrap-3.1.1-dist/js/loginPage.js"></script>
+	
+  </head>
+  <body>
+
 	
 	<!-- Navigation bar with Sculptor brand, search bar, login, create page -->
 	<nav id="nav-bar" class="navbar-inverse navbar-static-top" role="navigation">

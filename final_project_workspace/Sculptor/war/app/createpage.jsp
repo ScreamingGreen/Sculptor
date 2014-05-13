@@ -21,14 +21,9 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
 
-		<!-- Notify CSS / JS 
-   		<link href="../bootstrap-3.1.1-dist/css/bootstrap-notify.css" rel="stylesheet">
-		<script src="../bootstrap-3.1.1-dist/js/bootstrap-notify.js"></script>-->
-		
 		<!-- Notifications -->
 		<script src="../bootstrap-3.1.1-dist/js/jquery.bootstrap-growl.js"></script>
 
-		
 		<!-- Custom Javascript -->
 		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>			
 		<script src="../bootstrap-3.1.1-dist/js/CreatePage.js"></script>

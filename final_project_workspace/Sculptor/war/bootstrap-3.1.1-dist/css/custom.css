@@ -148,6 +148,10 @@ padding-top:10px;
 	margin-bottom: 20px;	
 }
 
+.glyphicon {
+	top: 0px;
+}
+
 /* ====== Register page ====== */
 #register-form {
 	width: 500px;

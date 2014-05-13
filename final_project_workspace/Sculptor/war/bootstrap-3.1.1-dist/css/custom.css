@@ -129,6 +129,47 @@ padding-top:10px;
 	width: 300px;
 }
 
+#search-header input {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+#search-header button {
+	height: 34px;
+	background-color: #EEEEEE;
+}
+
+#search-header button > span {
+	padding-top: 2.5px;
+}
+
+.ui-corner-all {
+	border-radius: 0px 0px 0px 0px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, .ui-widget-content .ui-state-focus,
+ .ui-widget-header .ui-state-focus {
+
+    border: 0px;
+    border-style: none;
+    border: 1px solid #EEEEEE;;
+    background: url('') #EEEEEE;
+    color: #212121;
+    font-weight: normal;
+    font-size: 15px;
+}
+.ui-widget a {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    font-size: 15px;
+    color: #555;
+}
+
 /* ====== Login page ====== */
 .bottom-margin-10px {
 	margin-bottom: 10px;

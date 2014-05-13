@@ -14,13 +14,21 @@ $(document).ready(function() {
 		    data: $('#search').val(),
 		    success: function(data) {
 		    	if(data != 'yes') {
-		    		alert("No Web Id exist");
+		    		$.bootstrapGrowl("<b>Provided Website ID does not exist!</b>", {
+					  type: 'danger', // (null, 'info', 'error', 'success')
+					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+					  delay: 2000
+					});
 		    	} else {
 		    		document.location.href = '/studentpage.jsp?webId=' + $('#search').val();
 		    	}
 		    },
 		    error: function(jsonData) {
-		        alert("Error on servlet call");
+		        $.bootstrapGrowl("<b>Error searching for provided Website ID!</b>", {
+					  type: 'danger', // (null, 'info', 'error', 'success')
+					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+					  delay: 2000
+					});
 		    }
 		});
 	});

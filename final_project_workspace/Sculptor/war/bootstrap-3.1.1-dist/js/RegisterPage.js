@@ -24,11 +24,15 @@ $(document).ready(function() {
 		}
 
 		// Check email
-		if (email.length < 3) {
-			errorText += "<li>Email has incorrect format.</li>";
+		var atPosition = email.indexOf("@");
+		var dotPosition = email.lastIndexOf(".");
+		var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		if (!regex.test(email)) {
+ 			errorText += "<li>Email has incorrect format.</li>";
 			$('#registerEmail').parent().addClass("has-error");
 			hasError = true;
-		}
+  		}
 
 		// Check password
 		if (password.length < 4) {

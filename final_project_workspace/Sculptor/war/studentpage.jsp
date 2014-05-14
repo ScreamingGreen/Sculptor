@@ -48,31 +48,7 @@
 						</div>
 					</div>
 				</div>
-					
-					
-					<!--  Basic Syllabus div 
-					<div class="studentSyllabus rightside" id="Syllabus">
-							<h2> Course Description </h2> 
-							<p id="description"> </p> <hr>
-							<h2> Course Material </h2>
-							<p id="materials"> </p> <hr>
-							<h2> Info and Office Hours </h2>
-							<p id="infoAndHours"> </p> <hr>
-							<h2> Grade Breakdown </h2>
-							<p id="breakdown"> </p> <hr>
-					</div>
-					
-					<!-- Basic schedule div
-					<div class="studentSchedule rightside" id="Schedule">
-							<h2> Important Dates</h2>
-							<p id="schedule"> </p> <hr>
-					</div>
-					
-					<div class="studentSchedule rightside" id="Files">
-							<h2> Important Dates</h2>
-							<p id="schedule"> </p> <hr>
-					</div>
-					-->
+				
 	      </div>
 	    </div>
 	</body>

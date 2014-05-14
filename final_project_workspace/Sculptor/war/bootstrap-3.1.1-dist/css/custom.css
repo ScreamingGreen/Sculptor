@@ -19,7 +19,6 @@ width: 450px;
 /* Student page: makes sidebar fixed position from top */
 .sidebar{
 position:fixed;
-top:30%;
 z-index: 1;
 }
 

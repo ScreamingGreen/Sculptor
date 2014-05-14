@@ -39,6 +39,9 @@ function loadStudentPageSidebar(jsonData){
 		//Gets webId requested
 		var webIdParam = $('#webId').attr('value');
 		
+		//Centers student page side navigation bar based on amount of tabs
+		$('#tab-bar').css("padding-top", ($(window).height()/3) - jsonArray.tabOrder.length/2*$('.scrollSelector').height());
+		
 		//Appends new sidebar button for each tab.
 		for(i=1; i<jsonArray.tabOrder.length; i++)
 		{
@@ -211,6 +214,19 @@ function loadStudentPageMain(jsonData, tabType){
 	else if (tabType == 'Schedule')
 	{
 		// Important Dates
+		var dateArr = jsonArray.data[0].dates.split(",");
+		var eventArr = jsonArray.data[0].events.split(",");
+		
+		if(dateArr.length <= 0 ) {return;}
+		
+		if(dateArr.length != eventArr.length) {return;}
+		
+		$('#schedule').append("<table id='scheduleTable'><tr><th>Date</th><th>Event</th></tr></table>")
+		
+		for(var i = 0; i<dateArr.length; i++) {
+			$('#schedule').append("<tr><td>"+ dateArr[i] +"</td><td>"+ eventArr[i] +"</td></tr>")
+		}
+		
 		$('#schedule').html(jsonArray.data[0].schedule);
 	}
 	

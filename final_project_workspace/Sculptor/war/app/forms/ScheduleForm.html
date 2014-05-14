@@ -1,3 +1,38 @@
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		$("#addEvent").click(function() {
+			
+			if($('#events').find('.dateOfEvent').length >= 10) {   			
+				$.bootstrapGrowl("<b>Maximum of 10 Events!</b>", {
+					  type: 'error', // (null, 'info', 'error', 'success')
+					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+					  delay: 2000
+				});
+            	return false;
+			}
+			
+			//Else add new event
+			$("#events")
+				.append("<div><input type='text' name='dateOfEvent' class='dateOfEvent' placeholder='Date'/> " + 
+						"<input type='text' placeholder='Description' name='eventDesc' class='eventDesc'/> " + 
+						"<span class='removeEvent'>X</span></div> ");
+			
+			//Bind new spans
+			$('.removeEvent').click(function() {
+				$(this).parent().remove();
+				return false;
+			});
+			
+			//Bind new date picker
+			$('.dateOfEvent').datepicker();
+		});
+		
+	}); 
+	
+</script>
+
 <!-- Basic content for schedule form -->
 <div class="tab-pane active" id="Schedule">
 	<!-- Every div has a form -->
@@ -8,6 +43,9 @@
 		
 		<h5>Important Dates</h5>
 		
-		<textarea class="form-control" rows="10" cols="100" name="schedule"></textarea>
+		<div id="events">
+		</div>	
+		<input type="button" id="addEvent" value="Add Event" onsubmit="addEventInput();"/>
+
 	</form>
 </div>

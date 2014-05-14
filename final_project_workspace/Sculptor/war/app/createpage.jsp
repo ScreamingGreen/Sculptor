@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>CreatePage</title>
+		<title>Edit Website</title>
 		
 		<!-- Plupload -->		
  		<link href="../plupload-2.1.1/js/jquery.plupload.queue/css/jquery.plupload.queue.css" rel="stylesheet">

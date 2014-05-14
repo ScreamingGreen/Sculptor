@@ -482,11 +482,12 @@ function populateScheduleForm(jsonData){
 				"<span class='glyphicon glyphicon-remove removeEvent'></span></div> ");*/
 
 		$("#events")
-				.append("<div><div class='form-group'><input type='text' name='dateOfEvent' class='schedule-form-date form-control dateOfEvent' id='date_"+i+"' placeholder='Date'/></div> " + 
+				.append("<div><div class=''><input type='text' name='dateOfEvent' class='form-control dateOfEvent schedule-form-date' id='date_"+i+"' placeholder='Date'/> " + 
 
-						"<div class='form-group'><input id='event_"+i+"' type='text' placeholder='Description' name='eventDesc' class='form-control schedule-form-description eventDesc'/> " + 
+						"<input id='event_"+i+"' type='text' placeholder='Description' name='eventDesc' class='form-control eventDesc schedule-form-description'/> " + 
 
 						"<button type='button' class='btn btn-danger removeEvent'> <span class='glyphicon white glyphicon-remove'></span></button> </div></div>");
+
 		
 		//Populate it
 		$('#date_' + i).val(dates[i]);

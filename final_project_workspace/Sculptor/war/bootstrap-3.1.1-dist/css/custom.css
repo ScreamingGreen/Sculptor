@@ -344,11 +344,13 @@ textarea {
 }
 
 .schedule-form-date {
-	width: 100px !important;
+	/*width: 100px !important;*/
+	width: 18% !important;
 }
 
 .schedule-form-description {
-	width:340px !important;
+	/*width:340px !important;*/
+	width: 72% !important;
 }
 
 #events button {

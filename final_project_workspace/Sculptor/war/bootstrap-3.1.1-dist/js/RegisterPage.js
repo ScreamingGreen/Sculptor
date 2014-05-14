@@ -5,6 +5,8 @@ $(document).ready(function() {
 
 	$("#reg-form").on( "submit", function( event ) {
 
+		removeErrors();
+
 		// There sometimes might be an error box created by the servlet so just hide it.
 		$("#login-alert-box").hide();
 
@@ -46,7 +48,6 @@ $(document).ready(function() {
 		// There is an error, so display it and prevent form from submitting
 		if (hasError) {
 			event.preventDefault();
-			removeErrors();
 			$('#register-alert-box').html('');
 			$('#register-alert-box').html('<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>');
 			$('#register-alert-box').append(errorText);

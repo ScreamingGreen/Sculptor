@@ -19,6 +19,8 @@
 	
 	<!-- Custom Javascript -->
 	<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>
+
+	<script src="../bootstrap-3.1.1-dist/js/ManageAccount.js"></script>
 	
 	<!-- Navigation bar with Sculptor brand, search bar, login, create page -->
 	<nav id="nav-bar" class="navbar-inverse navbar-static-top" role="navigation">
@@ -39,27 +41,21 @@
 	<div id="header">
       <div class="container">
       		<div id="login-form">				
-				<div class="form-group">				
-				<form class="form-signin" method="POST" action="/changePassword" role="form">
+      			<div id="manage-account-alert-box" class="alert alert-danger alert-dismissable"></div>	
+				<div class="form-group">			
+				<form class="form-change-password" method="POST" action="/changePassword" role="form">
 					
 				    <h3>Change Password</h3>
 
 					<!-- Login Fields, webID and password -->
-					<!-- 
-					<div class="input-group bottom-margin-10px ${param.error ? 'has-error' : ''}">
-						<span class="input-group-addon glyphicon glyphicon-user"></span>
-						<h4 class="manageHeader"> ${sessionScope.sessionBean.profBean.webId} </h4>
-					</div>
-					-->
-
-					<div class="input-group bottom-margin-10px ${param.error ? 'has-error' : ''}">
+					<div class="input-group bottom-margin-10px">
 						<span class="input-group-addon glyphicon glyphicon-lock"></span>
-						<input type="password" name="oldPassword" class="form-control" id="loginPass" placeholder="Old Password">
+						<input type="password" name="oldPassword" class="form-control" id="oldPassword" placeholder="Old Password">
 					</div>
 					
-					<div class="input-group bottom-margin-10px ${param.error ? 'has-error' : ''}">
+					<div class="input-group bottom-margin-10px">
 						<span class="input-group-addon glyphicon glyphicon-lock"></span>
-						<input type="password" name="newPassword" class="form-control" id="loginPass" placeholder="New Password">
+						<input type="password" name="newPassword" class="form-control" id="newPassword" placeholder="New Password">
 					</div>
 					
 					<!-- Buttons here -->					

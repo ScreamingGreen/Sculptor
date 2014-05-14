@@ -65,11 +65,13 @@ padding-top:10px;
 th{
 	font-size: 130%;
 	padding-right: 50px;
+	text-align:center;
 }
 
 td{
 	padding-right: 50px;
 }
+
 
 /* Student page: sets background color*/
 #studentheader {

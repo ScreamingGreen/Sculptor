@@ -3,6 +3,7 @@ package com.screaminggreen.formprocessing;
 import javax.servlet.http.HttpServletRequest;
 
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Text;
 import com.screaminggreen.beans.ProfessorBean;
 import com.screaminggreen.beans.SessionBean;
 import com.screaminggreen.datastore.CourseTab;
@@ -16,17 +17,11 @@ public class SyllabusFormParser implements FormParser {
 	public void parse(HttpServletRequest req) {
 
 		//Get the parameters
-		String description = req.getParameter("description");
-		description = description.replaceAll("(\r\n|\n)", "\\\\n");
-
-		String materials = req.getParameter("materials");
-		materials = materials.replaceAll("(\r\n|\n)", "\\\\n");
 		
-		String infoAndHours = req.getParameter("infoAndHours");
-		infoAndHours = infoAndHours.replaceAll("(\r\n|\n)", "\\\\n");
-		
-		String breakdown = req.getParameter("breakdown");
-		breakdown = breakdown.replaceAll("(\r\n|\n)", "\\\\n");
+		Text description = new Text(req.getParameter("description").replaceAll("(\r\n|\n)", "\\\\n"));
+		Text materials = new Text(req.getParameter("materials").replaceAll("(\r\n|\n)", "\\\\n"));
+		Text infoAndHours = new Text(req.getParameter("infoAndHours").replaceAll("(\r\n|\n)", "\\\\n"));
+		Text breakdown = new Text(req.getParameter("breakdown").replaceAll("(\r\n|\n)", "\\\\n"));
 		
 		//Get the webId
 		SessionBean sBean = (SessionBean) req.getSession().getAttribute("sessionBean");

@@ -50,8 +50,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/studentpage.jsp?webId=${sessionScope.sessionBean.profBean.webId}" target="_blank">View website</a></li>
-					<li><a>Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
-					<li><a href="manageaccount.jsp"> Manage Account </a></li>
+					<li><a href="manageaccount.jsp">Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
 					<li><a href="/logout">Logout</a></li>
 				</ul>
 			</div>

@@ -255,6 +255,9 @@ function loadStudentPageMain(jsonData, tabType){
 	else if (tabType == 'Schedule')
 	{
 		// Important Dates
+		if(jsonArray.data[0].dates == null || jsonArray.data[0].events == null){
+			return;
+		}
 		var dateArr = jsonArray.data[0].dates.split(",");
 		var eventArr = jsonArray.data[0].events.split(",");
 		

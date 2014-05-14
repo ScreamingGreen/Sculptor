@@ -45,6 +45,10 @@ public class ScheduleFormParser implements FormParser {
 		String [] dates = req.getParameterValues("dateOfEvent");
 		String [] events = req.getParameterValues("eventDesc");
 		
+		if(dates == null || dates.length <= 0 || events == null || events.length <= 0) {
+			return;
+		}
+		
 		if(dates.length != events.length) {
 			//Mismatch!
 			return;

@@ -469,7 +469,7 @@ function populateScheduleForm(jsonData){
 		$("#events")
 		.append("<div><input type='text' name='dateOfEvent' id='date_"+ i +"' class='dateOfEvent' placeholder='Date'/> " + 
 				"<input type='text' placeholder='Description' id='event_" + i + "' name='eventDesc' class='eventDesc'/> " + 
-				"<span class='removeEvent'>X</span></div> ");
+				"<span class='glyphicon glyphicon-remove removeEvent'></span></div> ");
 		
 		//Populate it
 		$('#date_' + i).val(dates[i]);

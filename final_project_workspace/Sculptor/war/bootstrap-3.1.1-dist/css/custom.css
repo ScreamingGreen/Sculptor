@@ -36,7 +36,11 @@ padding-top:300px;
 
 /* Student page: css for other divs */
 .studentOther{
-	padding-top: 5px;
+	padding: 5px;
+}
+
+.mainFiles{
+	font-size:150%;
 }
 
 /* Student page: css for sidebar buttons */
@@ -55,10 +59,6 @@ padding-top:30px;
 
 .manageHeader{
 padding-left: 10px;
-}
-
-.studentSearch{
-padding-top:10px;
 }
 
 /* minor css for table headers and cells */

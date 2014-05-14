@@ -75,6 +75,11 @@ function loadStudentPageSidebar(jsonData){
 								.append($('<h2 class="infoAndHours"><hr> Info and Office Hours </h2> <p id="infoAndHours"></p>'))
 								.append($('<h2 class="breakdown"><hr> Grade Breakdown </h2> <p id="breakdown"></p>'))
 							);
+						
+						if(i%2 == 1)
+						{
+							$('.mainSyllabus').css('background-color', '#999999');
+						}
 					}
 					
 					//Appends schedule section to rightside
@@ -90,6 +95,11 @@ function loadStudentPageSidebar(jsonData){
 							$('<div class="studentOther rightside" id="Schedule"></div>')
 								.append($('<h2>Important Dates </h2> <p id="schedule"></p>'))
 							);
+						
+						if(i%2 == 1)
+						{
+							$('.mainSchedule').css('background-color', '#999999');
+						}
 					}
 					
 					//Appends file section to rightside
@@ -105,6 +115,11 @@ function loadStudentPageSidebar(jsonData){
 							$('<div class="studentOther rightside" id="Files"></div>')
 								.append($('<h2> Files </h2>'))
 							);
+						
+						if(i%2 == 1)
+						{
+							$('.mainFiles').css('background-color', '#999999');
+						}
 					}
 		}
 		

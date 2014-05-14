@@ -231,25 +231,25 @@ function loadStudentPageMain(jsonData, tabType){
 			$('.description').hide();
 		else
 		// Course Description
-			$('#description').html(jsonArray.data[0].description);
+			$('#description').text(jsonArray.data[0].description);
 		
 		if(jsonArray.data[0].materials == null || jsonArray.data[0].materials == "")
 			$('.materials').hide();
 		// Course Material
 		else
-			$('#materials').html(jsonArray.data[0].materials);
+			$('#materials').text(jsonArray.data[0].materials);
 		
 		if(jsonArray.data[0].infoAndHours == null || jsonArray.data[0].infoAndHours == "")
 			$('.infoAndHours').hide();
 		// Course Info and Office Hours
 		else
-			$('#infoAndHours').html(jsonArray.data[0].infoAndHours);
+			$('#infoAndHours').text(jsonArray.data[0].infoAndHours);
 		
 		if(jsonArray.data[0].breakdown == null || jsonArray.data[0].breakdown == "")
 			$('.breakdown').hide();
 		// Grade Breakdown
 		else
-			$('#breakdown').html(jsonArray.data[0].breakdown);
+			$('#breakdown').text(jsonArray.data[0].breakdown);
 	}
 	
 	else if (tabType == 'Schedule')
@@ -268,7 +268,10 @@ function loadStudentPageMain(jsonData, tabType){
 		$('#schedule').append("<br><table id='scheduleTable' class='table table-bordered'><thead><tr><th width='20%'>Date</th><th>Event</th></tr></thead><tbody id='scheduleBody'></tbody></table>")
 		
 		for(var i = 0; i<dateArr.length; i++) {
-			$('#scheduleBody').append("<tr><td class='dateTD'>"+ dateArr[i] +"</td><td>"+ eventArr[i] +"</td></tr>")
+			if(dateArr[i] == "" || dateArr[i] == null)
+				continue;
+			else
+				$('#scheduleBody').append("<tr><td class='dateTD'>"+ dateArr[i] +"</td><td>"+ eventArr[i] +"</td></tr>")
 		}
 	}
 	

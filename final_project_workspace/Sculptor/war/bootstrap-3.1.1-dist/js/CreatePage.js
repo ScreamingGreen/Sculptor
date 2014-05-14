@@ -469,6 +469,8 @@ function populateScheduleForm(jsonData){
 	var parsedJSON = jQuery.parseJSON(jsonData);
 	var data = parsedJSON.data[0];
 	
+	if(data.dates == "" || data.events == "") {return;}
+
 	var dates = data.dates.split(",");
 	var events = data.events.split(",");
 	

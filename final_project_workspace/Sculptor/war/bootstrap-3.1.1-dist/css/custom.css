@@ -27,15 +27,16 @@ z-index: 1;
 color: #FFF;
 }
 
-/* Student page: css for home div */
+/* Student page: css for home div */ 
 .studentHome{
 text-align:center;
 padding-top:300px;
 }
 
+
 /* Student page: css for other divs */
 .studentOther{
-padding: 50px;
+	padding-top: 5px;
 }
 
 /* Student page: css for sidebar buttons */

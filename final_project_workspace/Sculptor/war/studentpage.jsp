@@ -28,7 +28,7 @@
 	      <div class="container-fluid" id="studentbg">
 		  	
 				<!-- Left Side Tab-bar navigation -->
-				<div class="col-md-1 col-md-offset-2 btn-group btn-group-vertical sidebar">
+				<div class="col-md-1 col-md-offset-1 btn-group btn-group-vertical sidebar">
 					<ul class="nav nav-pills nav-stacked" id="tab-bar">
 						  <li class="active Home"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('Home')"><div class="scrollText">Home</div></a></li>
 					</ul>

@@ -250,7 +250,7 @@ function loadStudentPageMain(jsonData, tabType){
 				for(var i = 0; i < keys.length; i++) {
 					$('#Files')
 						.append($('<div> </div>')
-							.append($("<a href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a>"))
+							.append($("<a target='_blank' href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a>"))
 					);
 				}
 			},

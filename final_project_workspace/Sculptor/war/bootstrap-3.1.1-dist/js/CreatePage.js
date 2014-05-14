@@ -165,6 +165,15 @@ function removeSelectedPage() {
 
 	// Save the new navigation
 	saveTeacherNavigation();
+
+	// If we are removing the page we are currently looking at,
+	// switch back to the home page
+	if ($('#page-title').html()==nameOfRemovedOption) {
+		$('#page-title').html("Home");
+		$('div[class="tab-content"]').html("");
+		loadForm("Home");
+		$('.home-tab').addClass('active');
+	}
 }
 
 function addOptionToAddPageNavigation(pageName) {

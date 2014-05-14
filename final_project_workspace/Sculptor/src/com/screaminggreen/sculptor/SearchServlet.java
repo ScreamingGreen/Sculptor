@@ -32,10 +32,9 @@ public class SearchServlet extends HttpServlet {
         Iterable<Entity> entities = Professor.getAllProfessors("Professor");
         
         String json = DatastoreAPI.writeJSON(entities);
-        
-        System.out.println(json);
-        
+                
         resp.setStatus(200);
+        
         out.println(json);
         
         out.close();

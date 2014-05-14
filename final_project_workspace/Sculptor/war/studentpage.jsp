@@ -24,25 +24,6 @@
 		<script src="../bootstrap-3.1.1-dist/js/StudentPage.js"></script>
 		<script src="bootstrap-3.1.1-dist/js/searchCourse.js"></script>
 		
-		<!-- Navigation bar with Sculptor brand, search bar, login, create page -->
-		<nav id="nav-bar" class="navbar-inverse navbar-static-top" role="navigation">
-			<div class="container">
-
-				<div class="navbar-header" id="nav-bar-header">
-					<a class="navbar-brand" href="#">Sculptor</a>
-				</div>
-
-				<ul class="nav navbar-nav navbar-right">
-					<form id="searchForm" class="studentSearch" role="search" method="POST" action='/enteredSearch' autocomplete="off">
-						<div class="form-group">
-							<input name="searchCourse" id="search" type="text" class="form-control" placeholder="Type a course">
-						</div>
-					</form>
-				</ul>
-			</div>
-		</nav>
-		
-		
 		<span id="webId" value="${param.webId}"></span>
 		<div id="studentheader">
 	      <div class="container studentbg">

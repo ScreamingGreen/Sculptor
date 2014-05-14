@@ -40,7 +40,7 @@ function loadStudentPageSidebar(jsonData){
 		var webIdParam = $('#webId').attr('value');
 		
 		//Centers student page side navigation bar based on amount of tabs
-		$('#tab-bar').css("padding-top", ($(window).height()/3) - jsonArray.tabOrder.length/2*$('.scrollSelector').height());
+		$('#tab-bar').css("padding-top", ($(window).height()/2.3) - jsonArray.tabOrder.length/2*$('.scrollSelector').height());
 		
 		//Appends new sidebar button for each tab.
 		for(i=1; i<jsonArray.tabOrder.length; i++)
@@ -62,7 +62,12 @@ function loadStudentPageSidebar(jsonData){
 					//Appends syllabus section to rightside
 					if(jsonArray.tabOrder[i].type == "Syllabus")
 					{
-						$("#main")
+						$('#studentbg')
+						.append(
+							$('<div class="container-fluid mainSyllabus"> <div class="row col-md-9 col-lg-offset-3" id="mainSyllabus"> </div></div>')
+							)
+							
+						$("#mainSyllabus")
 							.append(
 							$('<div class="studentOther rightside" id="Syllabus"></div>')
 								.append($('<h2 class="description"> Course Description </h2> <p id="description"></p>'))
@@ -75,17 +80,27 @@ function loadStudentPageSidebar(jsonData){
 					//Appends schedule section to rightside
 					if(jsonArray.tabOrder[i].type == "Schedule")
 					{
-						$("#main")
+						$('#studentbg')
+						.append(
+							$('<div class="container-fluid mainSchedule"> <div class="row col-md-9 col-lg-offset-3" id="mainSchedule"> </div></div>')
+							)
+						
+						$("#mainSchedule")
 							.append(
 							$('<div class="studentOther rightside" id="Schedule"></div>')
-								.append($('<h2> Important Dates </h2> <p id="schedule"></p>'))
+								.append($('<h2>Important Dates </h2> <p id="schedule"></p>'))
 							);
 					}
 					
 					//Appends file section to rightside
 					if(jsonArray.tabOrder[i].type == "Files")
 					{
-						$("#main")
+						$('#studentbg')
+						.append(
+							$('<div class="container-fluid mainFiles"> <div class="row col-md-9 col-lg-offset-3" id="mainFiles"> </div></div>')
+							)
+						
+						$("#mainFiles")
 							.append(
 							$('<div class="studentOther rightside" id="Files"></div>')
 								.append($('<h2> Files </h2>'))
@@ -94,6 +109,7 @@ function loadStudentPageSidebar(jsonData){
 		}
 		
 		$('.rightside').css("height", $(window).height() );
+		$('.studentHome').css("padding-top", $(window).height()/3.4);
 		
 		//for each tab in get the information that they hold
 		for(j=0; j<jsonArray.tabOrder.length; j++)

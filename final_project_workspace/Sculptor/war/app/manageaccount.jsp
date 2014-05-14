@@ -43,20 +43,28 @@
 				<div class="form-group">				
 				<form class="form-signin" method="POST" action="/changePassword" role="form">
 					
-				    <h3>Change Password</h3>
-
+				    <h3>Change Password</h3>				
+					
+					<c:if test="${param.wrongpassword == 'true'}">	
+						Wrong Old Password
+					</c:if>
+					
+					<c:if test="${param.nonewpassword == 'true'}">
+						New password field is empty
+					</c:if>
+						
 					<!-- Login Fields, webID and password -->
-					<div class="input-group bottom-margin-10px ${param.error ? 'has-error' : ''}">
+					<div class="input-group bottom-margin-10px ${param.wrongpassword || param.nonewpassword ? 'has-error' : ''}">
 						<span class="input-group-addon glyphicon glyphicon-user"></span>
 						<h4 class="manageHeader"> ${sessionScope.sessionBean.profBean.webId} </h4>
 					</div>
 
-					<div class="input-group bottom-margin-10px ${param.error ? 'has-error' : ''}">
+					<div class="input-group bottom-margin-10px ${param.wrongpassword || param.nonewpassword ? 'has-error' : ''}">
 						<span class="input-group-addon glyphicon glyphicon-lock"></span>
 						<input type="password" name="oldPassword" class="form-control" id="loginPass" placeholder="Old Password">
 					</div>
 					
-					<div class="input-group bottom-margin-10px ${param.error ? 'has-error' : ''}">
+					<div class="input-group bottom-margin-10px ${param.wrongpassword || param.nonewpassword ? 'has-error' : ''}">
 						<span class="input-group-addon glyphicon glyphicon-lock"></span>
 						<input type="password" name="newPassword" class="form-control" id="loginPass" placeholder="New Password">
 					</div>

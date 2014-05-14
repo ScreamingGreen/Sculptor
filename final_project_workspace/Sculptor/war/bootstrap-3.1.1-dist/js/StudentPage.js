@@ -78,7 +78,7 @@ function loadStudentPageSidebar(jsonData){
 						
 						if(i%2 == 1)
 						{
-							$('.mainSyllabus').css('background-color', '#999999');
+							$('.mainSyllabus').css('background-color', '#494949');
 						}
 					}
 					
@@ -98,7 +98,7 @@ function loadStudentPageSidebar(jsonData){
 						
 						if(i%2 == 1)
 						{
-							$('.mainSchedule').css('background-color', '#999999');
+							$('.mainSchedule').css('background-color', '#494949');
 						}
 					}
 					
@@ -118,7 +118,7 @@ function loadStudentPageSidebar(jsonData){
 						
 						if(i%2 == 1)
 						{
-							$('.mainFiles').css('background-color', '#999999');
+							$('.mainFiles').css('background-color', '#494949');
 						}
 					}
 		}

@@ -46,16 +46,8 @@
 				<form class="form-change-password" method="POST" action="/changePassword" role="form">
 					
 				    <h3>Change Password</h3>				
-					
-					<c:if test="${param.wrongpassword == 'true'}">	
-						Wrong Old Password
-					</c:if>
-					
-					<c:if test="${param.nonewpassword == 'true'}">
-						New password field is empty
-					</c:if>
 						
-					<!-- Login Fields, webID and password ${param.wrongpassword || param.nonewpassword ? 'has-error' : ''} -->
+					<!-- Login Fields, webID and password -->
 					<div class="input-group bottom-margin-10px">
 						<span class="input-group-addon glyphicon glyphicon-lock"></span>
 						<input type="password" name="oldPassword" class="form-control" id="oldPassword" placeholder="Old Password">

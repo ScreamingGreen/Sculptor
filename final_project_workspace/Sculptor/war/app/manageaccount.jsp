@@ -24,11 +24,10 @@
 	<nav id="nav-bar" class="navbar-inverse navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header" id="nav-bar-header">
-				<a class="navbar-brand" href="#">Sculptor</a>
+				<a class="navbar-brand" href="createpage.jsp">Sculptor</a>
 			</div>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/studentpage.jsp?webId=${sessionScope.sessionBean.profBean.webId}" target="_blank">View website</a></li>
-					<li><a href="createpage.jsp">Edit website</a></li>
 					<li><a href="manageaccount.jsp">Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
 					<li><a href="/logout">Logout</a></li>
 				</ul>
@@ -46,10 +45,12 @@
 				    <h3>Change Password</h3>
 
 					<!-- Login Fields, webID and password -->
+					<!-- 
 					<div class="input-group bottom-margin-10px ${param.error ? 'has-error' : ''}">
 						<span class="input-group-addon glyphicon glyphicon-user"></span>
 						<h4 class="manageHeader"> ${sessionScope.sessionBean.profBean.webId} </h4>
 					</div>
+					-->
 
 					<div class="input-group bottom-margin-10px ${param.error ? 'has-error' : ''}">
 						<span class="input-group-addon glyphicon glyphicon-lock"></span>

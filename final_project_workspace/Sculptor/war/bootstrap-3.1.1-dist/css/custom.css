@@ -278,7 +278,8 @@ td{
 }
 
 #tab-bar a.newTab {
-	width: 152px;
+	/*width: 152px;*/
+	width: 80%;
 	display:inline-block;
 	background-color: 
 }

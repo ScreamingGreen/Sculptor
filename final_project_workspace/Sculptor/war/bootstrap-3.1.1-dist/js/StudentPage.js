@@ -262,7 +262,7 @@ function loadStudentPageMain(jsonData, tabType){
 		
 		if(dateArr.length != eventArr.length) {return;}
 		
-		$('#schedule').append("<table id='scheduleTable' class='table table-bordered'><thead><tr><th>Date</th><th>Event</th></tr></thead><tbody id='scheduleBody'></tbody></table>")
+		$('#schedule').append("<br><table id='scheduleTable' class='table table-bordered'><thead><tr><th width='20%'>Date</th><th>Event</th></tr></thead><tbody id='scheduleBody'></tbody></table>")
 		
 		for(var i = 0; i<dateArr.length; i++) {
 			$('#scheduleBody').append("<tr><td class='dateTD'>"+ dateArr[i] +"</td><td>"+ eventArr[i] +"</td></tr>")

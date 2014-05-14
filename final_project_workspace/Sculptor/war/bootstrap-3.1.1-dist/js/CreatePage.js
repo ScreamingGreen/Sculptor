@@ -424,14 +424,30 @@ function populateSyllabusForm(jsonData){
 }
 
 function populateScheduleForm(jsonData){
-	
+
 	//Enables save button if disabled.
 	$('#save-button').prop('disabled', false);
 	
 	var parsedJSON = jQuery.parseJSON(jsonData);
 	var data = parsedJSON.data[0];
+
+	//The lists are spaced by , 's
+	var dates = datesStr.split(",");
+	var events = eventsStr.split(",");
 	
-	$('textarea[name="schedule"]').val(data.schedule);
+	//For each date+event pair create input texts on the div
+	for(var i = 0; i < dates.length; i++) {
+		//Add the inputs
+		$("#events")
+		.append("<div><input type='text' name='dateOfEvent' id='date_"+ i +"' class='dateOfEvent' placeholder='Date'/> " + 
+				"<input type='text' placeholder='Description' id='event_" + i + "' name='eventDesc' class='eventDesc'/> " + 
+				"<span class='removeEvent'>X</span></div> ");
+		
+		//Populate it
+		$('#date_' + i).val(dates[i]);
+		$('#event_' + i).val(events[i]);
+	}
+	
 }
 
 function populateFilesForm(jsonData){

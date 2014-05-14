@@ -1,3 +1,33 @@
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		$("#addEvent").click(function() {
+			var events = $("#events");
+			if(events.children('.dateOfEvent').length >= 10) {
+				$("#maxEventsError").show();
+				return;
+			}
+			//Else add new event
+			$("#events")
+				.append("<div><input type='text' name='dateOfEvent' class='dateOfEvent' placeholder='Date'/> " + 
+						"<input type='text' placeholder='Description' name='eventDesc' class='eventDesc'/> " + 
+						"<span class='removeEvent'>X</span></div> ");
+			
+			//Bind new spans
+			$('.removeEvent').click(function() {
+				$(this).parent().remove();
+				return false;
+			});
+			
+			//Bind new date picker
+			$('.dateOfEvent').datepicker();
+		});
+		
+	}); 
+	
+</script>
+
 <!-- Basic content for schedule form -->
 <div class="tab-pane active" id="Schedule">
 	<!-- Every div has a form -->
@@ -8,6 +38,11 @@
 		
 		<h5>Important Dates</h5>
 		
-		<textarea class="form-control" rows="10" cols="100" name="schedule"></textarea>
+		<div id="events">
+		</div>	
+		<input type="button" id="addEvent" value="Add Event" onsubmit="addEventInput();"/>
+		<div id="maxEventsError">
+			
+		</div>	
 	</form>
 </div>

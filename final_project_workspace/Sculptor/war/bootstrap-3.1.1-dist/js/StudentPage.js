@@ -39,6 +39,9 @@ function loadStudentPageSidebar(jsonData){
 		//Gets webId requested
 		var webIdParam = $('#webId').attr('value');
 		
+		//Centers student page side navigation bar based on amount of tabs
+		$('#tab-bar').css("padding-top", ($(window).height()/3) - jsonArray.tabOrder.length/2*$('.scrollSelector').height());
+		
 		//Appends new sidebar button for each tab.
 		for(i=1; i<jsonArray.tabOrder.length; i++)
 		{

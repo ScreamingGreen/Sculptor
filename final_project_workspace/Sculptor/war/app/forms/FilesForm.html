@@ -5,13 +5,13 @@
 	//Custom remove file from upload queue, has to be defined first thing.
 	function removeFileFromUploadQueue (id) { 
 		//Remove file from upload queue if uploaded is instantiated already
-		
 		if(uploader == null) {
 			return;
 		}
 		
 		uploader.removeFile(id);
-		document.getElementById('filelist').removeChild(id);
+		$(id).remove();
+		//document.getElementById('filelist').removeChild(id);
 	}
 	
 	$(document).ready(function(){
@@ -47,9 +47,10 @@
 		 
 		        FilesAdded: function(up, files) {
 		            plupload.each(files, function(file) {
-						$('#filelist').append('<div id=' + file.id + '>' + file.name + ' ('+ plupload.formatSize(file.size) + ')<b></b> <span class=\'glyphicon glyphicon-remove\' onclick=\"' + 'removeFileFromUploadQueue(' + file.id + ')'+ '\"></span></div>');
+						$('#filelist').append('<tr id="' + file.id + '""> <td class="files-form-file">' + file.name + ' ('+ plupload.formatSize(file.size) + ')<b></b></td> <td class="files-form-remove"> <button class="btn btn-sm btn-danger" onclick="' + 'removeFileFromUploadQueue(' + file.id + ')'+ '"><span class="glyphicon glyphicon-remove"></span></button></td></tr>');
 		            });
 		        },
+
 		 
 		        UploadProgress: function(up, file) {
 		            document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
@@ -60,7 +61,7 @@
 					getCurrentFiles();
 					
 					//Remove file from the list
-					$("#filelist").children("#"+file.id).remove();
+					$("#filelist").children().children("#"+file.id).parent().remove();
 				},
 				
 		        Error: function(up, err) {
@@ -105,9 +106,10 @@
 					$('#currentFiles').html("");
 					for(var i = 0; i < keys.length; i++) {
 						$('#currentFiles')
-							.append($('<div> </div>')
-								.append($("<a target='_blank' href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a>"))
-								.append($("<span class='glyphicon glyphicon-remove'></span>")
+							.append($('<tr> </tr>')
+								.append($("<td class='files-form-file'><a target='_blank' href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a></td>"))
+								.append($("<td class='files-form-remove'></td>")
+								.append("<button class='btn btn-sm btn-danger'><span class='glyphicon glyphicon-remove'></span></button>")
 									.attr('onClick', 'removeFile("' + keys[i].key + '")')
 									.attr('id', keys[i].key)
 						));
@@ -149,15 +151,20 @@
 
 		<div id="successSaveMsg" style="display:none">Saved!</div>
 		<h5>Files to Be Uploaded: </h5>
-
-		<div id="filelist"></div>
+		<div>
+			<table id="filelist" class="table table-bordered table-hover table-condensed">
+			</table>
+		</div>
 		<div id="container">
-			<button id="pickfiles">Select Files</button>
-			<button id="uploadfiles">Upload Files</button>
+			<button class="btn btn-sm btn-default" id="pickfiles">Select Files</button>
+			<button class="btn btn-sm btn-primary" id="uploadfiles">Upload Files</button>
 		</div>	
 			
 		<h5>Your Current Uploaded Files: </h5>
 		
-		<div id="currentFiles"></div>		
+		<div >
+			<table id="currentFiles" class="table table-bordered table-hover table-condensed table-striped">
+			</table>
+		</div>		
 		
 </div>

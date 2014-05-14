@@ -361,3 +361,20 @@ textarea {
 #events button > span {
 }
 
+/* Files Form */
+.files-form-file {
+	vertical-align: middle !important;
+	padding-left: 14px !important;
+	background-color: white !important;
+}
+
+.files-form-remove {
+	text-align: center;
+	width: 8%;
+	background-color: white !important;
+}
+
+.files-form-remove button {
+	height: 26px;
+}
+

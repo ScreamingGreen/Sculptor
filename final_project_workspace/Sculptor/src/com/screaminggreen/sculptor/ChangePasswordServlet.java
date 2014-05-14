@@ -33,19 +33,22 @@ public class ChangePasswordServlet extends HttpServlet {
 		Entity e = Professor.getProfessor(webId);
         String password = (String) e.getProperty("password");
         String user = (String) e.getProperty("webId");
-        String email = (String) e.getProperty("email");
+        String email = (String) e.getProperty("email");       
         
-        System.out.println(password);
-        System.out.println(oldpassword);
-        
-        if(oldpassword.equals(password))
-        {
-        	if(newpassword != null || newpassword != "")
-        	{
-        		Professor.createOrUpdateProfessor(user, email, newpassword);
-        	}
+        //If Wrong pw, send error
+        if(!oldpassword.equals(password)){
+        	resp.sendRedirect("/app/manageaccount.jsp?wrongpassword=true");
+        	return;
         }
         
+        //If no new password
+    	if(newpassword == null || newpassword == "") {
+    		resp.sendRedirect("/app/manageaccount.jsp?nonewpassword=true");
+    		return;
+    	}
+    	
+    	Professor.createOrUpdateProfessor(user, email, newpassword);
+    	         
         resp.sendRedirect("/app/createpage.jsp");
 	}
 

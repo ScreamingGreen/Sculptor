@@ -333,4 +333,31 @@ td{
 	margin-bottom: 14px;
 }
 
+/* Syllabus Form */
+textarea {
+   resize: none;
+}
+
+/* Schedule Form */
+.white, .white a {
+  color: #fff;
+}
+
+.schedule-form-date {
+	width: 100px !important;
+}
+
+.schedule-form-description {
+	width:340px !important;
+}
+
+#events button {
+	margin-bottom:18px;
+	width: 36px;
+	height: 30px;
+	background-color: #D2322D;
+}
+
+#events button > span {
+}
 

@@ -466,15 +466,32 @@ function populateScheduleForm(jsonData){
 	//For each date+event pair create input texts on the div
 	for(var i = 0; i < dates.length; i++) {
 		//Add the inputs
+		/*
 		$("#events")
 		.append("<div><input type='text' name='dateOfEvent' id='date_"+ i +"' class='dateOfEvent' placeholder='Date'/> " + 
 				"<input type='text' placeholder='Description' id='event_" + i + "' name='eventDesc' class='eventDesc'/> " + 
-				"<span class='glyphicon glyphicon-remove removeEvent'></span></div> ");
+				"<span class='glyphicon glyphicon-remove removeEvent'></span></div> ");*/
+
+		$("#events")
+				.append("<div><div class='form-group'><input type='text' name='dateOfEvent' class='schedule-form-date form-control dateOfEvent' id='date_"+i+"' placeholder='Date'/></div> " + 
+
+						"<div class='form-group'><input id='event_"+i+"' type='text' placeholder='Description' name='eventDesc' class='form-control schedule-form-description eventDesc'/> " + 
+
+						"<button type='button' class='btn btn-danger removeEvent'> <span class='glyphicon white glyphicon-remove'></span></button> </div></div>");
 		
 		//Populate it
 		$('#date_' + i).val(dates[i]);
 		$('#event_' + i).val(events[i]);
 	}
+
+	//Bind new spans
+	$('.removeEvent').click(function() {
+			$(this).parent().parent().remove();
+			return false;
+	});
+			
+	//Bind new date picker
+	$('.dateOfEvent').datepicker();
 	
 }
 

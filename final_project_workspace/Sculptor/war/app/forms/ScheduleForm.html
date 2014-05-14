@@ -1,12 +1,14 @@
 <script type="text/javascript">
 	
 	$(document).ready(function() {
+
+		
 		
 		$("#addEvent").click(function() {
 			
 			if($('#events').find('.dateOfEvent').length >= 10) {   			
 				$.bootstrapGrowl("<b>Maximum of 10 Events!</b>", {
-					  type: 'error', // (null, 'info', 'error', 'success')
+					  type: 'danger', // (null, 'info', 'error', 'success')
 					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
 					  delay: 2000
 				});
@@ -15,13 +17,15 @@
 			
 			//Else add new event
 			$("#events")
-				.append("<div><input type='text' name='dateOfEvent' class='dateOfEvent' placeholder='Date'/> " + 
-						"<input type='text' placeholder='Description' name='eventDesc' class='eventDesc'/> " + 
-						"<span class='glyphicon glyphicon-remove removeEvent'></span></div> ");
+				.append("<div><div class='form-group'><input type='text' name='dateOfEvent' class='form-control dateOfEvent schedule-form-date' placeholder='Date'/></div> " + 
+
+						"<div class='form-group'><input type='text' placeholder='Description' name='eventDesc' class='form-control eventDesc schedule-form-description'/> " + 
+
+						"<button type='button' class='btn btn-danger removeEvent'> <span class='glyphicon white glyphicon-remove'></span></button> </div></div>");
 			
 			//Bind new spans
 			$('.removeEvent').click(function() {
-				$(this).parent().remove();
+				$(this).parent().parent().remove();
 				return false;
 			});
 			
@@ -30,22 +34,24 @@
 		});
 		
 	}); 
-	
 </script>
 
 <!-- Basic content for schedule form -->
 <div class="tab-pane active" id="Schedule">
 	<!-- Every div has a form -->
 	<form id="pageForm" action="/saveform" method="POST">
-		<div id="successSaveMsg" style="display:none">Saved!</div>
+
+		<!--<div id="successSaveMsg" style="display:none">Saved!</div>-->
+
 		<!-- Must check that all name of the components are distinct! -->
 		<input id="hidden-form-element" name="type-of-form" type="hidden" value="Schedule" />
 		
 		<h5>Important Dates</h5>
 		
-		<div id="events">
+		<!-- Where the events are stored -->
+		<div class="form-inline" id="events">
 		</div>	
-		<input type="button" id="addEvent" value="Add Event" onsubmit="addEventInput();"/>
 
+		<input type="button" id="addEvent" value="Add Event" class="btn btn-primary" onsubmit="addEventInput();"/>
 	</form>
 </div>

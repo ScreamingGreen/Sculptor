@@ -430,10 +430,9 @@ function populateScheduleForm(jsonData){
 	
 	var parsedJSON = jQuery.parseJSON(jsonData);
 	var data = parsedJSON.data[0];
-
-	//The lists are spaced by , 's
-	var dates = datesStr.split(",");
-	var events = eventsStr.split(",");
+	
+	var dates = data.dates.split(",");
+	var events = data.events.split(",");
 	
 	//For each date+event pair create input texts on the div
 	for(var i = 0; i < dates.length; i++) {

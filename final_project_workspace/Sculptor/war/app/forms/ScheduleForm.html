@@ -3,11 +3,16 @@
 	$(document).ready(function() {
 		
 		$("#addEvent").click(function() {
-			var events = $("#events");
-			if(events.children('.dateOfEvent').length >= 10) {
-				$("#maxEventsError").show();
-				return;
+			
+			if($('#events').find('.dateOfEvent').length >= 10) {   			
+				$.bootstrapGrowl("<b>Maximum of 10 Events!</b>", {
+					  type: 'error', // (null, 'info', 'error', 'success')
+					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+					  delay: 2000
+				});
+            	return false;
 			}
+			
 			//Else add new event
 			$("#events")
 				.append("<div><input type='text' name='dateOfEvent' class='dateOfEvent' placeholder='Date'/> " + 
@@ -41,8 +46,6 @@
 		<div id="events">
 		</div>	
 		<input type="button" id="addEvent" value="Add Event" onsubmit="addEventInput();"/>
-		<div id="maxEventsError">
-			
-		</div>	
+
 	</form>
 </div>

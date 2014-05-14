@@ -265,6 +265,21 @@ padding-top:10px;
 	font-weight: 100;
 }
 
+#tab-bar li {
+}
+
+#tab-bar a.newTab {
+	width: 152px;
+	display:inline-block;
+	background-color: 
+}
+
+#tab-bar button.remove-button {
+  	position:absolute;
+  	
+  	margin-top: 10px;
+}
+
 /* ====== Teacher content header (right side) ===== */
 
 #teacher-content-header {

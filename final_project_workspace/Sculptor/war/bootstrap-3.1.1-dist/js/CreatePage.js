@@ -25,7 +25,20 @@ $(document).ready(function() {
 	// Catch what happens when a menu item from the "+ Add Page"
 	// button gets pressed
 	bindClickToAddPageNavigation();
+
+	// When a user presses remove button, we need to make sure that 
+	// a correct dialog opens
+	bindConfirmationToggle();
 });
+
+function bindConfirmationToggle() {
+	var options = { placement: "right",
+					title: "Are you sure?",
+					btnOkLabel: "Yes",
+					btnCancelLabel: "No",
+					trigger: "manual"};
+	$('[data-toggle="confirmation"]').confirmation(options);
+}
 
 function bindButtons() {
 	
@@ -79,9 +92,7 @@ function bindClickToAddPageNavigation() {
 		// Remove the item from add menu
 		var liElement = $(this).parent();
 		$(liElement).addClass("remove-addpage-option");
-		$(".remove-addpage-option").remove();
-
-		
+		$(".remove-addpage-option").remove();	
 	});
 }
 
@@ -109,36 +120,51 @@ function addPageToNavigation(nameOfPage) {
 						'<span class="glyphicon glyphicon-list-alt"></span>'
 					)
 					.append("&nbsp;&nbsp;&nbsp;")
-					.append(nameOfPage)
-					.append(
-						'<button class="remove-button" type="button" onClick="removePage(this)"><span class="glyphicon glyphicon-remove pull-right"></span></button>'
-					)
+					.append(nameOfPage)	
+				)
+				.append('<button class="remove-button" type="button"  data-toggle="confirmation" data-container="body" onClick="removePage(this)"><span class="glyphicon glyphicon-remove pull-right"></span></button>'
 				)
 			);
 	// Make sure that the new navigation button that we 
 	// added can fire off an event
 	bindClickToTeacherNavigation();
+
+	// Make sure that newly added button presents
+	// a confirmation box
+	bindConfirmationToggle();
 }
 
 // Called when remove checkmark is pressed in teacher navigation
+var buttonOfThePageToRemove;
 function removePage(removeButton) {
 
+	// Save the button so we could remove it after confirmation
+	buttonOfThePageToRemove = removeButton;
+
+	// Show a confirmation for deletion
+	$(removeButton).confirmation('show');
+}
+
+// If a user selected 'Yes' in confirmation box, this function is called
+// Big Note: The function name is coded into 'bootstrap-confirmation.js'
+// because the library was outdated and buggy. 
+function removeSelectedPage() {
+
+	$('[data-toggle="confirmation"]').confirmation('hide');
+	
 	// Remove the item from the teacher navigation
-	var aElement = $(removeButton).parent();
-	var liElement = aElement.parent();
+	var liElement = $(buttonOfThePageToRemove).parent();
 	$(liElement).addClass("remove-the-element");
 	$(".remove-the-element").remove();
 
 	// Get the name of the removed option
-	var nameOfRemovedOption = $(aElement).attr('id');
+	var nameOfRemovedOption = $(liElement).children().eq(0).attr('id');
 
 	// Add the element back to add page navigation
 	addOptionToAddPageNavigation(nameOfRemovedOption);
 
 	// Save the new navigation
 	saveTeacherNavigation();
-
-	// TODO: Remove page from data store	
 }
 
 function addOptionToAddPageNavigation(pageName) {
@@ -217,7 +243,7 @@ function populateTeacherNavigation(jsonData) {
 function saveTeacherNavigation() {
 	
 	//Gets the tab name of each tab
-	var tabs = $('#tab-bar').children().children();
+	var tabs = $('#tab-bar').children().children('a');
 	
 	//Creating json string
 	var JSONString = '{"tabOrder":[]}';
@@ -254,6 +280,9 @@ function saveTeacherNavigation() {
 	        alert('Error saving tab order!');
 	    }
 	});
+
+
+	bindConfirmationToggle();
 }
 
 

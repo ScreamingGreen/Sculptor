@@ -24,6 +24,9 @@
 		<!-- Notifications -->
 		<script src="../bootstrap-3.1.1-dist/js/jquery.bootstrap-growl.js"></script>
 
+		<!-- Remove popover -->
+		<script src="../bootstrap-3.1.1-dist/js/bootstrap-confirmation.js"></script>
+
 		<!-- Custom Javascript -->
 		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>			
 		<script src="../bootstrap-3.1.1-dist/js/CreatePage.js"></script>

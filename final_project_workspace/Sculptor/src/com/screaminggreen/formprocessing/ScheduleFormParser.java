@@ -45,14 +45,6 @@ public class ScheduleFormParser implements FormParser {
 		String [] dates = req.getParameterValues("dateOfEvent");
 		String [] events = req.getParameterValues("eventDesc");
 		
-		if(dates == null || dates.length <= 0 || events == null || events.length <= 0) {
-			return;
-		}
-		
-		if(dates.length != events.length) {
-			//Mismatch!
-			return;
-		}
 		
 		//Get the webId
 		SessionBean sBean = (SessionBean) req.getSession().getAttribute("sessionBean");
@@ -66,6 +58,21 @@ public class ScheduleFormParser implements FormParser {
 		}
 		
 		String webId = pBean.getWebId();
+		
+		if(dates == null || dates.length <= 0 || events == null || events.length <= 0) {
+			
+			Entity tabEntity = CourseTab.createOrGetCourseTab(webId, TYPE_OF_COURSETAB);
+			tabEntity.setProperty("dates", "");
+			tabEntity.setProperty("events", "");
+			
+			DatastoreAPI.persistEntity(tabEntity);
+			return;
+		}
+		
+		if(dates.length != events.length) {
+			//Mismatch!
+			return;
+		}
 		
 		//Update this data in Datastore...
 		

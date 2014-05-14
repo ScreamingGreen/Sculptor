@@ -22,7 +22,6 @@
 		<!-- Custom Javascript -->
 		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>
 		<script src="../bootstrap-3.1.1-dist/js/StudentPage.js"></script>
-		<script src="bootstrap-3.1.1-dist/js/searchCourse.js"></script>
 		
 		<span id="webId" value="${param.webId}"></span>
 		<div id="studentheader">

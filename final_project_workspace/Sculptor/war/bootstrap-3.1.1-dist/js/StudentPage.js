@@ -108,7 +108,6 @@ function loadStudentPageSidebar(jsonData){
 					}
 		}
 		
-		$('.rightside').css("height", $(window).height() );
 		$('.studentHome').css("padding-top", $(window).height()/3.4);
 		
 		//for each tab in get the information that they hold
@@ -131,6 +130,17 @@ function loadStudentPageSidebar(jsonData){
 			    }
 			});
 		}
+		
+		$('.rightside').each(function(i){
+			console.log($(this).height());
+			if($(this).height() < $(window).height())
+			{
+				$(this).css("height", $(window).height());
+			}
+			else{
+				$(this).css("height", $(this).height());
+			}
+		});
 		
 }
 
@@ -281,11 +291,12 @@ function loadStudentPageMain(jsonData, tabType){
 $(window).scroll(function(){
 	//Current Position from the top
 	var currentPos = $(window).scrollTop();
-	
+	console.log(currentPos);
+
 	//Gets the position of each section
 	//Checks if the currentPos is in a section and sets active button
 	$('.rightside').each(function(i){
-		if((currentPos >= $(this).position().top) && (currentPos <= $(this).position().top + $(this).height()))
+		if((currentPos >= $(this).offset().top) && (currentPos <= $(this).offset().top + $(this).height()))
 		{
 			$('.active').removeClass('active');
 			$('.' + $(this).attr('id')).addClass('active');

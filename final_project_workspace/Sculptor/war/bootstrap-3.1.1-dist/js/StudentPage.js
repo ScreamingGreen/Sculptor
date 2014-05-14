@@ -268,7 +268,10 @@ function loadStudentPageMain(jsonData, tabType){
 		$('#schedule').append("<br><table id='scheduleTable' class='table table-bordered'><thead><tr><th width='20%'>Date</th><th>Event</th></tr></thead><tbody id='scheduleBody'></tbody></table>")
 		
 		for(var i = 0; i<dateArr.length; i++) {
-			$('#scheduleBody').append("<tr><td class='dateTD'>"+ dateArr[i] +"</td><td>"+ eventArr[i] +"</td></tr>")
+			if(dateArr[i] == "" || dateArr[i] == null)
+				continue;
+			else
+				$('#scheduleBody').append("<tr><td class='dateTD'>"+ dateArr[i] +"</td><td>"+ eventArr[i] +"</td></tr>")
 		}
 	}
 	

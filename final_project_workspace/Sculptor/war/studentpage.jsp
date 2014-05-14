@@ -26,17 +26,17 @@
 		
 		<span id="webId" value="${param.webId}"></span>
 		<div id="studentheader">
-	      <div class="container studentbg">
+	      <div class="container-fluid" id="studentbg">
 		  	
 				<!-- Left Side Tab-bar navigation -->
-				<div class="col-md-1 btn-group btn-group-vertical sidebar">
+				<div class="col-md-1 col-md-offset-2 btn-group btn-group-vertical sidebar">
 					<ul class="nav nav-pills nav-stacked" id="tab-bar">
 						  <li class="active Home"><a data-toggle="tab" class="scrollSelector" onClick="scrollTo('Home')"><div class="scrollText">Home</div></a></li>
 					</ul>
 				</div>
 				
 				<!-- Content of tabs on right side -->
-				<div class="container"> 
+				<div class="container-fluid mainHome"> 
 					<div class="row col-md-9 col-lg-offset-3" id="main">
 					
 						<!-- Basic home div -->
@@ -47,7 +47,9 @@
 								<h2><span id="startTime"></span> - <span id="endTime"></span></h2>
 								<h2><span id="daysofWeek"></span></h2>
 						</div>
-					</div>	
+					</div>
+				</div>
+					
 					
 					<!--  Basic Syllabus div 
 					<div class="studentSyllabus rightside" id="Syllabus">
@@ -72,7 +74,6 @@
 							<p id="schedule"> </p> <hr>
 					</div>
 					-->
-				</div>
 	      </div>
 	    </div>
 	</body>

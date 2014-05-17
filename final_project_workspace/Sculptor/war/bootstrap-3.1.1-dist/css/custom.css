@@ -19,24 +19,28 @@ width: 450px;
 /* Student page: makes sidebar fixed position from top */
 .sidebar{
 position:fixed;
-top: 30%;
+z-index: 1;
 }
 
 /* Student page: Sets right content div size */
 .rightside{
-height: 1000px;
 color: #FFF;
 }
 
-/* Student page: css for home div */
+/* Student page: css for home div */ 
 .studentHome{
 text-align:center;
 padding-top:300px;
 }
 
+
 /* Student page: css for other divs */
 .studentOther{
-padding: 50px;
+	padding: 5px;
+}
+
+.mainFiles{
+	font-size:150%;
 }
 
 /* Student page: css for sidebar buttons */
@@ -52,6 +56,22 @@ font-weight: bold;
 .scrollText{
 padding-top:30px;
 }
+
+.manageHeader{
+padding-left: 10px;
+}
+
+/* minor css for table headers and cells */
+th{
+	font-size: 130%;
+	padding-right: 50px;
+	text-align:center;
+}
+
+td{
+	padding-right: 50px;
+}
+
 
 /* Student page: sets background color*/
 #studentheader {
@@ -76,6 +96,7 @@ padding-top:30px;
 }
 
 .remove-button {
+	background-color: #EEEEEE;
 	float:right;
 	border:0px;
 	padding-top: 2px;
@@ -120,6 +141,47 @@ padding-top:30px;
 	width: 300px;
 }
 
+#search-header input {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+#search-header button {
+	height: 34px;
+	background-color: #EEEEEE;
+}
+
+#search-header button > span {
+	padding-top: 2.5px;
+}
+
+.ui-corner-all {
+	border-radius: 0px 0px 0px 0px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, .ui-widget-content .ui-state-focus,
+ .ui-widget-header .ui-state-focus {
+
+    border: 0px;
+    border-style: none;
+    border: 1px solid #EEEEEE;;
+    background: url('') #EEEEEE;
+    color: #212121;
+    font-weight: normal;
+    font-size: 15px;
+}
+.ui-widget a {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    font-size: 15px;
+    color: #555;
+}
+
 /* ====== Login page ====== */
 .bottom-margin-10px {
 	margin-bottom: 10px;
@@ -138,6 +200,10 @@ padding-top:30px;
 }
 #login-form h3 {
 	margin-bottom: 20px;	
+}
+
+.glyphicon {
+	top: 0px;
 }
 
 /* ====== Register page ====== */
@@ -211,6 +277,22 @@ padding-top:30px;
 	font-weight: 100;
 }
 
+#tab-bar li {
+}
+
+#tab-bar a.newTab {
+	/*width: 152px;*/
+	width: 80%;
+	display:inline-block;
+	background-color: 
+}
+
+#tab-bar button.remove-button {
+  	position:absolute;
+  	
+  	margin-top: 10px;
+}
+
 /* ====== Teacher content header (right side) ===== */
 
 #teacher-content-header {
@@ -255,4 +337,50 @@ padding-top:30px;
 	margin-bottom: 14px;
 }
 
+/* Syllabus Form */
+textarea {
+   resize: none;
+}
+
+/* Schedule Form */
+.white, .white a {
+  color: #fff;
+}
+
+.schedule-form-date {
+	/*width: 100px !important;*/
+	width: 18% !important;
+}
+
+.schedule-form-description {
+	/*width:340px !important;*/
+	width: 72% !important;
+}
+
+#events button {
+	margin-bottom:18px;
+	width: 36px;
+	height: 30px;
+	background-color: #D2322D;
+}
+
+#events button > span {
+}
+
+/* Files Form */
+.files-form-file {
+	vertical-align: middle !important;
+	padding-left: 14px !important;
+	background-color: white !important;
+}
+
+.files-form-remove {
+	text-align: center;
+	width: 8%;
+	background-color: white !important;
+}
+
+.files-form-remove button {
+	height: 26px;
+}
 

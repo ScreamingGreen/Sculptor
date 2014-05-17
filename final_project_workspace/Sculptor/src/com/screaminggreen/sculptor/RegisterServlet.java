@@ -17,9 +17,11 @@ public class RegisterServlet extends HttpServlet {
 
 		//Get Website ID
 	    String webId = req.getParameter("registerWebId");
+	    webId = webId.trim();
 	    
 	    //Get Professor Email
 		String email = req.getParameter("registerEmail");
+		email = email.trim();
 		
 		//Get Password
 		String password = req.getParameter("registerPass");

@@ -3,18 +3,35 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>CreatePage</title>
-				
+		<title>Edit Website</title>
+		
+		<!-- Plupload -->		
+ 		<link href="../plupload-2.1.1/js/jquery.plupload.queue/css/jquery.plupload.queue.css" rel="stylesheet">
+ 		
 		<!-- Bootstrap -->
 		<link href="../bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap-3.1.1-dist/css/custom.css" rel="stylesheet">
 		
+		<!-- CSS for jq ui -->
+	    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		
+		<!-- plupload javascript libraries -->
+		<script type="text/javascript" src="../plupload-2.1.1/js/plupload.full.min.js"></script>
+  		<script type="text/javascript" src="../plupload-2.1.1/js/jquery.plupload.queue/jquery.plupload.queue.min.js"></script>
+	
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-		
+
+		<!-- Notifications -->
+		<script src="../bootstrap-3.1.1-dist/js/jquery.bootstrap-growl.js"></script>
+
+		<!-- Remove popover -->
+		<script src="../bootstrap-3.1.1-dist/js/bootstrap-confirmation.js"></script>
+
 		<!-- Custom Javascript -->
 		<script src="../bootstrap-3.1.1-dist/js/Sculptor.js"></script>			
 		<script src="../bootstrap-3.1.1-dist/js/CreatePage.js"></script>
@@ -28,17 +45,19 @@
 			<div class="container">
 
 				<div class="navbar-header" id="nav-bar-header">
-					<a class="navbar-brand" href="/index.html">Sculptor</a>
+					<a class="navbar-brand" href="#">Sculptor</a>
 				</div>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/studentpage.jsp?webId=${sessionScope.sessionBean.profBean.webId}" target="_blank">View website</a></li>
-					<li><a>Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
+					<li><a href="manageaccount.jsp">Logged in as ${sessionScope.sessionBean.profBean.webId}</a></li>
 					<li><a href="/logout">Logout</a></li>
 				</ul>
 			</div>
 		</nav>
 
+		<!-- Notificaiton div -->
+		<div class="notifications top-right"></div>
 		
 		<!-- Everything below navigation bar -->
 		<div id="teacher-body">
@@ -49,7 +68,7 @@
 				
 				<p> Add, remove and edit different types of pages for your course site.</p>
 					<ul class="nav nav-pills nav-stacked" id="tab-bar">
-						  <li class="active"><a id="Home" data-toggle="tab"> 
+						  <li class="active home-tab"><a id="Home" data-toggle="tab"> 
 						  		<span class="glyphicon glyphicon-home"></span> 
 						  		&nbsp;
  								Home</a>

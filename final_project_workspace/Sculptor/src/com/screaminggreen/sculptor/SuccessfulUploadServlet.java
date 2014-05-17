@@ -1,6 +1,7 @@
 package com.screaminggreen.sculptor;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
@@ -25,8 +26,8 @@ public class SuccessfulUploadServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         @SuppressWarnings("deprecation")
-		Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(req);
-        BlobKey blobKey = blobs.get("myFile");
+		Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
+        List<BlobKey> blobKeys = blobs.values().iterator().next();
 
         //Get webId
 		SessionBean sBean = (SessionBean) req.getSession().getAttribute("sessionBean");
@@ -46,17 +47,18 @@ public class SuccessfulUploadServlet extends HttpServlet {
 		
 		//Set the filekeys
 		String keys = (String) e.getProperty("fileKeys");
-		if(keys != null && keys != "") {
-			keys = keys + "," + blobKey.getKeyString();
-			e.setProperty("fileKeys", keys);
-		} else {
-			keys = blobKey.getKeyString();
-			e.setProperty("fileKeys", keys);
+		
+		for(BlobKey blobKey : blobKeys){
+			if(keys != null && keys != "") {
+				keys = keys + "," + blobKey.getKeyString();
+				e.setProperty("fileKeys", keys);
+			} else {
+				keys = blobKey.getKeyString();
+				e.setProperty("fileKeys", keys);
+			}
 		}
 		
 		DatastoreAPI.persistEntity(e);
-		
-		//Go back to the createpage
-		resp.sendRedirect("/app/createpage.jsp");
+
 	}
 }

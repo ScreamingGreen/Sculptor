@@ -1,92 +1,170 @@
 <script type="text/javascript">
-$(document).ready(function(){
-	//When this form loads fetch
-	var form = $("#uploadFileForm");
-
-	$.ajax({
-		url: '/uploadfile',
-		type: 'GET',
-		data: '',
-		dataType: 'text',
-        async: false,
-		success: function(data) {
-			//Set url accordingly
-			$('#uploadFileForm').attr("action" , data);			
-		},
-		error: function(data) {
-			alert("Failed uploading");
-			event.preventDefault();
-		}
-	});
+	//We are going to have one uploader so define it here...
+	var uploader;
 	
-	//Retrieve the current files
-	$.ajax({
-		url: '/getfiles',
-		type: 'GET',
-		data: '',
-		dataType: 'text',
-		success: function(data) {
-			if(data == "") {
-				return;
-			}
+	//Custom remove file from upload queue, has to be defined first thing.
+	function removeFileFromUploadQueue (id) { 
+		//Remove file from upload queue if uploaded is instantiated already
+		if(uploader == null) {
+			return;
+		}
+		
+		uploader.removeFile(id);
+		$(id).remove();
+		//document.getElementById('filelist').removeChild(id);
+	}
+	
+	$(document).ready(function(){
+		//When this form loads fetch
+		
+		uploader = new plupload.Uploader({
+		    runtimes : 'html5,flash,silverlight,html4',
+		     
+		    browse_button : 'pickfiles', // you can pass in id...
+		    container: document.getElementById('container'), // ... or DOM Element itself
+		     
+		    url : "/default",
+		     
+		    filters : {
+		        max_file_size : '10mb'
+		    },
+		 
+		    // Flash settings
+		    flash_swf_url : '/plupload/js/Moxie.swf',
+		 
+		    // Silverlight settings
+		    silverlight_xap_url : '/plupload/js/Moxie.xap',
+		     		 
+		    init: {
+		        PostInit: function() {
+		            document.getElementById('filelist').innerHTML = '';
+		 
+		            document.getElementById('uploadfiles').onclick = function() {
+		                uploader.start();
+		                return false;
+		            };
+		        },
+		 
+		        FilesAdded: function(up, files) {
+		            plupload.each(files, function(file) {
+						$('#filelist').append('<tr id="' + file.id + '""> <td class="files-form-file">' + file.name + ' ('+ plupload.formatSize(file.size) + ')<b></b></td> <td class="files-form-remove"> <button class="btn btn-sm btn-danger" onclick="' + 'removeFileFromUploadQueue(' + file.id + ')'+ '"><span class="glyphicon glyphicon-remove"></span></button></td></tr>');
+		            });
+		        },
+
+		 
+		        UploadProgress: function(up, file) {
+		            document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+		        },
+		
+				FileUploaded: function(up, file){
+					//We update the current files on the page
+					getCurrentFiles();
+					
+					//Remove file from the list
+					$("#filelist").children().children("#"+file.id).remove();
+				},
+				
+		        Error: function(up, err) {
+					alert(err.message);
+		        }
+		
+		
+		    }
+		});
+		 
+		uploader.init();
+		
+		//Custom upload URL for action of form
+		uploader.unbind('BeforeUpload');
+		uploader.bind('BeforeUpload', function(up, file) {
+	        $.ajax({
+	            url: '/uploadfile',
+	            method: 'GET',
+	            async: false,
+	            success: function(data) {
+	                up.settings.url = data;
+	            },
+	        });
+		});
+		
+		
+		function getCurrentFiles() {
 			
-			var keys = jQuery.parseJSON(data);
-			//Print on screen
-			for(var i = 0; i < keys.length; i++) {
-				$('#currentFiles')
-					.append($('<div> </div>')
-						.append($("<a href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a>"))
-						.append($("<span class='glyphicon glyphicon-remove'></span>")
-							.attr('onClick', 'removeFile("' + keys[i].key + '")')
-							.attr('id', keys[i].key)
-				));
+			//Retrieve the current files
+			$.ajax({
+				url: '/getfiles',
+				type: 'GET',
+				data: '',
+				dataType: 'text',
+				success: function(data) {
+					if(data == "") {
+						return;
+					}
+					
+					var keys = jQuery.parseJSON(data);
+					//Print on screen
+					$('#currentFiles').html("");
+					for(var i = 0; i < keys.length; i++) {
+						$('#currentFiles')
+							.append($('<tr> </tr>')
+								.append($("<td class='files-form-file'><a target='_blank' href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a></td>"))
+								.append($("<td class='files-form-remove'></td>")
+								.append("<button class='btn btn-sm btn-danger'><span class='glyphicon glyphicon-remove'></span></button>")
+									.attr('onClick', 'removeFile("' + keys[i].key + '")')
+									.attr('id', keys[i].key)
+						));
+					}
+				},
+				error: function(data) {
+					alert("Failed Loading files");
+				}
+			});	
+		}	
+	
+		//Get Current Files
+		getCurrentFiles();
+		
+	});
+	
+	function removeFile(spanID){
+		$('#'+spanID).parent().remove();
+		
+		$.ajax({
+			url: '/deletefile',
+			type: 'POST',
+			data: {'key':spanID},
+			dataType: 'text',
+	        async: false,
+			success: function(data) {			
+			},
+			error: function(data) {
+				alert("Failed");
+				event.preventDefault();
 			}
-		},
-		error: function(data) {
-			alert("Failed Loading files");
-		}
-	});
-	
-
-});
-
-function removeFile(spanID){
-	$('#'+spanID).parent().remove();
-	
-	$.ajax({
-		url: '/deletefile',
-		type: 'POST',
-		data: {'key':spanID},
-		dataType: 'text',
-        async: false,
-		success: function(data) {			
-		},
-		error: function(data) {
-			alert("Failed");
-			event.preventDefault();
-		}
-	});
-}
-
+		});
+	}
 
 </script>
 
 <!-- Basic content for schedule form -->
 <div class="tab-pane active" id="Files">
-	<!-- Every div has a form -->
-	<form id="uploadFileForm" method="post" enctype="multipart/form-data">
-		<input type="file" name="myFile"/> 			
-		<input type="submit" name="uploadButton" value="Upload"/>
-	</form>
-		
-	<form id="pageForm" action="/saveform" method="POST">
+
 		<div id="successSaveMsg" style="display:none">Saved!</div>
-		<!-- Must check that all name of the components are distinct! -->
-		<input id="hidden-form-element" name="type-of-form" type="hidden" value="Files" />
-		
+		<h5>Files to Be Uploaded: </h5>
+		<div>
+			<table id="filelist" class="table table-bordered table-hover table-condensed">
+			</table>
+		</div>
+		<div id="container">
+			<button class="btn btn-sm btn-default" id="pickfiles">Select Files</button>
+			<button class="btn btn-sm btn-primary" id="uploadfiles">Upload Files</button>
+		</div>	
+			
 		<h5>Your Current Uploaded Files: </h5>
 		
-		<div id="currentFiles"></div>		
+		<div >
+			<table id="currentFiles" class="table table-bordered table-hover table-condensed table-striped">
+			</table>
+		</div>		
 		
-	</form>
 </div>

@@ -17,6 +17,7 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Text;
 
 
 /**
@@ -155,7 +156,16 @@ public class DatastoreAPI {
 	  		sb.append("\"name\" : \"" + result.getKey().getName() + "\",");
 	  
 	  	  for (String key : properties.keySet()) {
-	  		sb.append("\"" + key + "\" : \"" + properties.get(key) + "\",");
+	  		  System.out.println(key);
+	  		  if(properties.get(key) instanceof Text){
+	  			  
+	  			  Text text = (Text) properties.get(key);
+	  			  
+	  			  
+	  			  sb.append("\"" + key + "\" : \"" + text.getValue() + "\",");	  			  
+	  		  }
+	  		  else
+	  			  sb.append("\"" + key + "\" : \"" + properties.get(key) + "\",");
 	  	  }
 	  	  sb.deleteCharAt(sb.lastIndexOf(","));
 	  	  sb.append("},");

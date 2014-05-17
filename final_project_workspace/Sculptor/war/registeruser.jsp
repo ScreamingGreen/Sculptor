@@ -19,6 +19,7 @@
 		
 		<!-- Custom Javascript -->
 		<script src="bootstrap-3.1.1-dist/js/Sculptor.js"></script>
+		<script src="bootstrap-3.1.1-dist/js/RegisterPage.js"></script>
 		
 		<!-- Navigation bar with Sculptor brand, search bar, login, create page -->
 		<nav id="nav-bar" class="navbar-inverse navbar-static-top" role="navigation">
@@ -38,7 +39,7 @@
 	      <div class="container">
 	      		<div id="register-form">				
 					<div class="form-group">
-						<form class="form-horizontal" method="POST" action="/register" role="form">
+						<form id="reg-form" class="form-horizontal" method="POST" action="/register" role="form">
 						
 						<!-- Error Checking -->
 						<c:if test="${param.error == 'true'}">	
@@ -55,7 +56,11 @@
 									</c:when>
 								</c:choose>
 							</div>
-						</c:if>		
+						</c:if>	
+
+							<div id="register-alert-box" class="alert alert-danger alert-dismissable">
+				    			
+							</div>	
 						
 						    <h3>Register</h3>
 							<!-- Website ID-->

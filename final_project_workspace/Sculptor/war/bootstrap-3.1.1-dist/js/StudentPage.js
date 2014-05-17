@@ -1,5 +1,10 @@
 $(document).ready(function() {
+	console.log(screen.width);
+	if(screen.width < 1000){
+		$('#tab-bar').hide();
+	}
 	getStudentPage();
+
 });
 
 //Gets tab order from servlet
@@ -34,6 +39,9 @@ function loadStudentPageSidebar(jsonData){
 		//Gets webId requested
 		var webIdParam = $('#webId').attr('value');
 		
+		//Centers student page side navigation bar based on amount of tabs
+		$('#tab-bar').css("padding-top", ($(window).height()/2.3) - jsonArray.tabOrder.length/2*$('.scrollSelector').height());
+		
 		//Appends new sidebar button for each tab.
 		for(i=1; i<jsonArray.tabOrder.length; i++)
 		{
@@ -48,41 +56,74 @@ function loadStudentPageSidebar(jsonData){
 							.append(
 								$('<div class="scrollText">' + jsonArray.tabOrder[i].type + '</div>')
 							))
+							.addClass(jsonArray.tabOrder[i].type)
 					);
 					
 					//Appends syllabus section to rightside
 					if(jsonArray.tabOrder[i].type == "Syllabus")
 					{
-						$("#main")
+						$('#studentbg')
+						.append(
+							$('<div class="container-fluid mainSyllabus"> <div class="row col-md-9 col-lg-offset-3" id="mainSyllabus"> </div></div>')
+							)
+							
+						$("#mainSyllabus")
 							.append(
 							$('<div class="studentOther rightside" id="Syllabus"></div>')
-								.append($('<h2> Course Description </h2> <p id="description"></p> <hr>'))
-								.append($('<h2> Course Material </h2> <p id="materials"></p> <hr>'))
-								.append($('<h2> Info and Office Hours </h2> <p id="infoAndHours"></p> <hr>'))
-								.append($('<h2> Grade Breakdown </h2> <p id="breakdown"></p> <hr>'))
+								.append($('<h2 class="description"> Course Description </h2> <p id="description"></p>'))
+								.append($('<h2 class="materials"><hr> Course Material </h2> <p id="materials"></p>'))
+								.append($('<h2 class="infoAndHours"><hr> Info and Office Hours </h2> <p id="infoAndHours"></p>'))
+								.append($('<h2 class="breakdown"><hr> Grade Breakdown </h2> <p id="breakdown"></p>'))
 							);
+						
+						if(i%2 == 1)
+						{
+							$('.mainSyllabus').css('background-color', '#494949');
+						}
 					}
 					
 					//Appends schedule section to rightside
 					if(jsonArray.tabOrder[i].type == "Schedule")
 					{
-						$("#main")
+						$('#studentbg')
+						.append(
+							$('<div class="container-fluid mainSchedule"> <div class="row col-md-9 col-lg-offset-3" id="mainSchedule"> </div></div>')
+							)
+						
+						$("#mainSchedule")
 							.append(
 							$('<div class="studentOther rightside" id="Schedule"></div>')
-								.append($('<h2> Important Dates </h2> <p id="schedule"></p>'))
+								.append($('<h2>Important Dates </h2> <p id="schedule"></p>'))
 							);
+						
+						if(i%2 == 1)
+						{
+							$('.mainSchedule').css('background-color', '#494949');
+						}
 					}
 					
 					//Appends file section to rightside
 					if(jsonArray.tabOrder[i].type == "Files")
 					{
-						$("#main")
+						$('#studentbg')
+						.append(
+							$('<div class="container-fluid mainFiles"> <div class="row col-md-9 col-lg-offset-3" id="mainFiles"> </div></div>')
+							)
+						
+						$("#mainFiles")
 							.append(
 							$('<div class="studentOther rightside" id="Files"></div>')
 								.append($('<h2> Files </h2>'))
 							);
+						
+						if(i%2 == 1)
+						{
+							$('.mainFiles').css('background-color', '#494949');
+						}
 					}
 		}
+		
+		$('.studentHome').css("padding-top", $(window).height()/3.4);
 		
 		//for each tab in get the information that they hold
 		for(j=0; j<jsonArray.tabOrder.length; j++)
@@ -104,13 +145,28 @@ function loadStudentPageSidebar(jsonData){
 			    }
 			});
 		}
+		
+		$('.rightside').each(function(i){
+			console.log($(this).height());
+			if($(this).height() < $(window).height())
+			{
+				$(this).css("height", $(window).height());
+			}
+			else{
+				$(this).css("height", $(this).height());
+			}
+		});
+		
 }
 
 
 //loads rightside of student page with information from tabs
 function loadStudentPageMain(jsonData, tabType){
-	console.log(jsonData);
 	console.log(tabType);
+	console.log(jsonData);
+	
+	jsonData = jsonData.replace(/\\n/g, "<br />");
+
 	var jsonArray = jQuery.parseJSON(jsonData);
 	console.log(jsonArray);
 	
@@ -131,27 +187,92 @@ function loadStudentPageMain(jsonData, tabType){
 		
 		//End Time
 		$('#endTime').text(jsonArray.data[0].endTime);
+		
+		if(jsonArray.data[0].mon == 'true')
+		{
+			$('#daysofWeek').append('Mon');
+		}
+		
+		if(jsonArray.data[0].tue == 'true')
+		{
+			$('#daysofWeek').append('Tue');
+		}
+		
+		if(jsonArray.data[0].wed == 'true')
+		{
+			$('#daysofWeek').append('Wed');
+		}
+		
+		if(jsonArray.data[0].thu == 'true')
+		{
+			$('#daysofWeek').append('Thu');
+		}
+		
+		if(jsonArray.data[0].fri == 'true')
+		{
+			$('#daysofWeek').append('Fri');
+		}
+		
+		if(jsonArray.data[0].sat == 'true')
+		{
+			$('#daysofWeek').append('Sat');
+		}
+		
+		if(jsonArray.data[0].sun == 'true')
+		{
+			$('#daysofWeek').append('Sun');
+		}
 	}
 	
 	else if (tabType == 'Syllabus')
 	{
+		console.log(jsonArray.data[0].description);
+		if(jsonArray.data[0].description == null || jsonArray.data[0].description == "")
+			$('.description').hide();
+		else
 		// Course Description
-		$('#description').text(jsonArray.data[0].description);
+			$('#description').html(jsonArray.data[0].description);
 		
+		if(jsonArray.data[0].materials == null || jsonArray.data[0].materials == "")
+			$('.materials').hide();
 		// Course Material
-		$('#materials').text(jsonArray.data[0].materials);
+		else
+			$('#materials').html(jsonArray.data[0].materials);
 		
+		if(jsonArray.data[0].infoAndHours == null || jsonArray.data[0].infoAndHours == "")
+			$('.infoAndHours').hide();
 		// Course Info and Office Hours
-		$('#infoAndHours').text(jsonArray.data[0].infoAndHours);
+		else
+			$('#infoAndHours').html(jsonArray.data[0].infoAndHours);
 		
+		if(jsonArray.data[0].breakdown == null || jsonArray.data[0].breakdown == "")
+			$('.breakdown').hide();
 		// Grade Breakdown
-		$('#breakdown').text(jsonArray.data[0].breakdown);
+		else
+			$('#breakdown').html(jsonArray.data[0].breakdown);
 	}
 	
 	else if (tabType == 'Schedule')
 	{
 		// Important Dates
-		$('#schedule').text(jsonArray.data[0].schedule);
+		if(jsonArray.data[0].dates == null || jsonArray.data[0].events == null){
+			return;
+		}
+		var dateArr = jsonArray.data[0].dates.split(",");
+		var eventArr = jsonArray.data[0].events.split(",");
+		
+		if(dateArr.length <= 0 ) {return;}
+		
+		if(dateArr.length != eventArr.length) {return;}
+		
+		$('#schedule').append("<br><table id='scheduleTable' class='table table-bordered'><thead><tr><th width='20%'>Date</th><th>Event</th></tr></thead><tbody id='scheduleBody'></tbody></table>")
+		
+		for(var i = 0; i<dateArr.length; i++) {
+			if(dateArr[i] == "" || dateArr[i] == null)
+				continue;
+			else
+				$('#scheduleBody').append("<tr><td class='dateTD'>"+ dateArr[i] +"</td><td>"+ eventArr[i] +"</td></tr>")
+		}
 	}
 	
 	else if (tabType == 'Files')
@@ -176,7 +297,7 @@ function loadStudentPageMain(jsonData, tabType){
 				for(var i = 0; i < keys.length; i++) {
 					$('#Files')
 						.append($('<div> </div>')
-							.append($("<a href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a>"))
+							.append($("<a target='_blank' href=/servefile?blob-key=" + keys[i].key + ">" + keys[i].name +" </a>"))
 					);
 				}
 			},
@@ -186,3 +307,21 @@ function loadStudentPageMain(jsonData, tabType){
 		});
 	}
 }
+
+// Active navigation when scrolling
+$(window).scroll(function(){
+	//Current Position from the top
+	var currentPos = $(window).scrollTop();
+	console.log(currentPos);
+
+	//Gets the position of each section
+	//Checks if the currentPos is in a section and sets active button
+	$('.rightside').each(function(i){
+		if((currentPos >= $(this).offset().top) && (currentPos <= $(this).offset().top + $(this).height()))
+		{
+			$('.active').removeClass('active');
+			$('.' + $(this).attr('id')).addClass('active');
+		}
+	});
+
+})

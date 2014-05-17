@@ -3,6 +3,15 @@ $(document).ready(function() {
 	// Load teacher navigation
 	loadTeacherNavigation();
 
+	// Make the tab bar sortable
+	$( "#tab-bar" ).sortable({ 
+		opacity: 0.5,
+		items: "li:not(.home-tab)",
+		stop: function( event, ui ) {
+			saveTeacherNavigation();
+		}
+	});
+
 	// Load the home form first
 	loadForm("Home");
 	
@@ -16,7 +25,20 @@ $(document).ready(function() {
 	// Catch what happens when a menu item from the "+ Add Page"
 	// button gets pressed
 	bindClickToAddPageNavigation();
+
+	// When a user presses remove button, we need to make sure that 
+	// a correct dialog opens
+	bindConfirmationToggle();
 });
+
+function bindConfirmationToggle() {
+	var options = { placement: "right",
+					title: "Are you sure?",
+					btnOkLabel: "Yes",
+					btnCancelLabel: "No",
+					trigger: "manual"};
+	$('[data-toggle="confirmation"]').confirmation(options);
+}
 
 function bindButtons() {
 	
@@ -70,9 +92,7 @@ function bindClickToAddPageNavigation() {
 		// Remove the item from add menu
 		var liElement = $(this).parent();
 		$(liElement).addClass("remove-addpage-option");
-		$(".remove-addpage-option").remove();
-
-		
+		$(".remove-addpage-option").remove();	
 	});
 }
 
@@ -83,8 +103,6 @@ function addPage(nameOfPage) {
 
 	// Save the new navigation
 	saveTeacherNavigation();
-
-	// TODO: Add page to data store 
 }
 
 function addPageToNavigation(nameOfPage) {
@@ -102,28 +120,45 @@ function addPageToNavigation(nameOfPage) {
 						'<span class="glyphicon glyphicon-list-alt"></span>'
 					)
 					.append("&nbsp;&nbsp;&nbsp;")
-					.append(nameOfPage)
-					.append(
-						'<button class="remove-button" type="button" onClick="removePage(this)"><span class="glyphicon glyphicon-remove pull-right"></span></button>'
-					)
+					.append(nameOfPage)	
+				)
+				.append('<button class="remove-button" type="button"  data-toggle="confirmation" data-container="body" onClick="removePage(this)"><span class="glyphicon glyphicon-remove pull-right"></span></button>'
 				)
 			);
 	// Make sure that the new navigation button that we 
 	// added can fire off an event
 	bindClickToTeacherNavigation();
+
+	// Make sure that newly added button presents
+	// a confirmation box
+	bindConfirmationToggle();
 }
 
 // Called when remove checkmark is pressed in teacher navigation
+var buttonOfThePageToRemove;
 function removePage(removeButton) {
 
+	// Save the button so we could remove it after confirmation
+	buttonOfThePageToRemove = removeButton;
+
+	// Show a confirmation for deletion
+	$(removeButton).confirmation('show');
+}
+
+// If a user selected 'Yes' in confirmation box, this function is called
+// Big Note: The function name is coded into 'bootstrap-confirmation.js'
+// because the library was outdated and buggy. 
+function removeSelectedPage() {
+
+	$('[data-toggle="confirmation"]').confirmation('hide');
+	
 	// Remove the item from the teacher navigation
-	var aElement = $(removeButton).parent();
-	var liElement = aElement.parent();
+	var liElement = $(buttonOfThePageToRemove).parent();
 	$(liElement).addClass("remove-the-element");
 	$(".remove-the-element").remove();
 
 	// Get the name of the removed option
-	var nameOfRemovedOption = $(aElement).attr('id');
+	var nameOfRemovedOption = $(liElement).children().eq(0).attr('id');
 
 	// Add the element back to add page navigation
 	addOptionToAddPageNavigation(nameOfRemovedOption);
@@ -131,7 +166,14 @@ function removePage(removeButton) {
 	// Save the new navigation
 	saveTeacherNavigation();
 
-	// TODO: Remove page from data store	
+	// If we are removing the page we are currently looking at,
+	// switch back to the home page
+	if ($('#page-title').html()==nameOfRemovedOption) {
+		$('#page-title').html("Home");
+		$('div[class="tab-content"]').html("");
+		loadForm("Home");
+		$('.home-tab').addClass('active');
+	}
 }
 
 function addOptionToAddPageNavigation(pageName) {
@@ -210,7 +252,7 @@ function populateTeacherNavigation(jsonData) {
 function saveTeacherNavigation() {
 	
 	//Gets the tab name of each tab
-	var tabs = $('#tab-bar').children().children();
+	var tabs = $('#tab-bar').children().children('a');
 	
 	//Creating json string
 	var JSONString = '{"tabOrder":[]}';
@@ -247,6 +289,9 @@ function saveTeacherNavigation() {
 	        alert('Error saving tab order!');
 	    }
 	});
+
+
+	bindConfirmationToggle();
 }
 
 
@@ -266,20 +311,37 @@ function cancelForm() {
 
 	// Reload the page which acts as canceling changes
 	loadForm(nameOfForm);
+
+	$.bootstrapGrowl("<b>Canceled Changes!</b>", {
+		  type: 'info', // (null, 'info', 'error', 'success')
+		  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+		  delay: 2000
+	});
 }
 
 function saveForm(){	
 	   var frm = $('#pageForm');
+
+	  	frm.off('submit'); // Prevent multiple submits being binded to the button
 	    frm.submit(function (ev) {
 	        $.ajax({
 	            type: frm.attr('method'),
 	            url: frm.attr('action'),
 	            data: frm.serialize(),
 	            success: function (data) {
-	            	$("#successSaveMsg").fadeIn("slow", function(){}); 
-	            	$("#successSaveMsg").fadeOut("slow", function(){});
+	            	$.bootstrapGrowl("<b>Saved Changes!</b>", {
+					  type: 'success', // (null, 'info', 'error', 'success')
+					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+					  delay: 2000
+	            	});
 	            },
-	        	error: function (data) {alert ("Try again please."); }
+	        	error: function (data) {
+	        		$.bootstrapGrowl("<b>Error Saving Changes!</b>", {
+					  type: 'error', // (null, 'info', 'error', 'success')
+					  offset: {from: 'top', amount: 70}, // 'top', or 'bottom'
+					  delay: 2000
+	            	});
+	        	}
 	        });
 
 	        ev.preventDefault();
@@ -384,6 +446,7 @@ function populateSyllabusForm(jsonData){
 	
 	var parsedJSON = jQuery.parseJSON(jsonData);
 	var data = parsedJSON.data[0];
+	console.log(data);
 	
 	//Description
 	$('textarea[name="description"]').val(data.description);
@@ -399,14 +462,49 @@ function populateSyllabusForm(jsonData){
 }
 
 function populateScheduleForm(jsonData){
-	
+
 	//Enables save button if disabled.
 	$('#save-button').prop('disabled', false);
 	
 	var parsedJSON = jQuery.parseJSON(jsonData);
 	var data = parsedJSON.data[0];
 	
-	$('textarea[name="schedule"]').val(data.schedule);
+	if(data.dates == "" || data.events == "") {return;}
+
+	var dates = data.dates.split(",");
+	var events = data.events.split(",");
+	
+	//For each date+event pair create input texts on the div
+	for(var i = 0; i < dates.length; i++) {
+		//Add the inputs
+		/*
+		$("#events")
+		.append("<div><input type='text' name='dateOfEvent' id='date_"+ i +"' class='dateOfEvent' placeholder='Date'/> " + 
+				"<input type='text' placeholder='Description' id='event_" + i + "' name='eventDesc' class='eventDesc'/> " + 
+				"<span class='glyphicon glyphicon-remove removeEvent'></span></div> ");*/
+
+		$("#events")
+				.append("<div><div class=''><input type='text' name='dateOfEvent' class='form-control dateOfEvent schedule-form-date' id='date_"+i+"' placeholder='Date'/> " + 
+
+						"<input id='event_"+i+"' type='text' placeholder='Description' name='eventDesc' class='form-control eventDesc schedule-form-description'/> " + 
+
+						"<button type='button' class='btn btn-danger removeEvent'> <span class='glyphicon white glyphicon-remove'></span></button> </div></div>");
+
+		
+		//Populate it
+		$('#date_' + i).val(dates[i]);
+		$('#event_' + i).val(events[i]);
+	}
+
+	//Bind new spans
+	$('.removeEvent').click(function() {
+			$(this).parent().parent().remove();
+			return false;
+	});
+			
+	//Bind new date picker
+	$('.dateOfEvent').datepicker();
+	
 }
 
 function populateFilesForm(jsonData){
